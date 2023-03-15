@@ -13,6 +13,8 @@ session_start();
     <title>Document</title>
 </head>
 <body>
+    <?php require_once('./Views/Login.php'); ?>
+
 <a href="register.php">Registrar usuario</a>
     
 </body>

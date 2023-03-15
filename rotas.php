@@ -1,42 +1,50 @@
 <?php 
-// fazer as rotas para o coordenador e aluno 
 
-//abaixo é um exemplo de outra coisa mas é só  para ajudar a nao ficar perdido
+// Função para verificar se o usuário está logado
 function verifica_sessao()
 {
     return isset($_SESSION['usuario']);
 }
 
-$rota = null;
-
-if(!verifica_sessao() && $_SERVER['REQUEST_METHOD'] != 'POST'){
-    $rota = 'login';
-} elseif(!verifica_sessao() && $_SERVER['REQUEST_METHOD'] == 'POST') {
-    $rota = 'login_submit';
+// Verificar o tipo de usuário (coordenador ou aluno) e determinar a rota
+if(verifica_sessao() && $_SESSION['tipo_usuario'] == 'coordenador') {
+    $rota = isset($_GET['rota']) ? $_GET['rota'] : 'CadastroEvetos';
+} elseif(verifica_sessao() && $_SESSION['tipo_usuario'] == 'aluno') {
+    $rota = isset($_GET['rota']) ? $_GET['rota'] : 'InscricaoEventos';
 } else {
-    $rota = 'logado';
+    $rota = 'login';
 }
 
-
-// apresentar os layouts
+// Executar a ação apropriada com base na rota
 switch ($rota) {
 
-    // -----------------------------------------------------------
     case 'login':
-
-        // apresentação do formulário de login
-        require_once('../views/Login.php');
+        require_once('./Views/Login.php');
         break;
 
-    // -----------------------------------------------------------
-    case 'login_submit':
-
-
+    case 'cadastrar_aula':
+        // Verificar se o formulário foi enviado e tratar os dados
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Tratar os dados do formulário e salvar no banco de dados
+            // Redirecionar para uma página de confirmação ou exibir uma mensagem de sucesso
+        } else {
+            require_once('views/CadastroEventos.php');
+        }
         break;
 
-    // -----------------------------------------------------------
-    case 'logado':
-        
-     
+    case 'inscrever_aula':
+        // Verificar se o formulário foi enviado e tratar os dados
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Tratar os dados do formulário e salvar no banco de dados
+            // Redirecionar para uma página de confirmação ou exibir uma mensagem de sucesso
+        } else {
+            require_once('./Views/InscricaoEventos.php');
+        }
+        break;
+
+    default:
+        // Rota inválida, redirecionar para a página de login
+        header('Location: index.php');
+        exit();
         break;
 }
