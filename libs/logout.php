@@ -1,7 +1,7 @@
 <?php
-//completar aqui (no exemplo que peguei era a )
+//completar aqui (no exemplo que peguei era uma variavel )
     if(!isset($_SESSION[''])){
-        header('Location: index.php');
+        header('Location: ../index.php');
     }
 
     session_start();

@@ -16,7 +16,7 @@ $stmt->bindParam(':horarioInicio', $horarioInicio);
 $stmt->bindParam(':horarioTermino', $horarioTermino);
 
 if ($stmt->execute()) {
-  header('Location: listar_eventos.php');
+  header('Location: ListarEventos.php');
 } else {
   echo "Erro ao cadastrar o evento.";
 }
