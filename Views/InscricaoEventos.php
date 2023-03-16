@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-require_once('conexao.php');
+require_once('../libs/conexao.php');
 global $pdo;
 
 if (!isset($_SESSION) && !$_SESSION['online']) {
@@ -10,7 +10,7 @@ if (!isset($_SESSION) && !$_SESSION['online']) {
     $idAluno = $_SESSION['idAluno'];
     $sqlAluno = "SELECT * FROM alunos WHERE idAluno = '$idAluno'";
     
-    $resultado = $pdo->query($sqlCoordenador);
+    $resultado = $pdo->query($sqlAluno);
     $dadosCoordenador = $resultado->fetchAll(PDO::FETCH_ASSOC);
 }elseif(isset($_SESSION['idCoordenador'])){
     $idCoordenador = $_SESSION['idCoordenador'];
@@ -35,5 +35,7 @@ if (!isset($_SESSION) && !$_SESSION['online']) {
 </head>
 <body>
     <h1>Inscricao Eventos</h1>
+
+    <?php require_once('ListarEventos.php'); ?>
 </body>
 </html>

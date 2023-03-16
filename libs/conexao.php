@@ -1,8 +1,11 @@
 <?php
+$host = 'localhost';
+$bd = 'eventosfaculdade';
+$user = 'fabio';
+$pass = 'sapato';
 
-$dsn = "mysql:host=" . $_ENV['db']['host'] . ";dbname=" . $_ENV['db']['database'];
 try{
-$pdo = new PDO($dsn, $_ENV['db']['user'], $_ENV['db']['pass']);
+$pdo = new PDO("mysql:host=$host;dbname=$bd", $user, $pass);
 
  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch(PDOException $e){

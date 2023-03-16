@@ -2,6 +2,9 @@
   <label for="nomeEvento">Nome do evento:</label>
   <input type="text" name="nomeEvento" required>
 
+  <label for="descricao">Descrição do evento:</label>
+  <input type="text" name="descricao" >
+
   <label for="local">Local:</label>
   <input type="text" name="local">
 

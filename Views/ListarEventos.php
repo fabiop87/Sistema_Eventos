@@ -1,5 +1,5 @@
 <?php
-require_once('conexao.php');
+require_once('../libs/conexao.php');
 
 global $pdo;
 
@@ -15,6 +15,7 @@ $eventos = $resultado->fetchAll(PDO::FETCH_ASSOC);
     <tr>
       <th>ID</th>
       <th>Nome</th>
+      <th>Descricao</th>
       <th>Local</th>
       <th>Data</th>
       <th>Início</th>
@@ -26,6 +27,7 @@ $eventos = $resultado->fetchAll(PDO::FETCH_ASSOC);
       <tr>
         <td><?= $evento['idEvento'] ?></td>
         <td><?= $evento['nomeEvento'] ?></td>
+        <td><?= $evento['descricao'] ?></td>
         <td><?= $evento['local'] ?></td>
         <td><?= date('d/m/Y', strtotime($evento['dataEvento'])) ?></td>
         <td><?= date('H:i', strtotime($evento['horarioInicio'])) ?></td>

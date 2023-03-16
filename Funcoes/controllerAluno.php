@@ -1,7 +1,7 @@
 <?php
 
 require('./Aluno.php');
-var_dump($pdo);
+
 var_dump($_POST);
 //die();
 $tiporeq = $_POST['LoginouRegister'];
@@ -47,11 +47,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $tiporeq == 'Login') {
     session_start();
     $_SESSION['online'] = true;
     $_SESSION['idAluno'] = $Aluno['idAluno'];
+    var_dump($_SESSION);
+    ///  TA ERRADO ISSO AQUI
   } else {
     // Define uma mensagem de erro para ser exibida na página
     $mensagem = 'Ocorreu um erro ao fazer login.';
   }
   echo $mensagem;
   // Redireciona o usuário para a página desejada
-  //header('Location: ../Views/InscricaoEventos.php');
 }
+header('Location: ../Views/InscricaoEventos.php');
