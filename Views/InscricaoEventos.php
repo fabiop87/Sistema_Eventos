@@ -2,24 +2,9 @@
 
 session_start();
 require_once('../libs/conexao.php');
-global $pdo;
+require_once('../libs/DadosAlunoouCoord.php');
 
-if (!isset($_SESSION) && !$_SESSION['online']) {
-    die('nao era pra acontecer isso....');
-}elseif(isset($_SESSION['idAluno'])){
-    $idAluno = $_SESSION['idAluno'];
-    $sqlAluno = "SELECT * FROM alunos WHERE idAluno = '$idAluno'";
-    
-    $resultado = $pdo->query($sqlAluno);
-    $dadosCoordenador = $resultado->fetchAll(PDO::FETCH_ASSOC);
-}elseif(isset($_SESSION['idCoordenador'])){
-    $idCoordenador = $_SESSION['idCoordenador'];
-    $sqlCoordenador = "SELECT * FROM coordenadores WHERE idCoordenador = '$idCoordenador'";
-    
-    $resultado = $pdo->query($sqlCoordenador);
-    $dadosCoordenador = $resultado->fetchAll(PDO::FETCH_ASSOC);
-}
- 
+
 
 ?>
 
