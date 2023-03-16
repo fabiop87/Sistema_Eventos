@@ -1,3 +1,8 @@
 sql/
 
 assets/
+
+conexao.php
+
+.env
+

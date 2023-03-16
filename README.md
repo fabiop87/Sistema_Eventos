@@ -8,7 +8,12 @@
 
  - mais coisas que nao lembro agora
 
+ - Obviamente falta a parte dos coordenadores e dos eventos
+ 
+ - Resolver o que fazer com as rotas (ta bem estranho)
+ 
  - gosto de cenoura
 
-
  - depois de tudo add o css  
+
+ - Fazer regex para ra e nome

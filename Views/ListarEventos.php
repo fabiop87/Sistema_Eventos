@@ -1,8 +1,10 @@
 <?php
 require_once('conexao.php');
 
+global $pdo;
+
 $sql = "SELECT * FROM eventos";
-$resultado = $conexao->query($sql);
+$resultado = $pdo->query($sql);
 $eventos = $resultado->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
@@ -28,7 +30,9 @@ $eventos = $resultado->fetchAll(PDO::FETCH_ASSOC);
         <td><?= date('d/m/Y', strtotime($evento['dataEvento'])) ?></td>
         <td><?= date('H:i', strtotime($evento['horarioInicio'])) ?></td>
         <td><?= date('H:i', strtotime($evento['horarioTermino'])) ?></td>
+        <!-- acho que aqui fazer um jhonson pra se inscrever -->
       </tr>
     <?php endforeach; ?>
   </tbody>
 </table>
+

@@ -8,7 +8,7 @@ $horarioInicio = $_POST['horarioInicio'];
 $horarioTermino = $_POST['horarioTermino'];
 
 $sql = "INSERT INTO eventos (nomeEvento, local, dataEvento, horarioInicio, horarioTermino) VALUES (:nomeEvento, :local, :dataEvento, :horarioInicio, :horarioTermino)";
-$stmt = $conexao->prepare($sql);
+$stmt = $pdo->prepare($sql);
 $stmt->bindParam(':nomeEvento', $nomeEvento);
 $stmt->bindParam(':local', $local);
 $stmt->bindParam(':dataEvento', $dataEvento);
@@ -20,4 +20,4 @@ if ($stmt->execute()) {
 } else {
   echo "Erro ao cadastrar o evento.";
 }
-?>
+
