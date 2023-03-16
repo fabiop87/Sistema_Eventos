@@ -1,8 +1,5 @@
 <?php
-// $host = "localhost";
-// $dbname = 'eventosfaculdade';
-// $username = 'fabio';
-// $password = 'sapato';
+
 $dsn = "mysql:host=" . $_ENV['db']['host'] . ";dbname=" . $_ENV['db']['database'];
 try{
 $pdo = new PDO($dsn, $_ENV['db']['user'], $_ENV['db']['pass']);
