@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $tiporeq == 'Register') {
   if ($_POST['senha'] != $_POST['confirm_senha']) {
     echo 'As senhas devem coincidir';
   }
-  var_dump($_POST);
+
 
   if (!verificarCoordenadorExistente($_POST['nome'])) {
     $Coordenador = cadastrarCoordenador($_POST['nome'], $_POST['idCurso'], $_POST['senha']);

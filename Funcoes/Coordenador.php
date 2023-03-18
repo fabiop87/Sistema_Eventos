@@ -46,11 +46,10 @@ function verificarLoginCoordenador($nome, $senha)
     global $pdo;
     // Busca o coordenador pelo nome
 
-    $sql = "SELECT * FROM coordenadores WHERE nome = :nome";
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
-    $stmt->execute();
-    // Verifica se o RA existe e se a senha está correta
+    $stmt = $pdo->prepare("SELECT * FROM coordenadores WHERE nome = ?");
+    $stmt->execute([$nome]);
+    $nome = $stmt->fetch();
+    // Verifica se o nome existe e se a senha está correta
     if ($nome && password_verify($senha, $nome['senha'])) {
         return $nome;
         /*        session_start();

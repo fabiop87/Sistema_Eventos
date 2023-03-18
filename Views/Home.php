@@ -1,13 +1,12 @@
-<?php
+<?php 
 
-session_start();
-require_once('../libs/conexao.php');
-require_once('../libs/DadosAlunoouCoord.php');
+if(isset($_SESSION['online'])){
+    header('Location: ../index.php');
+}
 
-//var_dump($_POST);
+
 
 ?>
-
 
 
 <!DOCTYPE html>
@@ -22,17 +21,13 @@ require_once('../libs/DadosAlunoouCoord.php');
 </head>
 
 <body>
-    <h1>Inscricao Eventos</h1>
+    <h1>PROBLEMAS TECNICOS</h1>
+    <h2>TORCEDORES CALMA</h2>
 
-    <?php require_once('ListarEventos.php');
+    <br>
 
 
-    ?>
     <a href="../libs/logout.php" class="btn btn-danger ml-3"><button class="btn btn-danger">Sair da conta</button></a>
-
-
-    <?php var_dump($_SESSION) ?>
-
     <script src="../assets/bootstrap.bundle.min.js"></script>
 </body>
 

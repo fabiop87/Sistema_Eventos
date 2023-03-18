@@ -1,6 +1,9 @@
 <?php
 session_start();
 
+if(isset($_SESSION['online'])){
+    header('Location: ../Views/Home.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -54,7 +57,7 @@ session_start();
         <div class="row justify-content-center">
             <div class="col-6 mt-5">
 
-                <form action="./Funcoes/controllerAluno.php" method="POST" autocomplete="off"> <!--  action  -->
+                <form action="./Funcoes/controllerCoordenador.php" method="POST" autocomplete="off"> <!--  action  -->
 
                     <fieldset>
                         <legend class="text-center">Login Coordenador</legend>
