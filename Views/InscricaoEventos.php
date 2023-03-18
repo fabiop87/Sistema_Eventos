@@ -21,6 +21,13 @@ require_once('../libs/DadosAlunoouCoord.php');
 <body>
     <h1>Inscricao Eventos</h1>
 
-    <?php require_once('ListarEventos.php'); ?>
+    <?php require_once('ListarEventos.php');
+    
+    
+    ?>
+<a href="../libs/logout.php" class="btn btn-danger ml-3">Sair da conta</a>
+
+
+
 </body>
 </html>

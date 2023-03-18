@@ -42,7 +42,7 @@ function verificarAlunoExistente($ra)
 }
 
 // Função para verificar se o login é válido
-function verificarLogin($ra, $senha)
+function verificarLoginAluno($ra, $senha)
 {
     global $pdo;
     // Busca o aluno pelo RA

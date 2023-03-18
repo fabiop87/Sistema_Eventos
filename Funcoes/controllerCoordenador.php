@@ -1,6 +1,6 @@
 <?php
 
-require('./Aluno.php');
+require('./Coordenador.php');
 
 var_dump($_POST);
 //die();
@@ -12,23 +12,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $tiporeq == 'Register') {
   // Confirmar se as senhas batem
   if ($_POST['senha'] != $_POST['confirm_senha']) {
     echo 'As senhas devem coincidir';
-    die('aqui');
   }
   var_dump($_POST);
 
-  if (!verificarAlunoExistente($_POST['ra'])) {
-    $Aluno = cadastrarAluno($_POST['nome'], $_POST['ra'], $_POST['idCurso'], $_POST['senha']);
+  if (!verificarCoordenadorExistente($_POST['nome'])) {
+    $Coordenador = cadastrarCoordenador($_POST['nome'], $_POST['idCurso'], $_POST['senha']);
   } else {
-    echo 'Este aluno já está cadastrado';
+    echo 'Este coordenador já está cadastrado';
   }
 
   // Verifica se o cadastro foi bem sucedido
-  if ($Aluno) {
+  if ($Coordenador) {
     // Define uma mensagem de sucesso para ser exibida na página
-    $mensagem = 'Aluno cadastrado com sucesso!';
+    $mensagem = 'Coordenador cadastrado com sucesso!';
   } else {
     // Define uma mensagem de erro para ser exibida na página
-    $mensagem = 'Ocorreu um erro ao cadastrar o aluno.';
+    $mensagem = 'Ocorreu um erro ao cadastrar o coordenador.';
   }
   echo $mensagem;
   // Redireciona o usuário para a página desejada
@@ -38,15 +37,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $tiporeq == 'Register') {
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && $tiporeq == 'Login') {
-  echo 'aqui';
-  $Aluno = verificarLoginAluno($_POST['ra'], $_POST['senha']);
+  $Coordenador = verificarLoginCoordenador($_POST['nome'], $_POST['senha']);
 
-  if ($Aluno) {
+  if ($Coordenador) {
     // Define uma mensagem de sucesso para ser exibida na página
-    $mensagem = 'Aluno logado com sucesso!';
+    $mensagem = 'Coordenador logado com sucesso!';
     session_start();
     $_SESSION['online'] = true;
-    $_SESSION['idAluno'] = $Aluno['idAluno'];
+    $_SESSION['idCoordenador'] = $Coordenador['idCoordenador'];
     var_dump($_SESSION);
     ///  TA ERRADO ISSO AQUI
   } else {

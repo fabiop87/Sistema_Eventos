@@ -3,14 +3,15 @@ require_once('conexao.php');
 
 
 
-function cadastrarEvento($nomeEvento, $local, $dataEvento, $horarioInicio, $horarioTermino)
+function cadastrarEvento($nomeEvento, $descricao, $local, $dataEvento, $horarioInicio, $horarioTermino)
 {
   global $pdo;
 
-  $sql = "INSERT INTO eventos (nomeEvento, local, dataEvento, horarioInicio, horarioTermino) VALUES (:nomeEvento, :local, :dataEvento, :horarioInicio, :horarioTermino)";
+  $sql = "INSERT INTO eventos (nomeEvento, descricao, local, dataEvento, horarioInicio, horarioTermino) VALUES (:nomeEvento, :local, :dataEvento, :horarioInicio, :horarioTermino)";
   $stmt = $pdo->prepare($sql);
-  $stmt->bindParam(':nomeEvento', $nomeEvento);
-  $stmt->bindParam(':local', $local);
+  $stmt->bindParam(':nomeEvento', $nomeEvento, PDO::PARAM_STR);
+  $stmt->bindParam(':descricao', $nomeEvento, PDO::PARAM_STR);
+  $stmt->bindParam(':local', $local, PDO::PARAM_STR);
   $stmt->bindParam(':dataEvento', $dataEvento);
   $stmt->bindParam(':horarioInicio', $horarioInicio);
   $stmt->bindParam(':horarioTermino', $horarioTermino);
@@ -37,11 +38,12 @@ function atualizarEvento($idEvento, $nomeEvento, $local, $dataEvento, $horarioIn
 {
   global $pdo;
 
-  $sql = "UPDATE eventos SET nomeEvento = :nomeEvento, local = :local, dataEvento = :dataEvento, horarioInicio = :horarioInicio, horarioTermino = :horarioTermino WHERE idEvento = :idEvento";
+  $sql = "UPDATE eventos SET nomeEvento = :nomeEvento, descricao = :descricao, local = :local, dataEvento = :dataEvento, horarioInicio = :horarioInicio, horarioTermino = :horarioTermino WHERE idEvento = :idEvento";
   $stmt = $pdo->prepare($sql);
-  $stmt->bindParam(':idEvento', $idEvento);
-  $stmt->bindParam(':nomeEvento', $nomeEvento);
-  $stmt->bindParam(':local', $local);
+  $stmt->bindParam(':idEvento', $idEvento, PDO::PARAM_INT);
+  $stmt->bindParam(':nomeEvento', $nomeEvento, PDO::PARAM_STR);
+  $stmt->bindParam(':descricao', $nomeEvento, PDO::PARAM_STR);
+  $stmt->bindParam(':local', $local, PDO::PARAM_STR);
   $stmt->bindParam(':dataEvento', $dataEvento);
   $stmt->bindParam(':horarioInicio', $horarioInicio);
   $stmt->bindParam(':horarioTermino', $horarioTermino);
@@ -59,7 +61,7 @@ function excluirEvento($idEvento)
 }
 
 
-// colocar no controller
+// fazer o controller
 $nomeEvento = $_POST['nomeEvento'];
 $local = $_POST['local'];
 $dataEvento = $_POST['dataEvento'];
