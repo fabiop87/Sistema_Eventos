@@ -32,6 +32,13 @@
 
         //depois ver como fazer o update pra fazer a presença
 
+
+        
+    //**** pegar somente os eventos que ainda nao passaram na hora de inscrever
+    // pra pegar presença pega tudo 
+
+
+    // fazer o <input type="hidden" name="tipo_req_evt" value="cadastro"> (cadastro, inscricao ou  presenca (update))
     ?>
 
 

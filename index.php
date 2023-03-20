@@ -1,5 +1,14 @@
 <?php
-session_start();
+
+if(isset($_GET['erro']) && $_GET['erro'] == "url") {
+    echo "<marquee> Você é um bobão sai daqui </marquee>";
+    die();
+}
+
+if (!isset($_SESSION)) {
+    session_start();
+  }
+
 
 var_dump($_SESSION);
 
@@ -27,7 +36,7 @@ if(isset($_SESSION['idAluno'])){
         <div class="row justify-content-center">
             <div class="col-6 mt-5">
 
-                <form action="./Funcoes/controllerAluno.php" method="POST" autocomplete="off"> <!--  action  -->
+                <form action="./Controllers/controllerAluno.php" method="POST" autocomplete="off"> <!--  action  -->
 
                     <fieldset>
                         <legend class="text-center">Login Aluno</legend>
@@ -61,7 +70,7 @@ if(isset($_SESSION['idAluno'])){
         <div class="row justify-content-center">
             <div class="col-6 mt-5">
 
-                <form action="./Funcoes/controllerCoordenador.php" method="POST" autocomplete="off"> <!--  action  -->
+                <form action="./Controllers/controllerCoordenador.php" method="POST" autocomplete="off"> <!--  action  -->
 
                     <fieldset>
                         <legend class="text-center">Login Coordenador</legend>

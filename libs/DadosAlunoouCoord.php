@@ -1,6 +1,6 @@
 <?php
 require_once('conexao.php');
-global $pdo;
+// global $pdo;
 
 if (!isset($_SESSION) && !$_SESSION['online']) {
     die('nao era pra acontecer isso....');
@@ -26,6 +26,11 @@ if(isset($dadosCoordenador)){
 }
 echo '<hr>';
 var_dump($_SESSION);
-echo 'a';
+echo 'awawawawawaa';
+echo '<br>';
+
+print_r($dadosAluno);
+
+// Nao pode pegar a senha no select  **importante**
 
 // É, confuso

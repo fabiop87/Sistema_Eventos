@@ -23,7 +23,7 @@ $eventos = $resultado->fetchAll(PDO::FETCH_ASSOC);
     </tr>
   </thead>
   <tbody>
-    <?php foreach ($eventos as $evento): ?>
+    <?php foreach ($eventos as $evento) : ?>
       <tr>
         <td><?= $evento['idEvento'] ?></td>
         <td><?= $evento['nomeEvento'] ?></td>
@@ -33,6 +33,23 @@ $eventos = $resultado->fetchAll(PDO::FETCH_ASSOC);
         <td><?= date('H:i', strtotime($evento['horarioInicio'])) ?></td>
         <td><?= date('H:i', strtotime($evento['horarioTermino'])) ?></td>
         <td></td>
+        <td>
+          <form action="../Funcoes/controllerEvento.php" method="post">
+            <input type="hidden" name="idEvento" value="<?= $evento['idEvento'] ?>">
+            <button class="btn btn-warning" type="submit">Atualizar</button>
+            <input type="hidden" name="tiporeq_evt" value="update">
+          </form>
+        </td>
+        <td>
+          <form action="../Funcoes/controllerEvento.php" method="post">
+            <input type="hidden" name="idEvento" value="<?= $evento['idEvento'] ?>">
+            <button class="btn btn-danger" type="submit">Excluir</button>
+            <input type="hidden" name="tiporeq_evt" value="delete">
+          </form>
+        </td>
+
+
+
 
 
         <!-- acho que aqui fazer um jhonson pra se inscrever -->
@@ -46,23 +63,27 @@ $eventos = $resultado->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 
-<?php 
+<?php
 /*
 Exemplo de fazer o update e delete pelo formulario
 
 
 <td>
-          <form action="atualizarEvento.php" method="post">
+          <form action="controllerEvento.php" method="post">
             <input type="hidden" name="idEvento" value="<?= $evento['idEvento'] ?>">
             <button type="submit">Atualizar</button>
+            <input type="hidden" name="tipo_req_evt" value="update">
           </form>
         </td>
         <td>
-          <form action="excluirEvento.php" method="post">
+          <form action="controllerEvento.php" method="post">
             <input type="hidden" name="idEvento" value="<?= $evento['idEvento'] ?>">
             <button type="submit">Excluir</button>
+          <input type="hidden" name="tipo_req_evt" value="delete">
           </form>
         </td>
+
+
 
 */
 

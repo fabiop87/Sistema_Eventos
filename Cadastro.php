@@ -16,7 +16,7 @@
         <div class="row justify-content-center">
             <div class="col-6 mt-5">
 
-                <form action="./Funcoes/controllerAluno.php" method="POST" autocomplete="off"> <!--  action  -->
+                <form action="./Controllers/controllerAluno.php" method="POST" autocomplete="off"> <!--  action  -->
 
                     <fieldset>
                         <legend class="text-center">Registro Aluno</legend>
@@ -70,7 +70,7 @@
         <div class="row justify-content-center">
             <div class="col-6 mt-5">
 
-                <form action="./Funcoes/controllerCoordenador.php" method="POST" autocomplete="off"> <!--  action  -->
+                <form action="./Controllers/controllerCoordenador.php" method="POST" autocomplete="off"> <!--  action  -->
 
                     <fieldset>
                         <legend class="text-center">Registro Coordenador</legend>

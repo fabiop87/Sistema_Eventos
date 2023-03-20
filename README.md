@@ -17,3 +17,5 @@
  - depois de tudo add o css  
 
  - Fazer regex para ra e nome
+
+ - add as coisas pra redefinir senha que é bão
