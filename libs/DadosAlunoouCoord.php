@@ -1,5 +1,5 @@
 <?php
-require_once('../libs/conexao.php');
+require_once('conexao.php');
 global $pdo;
 
 if (!isset($_SESSION) && !$_SESSION['online']) {
@@ -17,7 +17,13 @@ if (!isset($_SESSION) && !$_SESSION['online']) {
     $dadosCoordenador = $resultado->fetchAll(PDO::FETCH_ASSOC);
 }
 echo '<pre>';
-var_dump($dadosAluno);
+if(isset($dadosAluno)){
+    var_dump($dadosAluno);
+}
+
+if(isset($dadosCoordenador)){
+    var_dump($dadosCoordenador);
+}
 echo '<hr>';
 var_dump($_SESSION);
 echo 'a';

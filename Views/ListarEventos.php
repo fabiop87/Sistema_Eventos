@@ -1,5 +1,5 @@
 <?php
-require_once('../libs/conexao.php');
+// require_once('../libs/conexao.php');
 
 global $pdo;
 
@@ -42,7 +42,7 @@ $eventos = $resultado->fetchAll(PDO::FETCH_ASSOC);
 </table>
 <?php
 
-require_once('../libs/DadosAlunoouCoord.php');
+
 ?>
 
 

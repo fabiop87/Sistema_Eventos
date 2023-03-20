@@ -1,12 +1,12 @@
 <?php
 
-session_start();
-require_once('../libs/conexao.php');
-require_once('../libs/DadosAlunoouCoord.php');
+// session_start();
+// require_once('../libs/conexao.php');
+// require_once('../libs/DadosAlunoouCoord.php');
 
-//var_dump($_POST);
+// var_dump($_POST);
 
-?>
+// ?>
 
 
 
@@ -24,11 +24,15 @@ require_once('../libs/DadosAlunoouCoord.php');
 <body>
     <h1>Inscricao Eventos</h1>
 
-    <?php require_once('ListarEventos.php');
 
+
+
+    <?php require_once('ListarEventos.php');
+        //fazer um botao na lista dos eventos com o nome INSCREVER que pega os dados do aluno e faz os bagulho (insert)
+
+        //depois ver como fazer o update pra fazer a presença
 
     ?>
-    <a href="../libs/logout.php" class="btn btn-danger ml-3"><button class="btn btn-danger">Sair da conta</button></a>
 
 
     <?php var_dump($_SESSION) ?>

@@ -56,4 +56,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $tiporeq == 'Login') {
   echo $mensagem;
   // Redireciona o usuário para a página desejada
 }
-header('Location: ../Views/InscricaoEventos.php');
+header('Location: ../HomeAluno.php');

@@ -1,10 +1,18 @@
 <?php 
 
-if(isset($_SESSION['online'])){
+
+session_start();
+
+require_once('./libs/DadosAlunoouCoord.php');
+
+
+
+if(!isset($_SESSION['online'])){
     header('Location: ../index.php');
 }
 
-
+var_dump($_POST);
+var_dump($_SESSION);
 
 ?>
 
@@ -21,13 +29,18 @@ if(isset($_SESSION['online'])){
 </head>
 
 <body>
-    <h1>PROBLEMAS TECNICOS</h1>
-    <h2>TORCEDORES CALMA</h2>
+    <h1>HOME Coordenador</h1>
 
     <br>
+    <?php
+        include_once('./Views/CadastroEventos.php');
+        include_once('./Views/ListarEventos.php');
+    ?>
 
 
     <a href="../libs/logout.php" class="btn btn-danger ml-3"><button class="btn btn-danger">Sair da conta</button></a>
+    
+    <script src="../assets/validacoes.js"></script>
     <script src="../assets/bootstrap.bundle.min.js"></script>
 </body>
 

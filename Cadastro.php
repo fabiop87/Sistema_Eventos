@@ -23,7 +23,7 @@
 
                         <div class="form-group">
                             <label for="ra" class="form-label">RA:</label>
-                            <input type="text" name="ra" id="ra" required class="form-control" placeholder="000000" maxlength="7">
+                            <input type="text" name="ra" id="ra" required class="form-control" placeholder="000000" maxlength="7" onkeypress="validarNumeros(event)">
 
                         </div>
 
@@ -34,13 +34,13 @@
 
                         <div class="form-group">
                             <label for="senha" class="form-label">Senha:</label>
-                            <input type="password" name="senha" id="senha" required class="form-control">
+                            <input type="password" name="senha" id="senha" required class="form-control" placeholder="******">
                         </div>
 
 
                         <div class="form-group">
                             <label for="senha">Confirmar senha:</label>
-                            <input type="password" name="confirm_senha" id="confirm_senha" required class="form-control">
+                            <input type="password" name="confirm_senha" id="confirm_senha" required class="form-control" placeholder="******"> 
                         </div>
 
                         <div class="form-group">
@@ -82,13 +82,13 @@
 
                         <div class="form-group">
                             <label for="senha" class="form-label">Senha:</label>
-                            <input type="password" name="senha" id="senha" required class="form-control">
+                            <input type="password" name="senha" id="senha" required class="form-control" placeholder="******">
                         </div>
 
 
                         <div class="form-group">
                             <label for="senha">Confirmar senha:</label>
-                            <input type="password" name="confirm_senha" id="confirm_senha" required class="form-control">
+                            <input type="password" name="confirm_senha" id="confirm_senha" required class="form-control" placeholder="******">
                         </div>
 
                         <div class="form-group">
@@ -112,7 +112,7 @@
             </div>
         </div>
     </div>
-
+    <script src="./assets/validacoes.js"></script>
     <script src="./assets/bootstrap.bundle.min.js"></script>
 </body>
 

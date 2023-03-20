@@ -1,8 +1,12 @@
 <?php
 session_start();
 
-if(isset($_SESSION['online'])){
-    header('Location: ../Views/Home.php');
+var_dump($_SESSION);
+
+if(isset($_SESSION['idAluno'])){
+    header('Location: ./HomeAluno.php');
+}elseif(isset($_SESSION['idCoordenador'])){
+    header('Location: ./HomeCoordenador.php');
 }
 ?>
 
@@ -30,13 +34,13 @@ if(isset($_SESSION['online'])){
 
                         <div class="form-group">
                             <label for="ra" class="form-label">RA:</label>
-                            <input type="text" name="ra" id="ra" required class="form-control" placeholder="000000" maxlength="7">
+                            <input type="text" name="ra" id="ra" required class="form-control" placeholder="000000" maxlength="7" onkeypress="validarNumeros(event)">
 
                         </div>
 
                         <div class="form-group">
                             <label for="senha" class="form-label">Senha:</label>
-                            <input type="password" name="senha" id="senha" required class="form-control">
+                            <input type="password" name="senha" id="senha" required class="form-control" placeholder="******">
                         </div>
 
                         <input type="hidden" name="LoginouRegister" value="Login">
@@ -70,7 +74,7 @@ if(isset($_SESSION['online'])){
 
                         <div class="form-group">
                             <label for="senha" class="form-label">Senha:</label>
-                            <input type="password" name="senha" id="senha" required class="form-control">
+                            <input type="password" name="senha" id="senha" required class="form-control" placeholder="******">
                         </div>
 
                         <input type="hidden" name="LoginouRegister" value="Login">
@@ -87,7 +91,7 @@ if(isset($_SESSION['online'])){
 
     <a href="Cadastro.php">Novo Usuário</a>
 
-
+    <script src="./assets/validacoes.js"></script>
     <script src="./assets/bootstrap.bundle.min.js"></script>
 </body>
 
