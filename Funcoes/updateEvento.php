@@ -26,3 +26,4 @@ $aluno = $bd->select("SELECT * FROM alunos WHERE idAluno = :idAluno", $params)[0
 
 
     </form>
+*/

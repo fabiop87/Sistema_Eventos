@@ -53,7 +53,7 @@
                                 <!-- Adicionar outras opções do banco de dados aqui -->
                             </select>
                         </div>
-                        <input type="hidden" name="tipo_usuario" value="aluno">
+                        <!-- <input type="hidden" name="tipo_usuario" value="aluno"> -->
                         <input type="hidden" name="LoginouRegister" value="Register">
 
                         <input type="submit" value="Registrar" class="btn btn-secondary">
@@ -101,10 +101,17 @@
                                 <!-- Adicionar outras opções do banco de dados aqui -->
                             </select>
                         </div>
-                        <input type="hidden" name="tipo_usuario" value="coordenador">
+                        <!-- <input type="hidden" name="tipo_usuario" value="coordenador"> -->
                         <input type="hidden" name="LoginouRegister" value="Register">
 
                         <input type="submit" value="Registrar" class="btn btn-primary">
+
+                        
+                        <div class="form-group">
+                            <label for="nome" class="form-label">Código Coordenador:</label>
+                            <input type="text" name="cdcod" id="cdcod" required class="form-control" placeholder="só quem tiver o código vai poder fazer uma conta com privilegios de coordenador">
+                        </div>
+
 
                     </fieldset>
                 </form>

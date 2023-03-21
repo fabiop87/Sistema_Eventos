@@ -30,14 +30,6 @@ var_dump($_SESSION);
 
 <body>
     <h1>HOME ALUNO</h1>
-    <!-- <nav class="navbar navbar-expand-lg bg-body-tertiary">
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
-        </div>
-    </nav> -->
 
     <nav class="nav justify-content-end">
         <a class="nav-link-active" aria-current="page" href="#">Pagina do Aluno</a>

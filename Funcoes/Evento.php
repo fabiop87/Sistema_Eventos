@@ -7,10 +7,10 @@ function cadastrarEvento($nomeEvento, $descricao, $local, $dataEvento, $horarioI
 {
   global $pdo;
 
-  $sql = "INSERT INTO eventos (nomeEvento, descricao, local, dataEvento, horarioInicio, horarioTermino, codigoCoord) VALUES (:nomeEvento, :local, :dataEvento, :horarioInicio, :horarioTermino, :codigoCoord)";
+  $sql = "INSERT INTO eventos (nomeEvento, descricao, local, dataEvento, horarioInicio, horarioTermino, codigoCoord) VALUES (:nomeEvento, :descricao,:local, :dataEvento, :horarioInicio, :horarioTermino, :codigoCoord)";
   $stmt = $pdo->prepare($sql);
   $stmt->bindParam(':nomeEvento', $nomeEvento, PDO::PARAM_STR);
-  $stmt->bindParam(':descricao', $nomeEvento, PDO::PARAM_STR);
+  $stmt->bindParam(':descricao', $descricao, PDO::PARAM_STR);
   $stmt->bindParam(':local', $local, PDO::PARAM_STR);
   $stmt->bindParam(':dataEvento', $dataEvento);
   $stmt->bindParam(':horarioInicio', $horarioInicio);
@@ -24,6 +24,27 @@ function cadastrarEvento($nomeEvento, $descricao, $local, $dataEvento, $horarioI
   }
 }
 
+function verificareventoExistente($nomeEvento)
+{
+    global $pdo;
+    // Seleciona o eventos
+    $sql = "SELECT * FROM eventos WHERE nomeEvento = :nomeEvento";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':nomeEvento', $nomeEvento, PDO::PARAM_STR);
+    $stmt->execute();
+    $nomeEvento = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Verifica se o envento foi encontrado
+    if ($nomeEvento) 
+    {
+        return true;
+
+    } else 
+    {
+        return false;
+    }
+}
+
 function consultarEvento($idEvento)
 {
   global $pdo;
@@ -35,7 +56,7 @@ function consultarEvento($idEvento)
   return $stmt->fetch();
 }
 
-function atualizarEvento($idEvento, $nomeEvento, $local, $dataEvento, $horarioInicio, $horarioTermino, $codigoCoord)
+function atualizarEvento($idEvento, $nomeEvento, $descricao, $local, $dataEvento, $horarioInicio, $horarioTermino, $codigoCoord)
 {
   global $pdo;
 
@@ -43,7 +64,7 @@ function atualizarEvento($idEvento, $nomeEvento, $local, $dataEvento, $horarioIn
   $stmt = $pdo->prepare($sql);
   $stmt->bindParam(':idEvento', $idEvento, PDO::PARAM_INT);
   $stmt->bindParam(':nomeEvento', $nomeEvento, PDO::PARAM_STR);
-  $stmt->bindParam(':descricao', $nomeEvento, PDO::PARAM_STR);
+  $stmt->bindParam(':descricao', $descricao, PDO::PARAM_STR);
   $stmt->bindParam(':local', $local, PDO::PARAM_STR);
   $stmt->bindParam(':dataEvento', $dataEvento);
   $stmt->bindParam(':horarioInicio', $horarioInicio);
@@ -62,11 +83,3 @@ function excluirEvento($idEvento)
   return $stmt->execute();
 }
 
-
-// fazer o controller
-$nomeEvento = $_POST['nomeEvento'];
-$local = $_POST['local'];
-$dataEvento = $_POST['dataEvento'];
-$horarioInicio = $_POST['horarioInicio'];
-$horarioTermino = $_POST['horarioTermino'];
-$codigoCoord = $_POST['codigoCoord'];

@@ -17,6 +17,10 @@ $confirm_senha = $_POST['confirm_senha'];
 switch ($tiporeq) {
   case 'Register':
 
+    if(!isset($_POST['cdcod']) && !$_POST['cdcod'] == 'bananinha'){
+      die('aluno nao pode criar conta pra fazer caquinha');
+    }  
+
     // Confirmar se as senhas batem
     if ($senha != $confirm_senha) {
       echo 'As senhas devem coincidir';
@@ -40,7 +44,7 @@ switch ($tiporeq) {
     echo $mensagem;
 
     break;
-  case 'login':
+  case 'Login':
 
     $Coordenador = verificarLoginCoordenador($nome, $senha);
 

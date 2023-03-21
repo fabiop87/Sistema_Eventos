@@ -31,7 +31,15 @@ var_dump($_SESSION);
 <body>
     <h1>HOME Coordenador</h1>
 
-    <br>
+    <nav class="nav justify-content-end">
+        <a class="nav-link-active" aria-current="page" href="#">Pagina do Coordenador</a>
+        <a class="nav-link" href="./Views/Certificados.php">Certificados</a>
+        <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </nav>
+
     <?php
         include_once('./Views/CadastroEventos.php');
         include_once('./Views/ListarEventos.php');

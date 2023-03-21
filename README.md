@@ -19,3 +19,5 @@
  - Fazer regex para ra e nome
 
  - add as coisas pra redefinir senha que é bão
+
+ - ver as procedures (talvez dê mais trabalho)

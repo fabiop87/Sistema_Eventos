@@ -34,17 +34,17 @@ $eventos = $resultado->fetchAll(PDO::FETCH_ASSOC);
         <td><?= date('H:i', strtotime($evento['horarioTermino'])) ?></td>
         <td></td>
         <td>
-          <form action="../Funcoes/controllerEvento.php" method="post">
+          <form action="../Controllers/controllerEvento.php" method="POST">
             <input type="hidden" name="idEvento" value="<?= $evento['idEvento'] ?>">
             <button class="btn btn-warning" type="submit">Atualizar</button>
-            <input type="hidden" name="tiporeq_evt" value="update">
+            <input type="hidden" name="tiporeq_evt" value="Update">
           </form>
         </td>
         <td>
-          <form action="../Funcoes/controllerEvento.php" method="post">
+          <form action="../Controllers/controllerEvento.php" method="POST">
             <input type="hidden" name="idEvento" value="<?= $evento['idEvento'] ?>">
             <button class="btn btn-danger" type="submit">Excluir</button>
-            <input type="hidden" name="tiporeq_evt" value="delete">
+            <input type="hidden" name="tiporeq_evt" value="Delete">
           </form>
         </td>
 
