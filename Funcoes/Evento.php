@@ -7,18 +7,18 @@ function cadastrarEvento($nomeEvento, $descricao, $local, $dataEvento, $horarioI
 {
   global $pdo;
 
-  $sql = "INSERT INTO eventos (nomeEvento, descricao, local, dataEvento, horarioInicio, horarioTermino, codigoCoord) VALUES (:nomeEvento, :descricao,:local, :dataEvento, :horarioInicio, :horarioTermino, :codigoCoord)";
+  $sql = "INSERT INTO eventos (nomeEvento, descricao, local, dataEvento, horarioInicio, horarioTermino, codigoCoord) VALUES (:nomeEvento, :descricao, :local, :dataEvento, :horarioInicio, :horarioTermino, :codigoCoord)";
   $stmt = $pdo->prepare($sql);
   $stmt->bindParam(':nomeEvento', $nomeEvento, PDO::PARAM_STR);
   $stmt->bindParam(':descricao', $descricao, PDO::PARAM_STR);
   $stmt->bindParam(':local', $local, PDO::PARAM_STR);
-  $stmt->bindParam(':dataEvento', $dataEvento);
-  $stmt->bindParam(':horarioInicio', $horarioInicio);
-  $stmt->bindParam(':horarioTermino', $horarioTermino);
-  $stmt->bindParam('codigoCoord', $codigoCoord);
+  $stmt->bindParam(':dataEvento', $dataEvento, PDO::PARAM_STR);
+  $stmt->bindParam(':horarioInicio', $horarioInicio, PDO::PARAM_STR);
+  $stmt->bindParam(':horarioTermino', $horarioTermino, PDO::PARAM_STR);
+  $stmt->bindParam('codigoCoord', $codigoCoord, PDO::PARAM_STR);
 
   if ($stmt->execute()) {
-    header('Location: ../HomeCoordenador.php');
+    echo 'Evento cadastrado.';
   } else {
     echo "Erro ao cadastrar o evento.";
   }
@@ -27,7 +27,7 @@ function cadastrarEvento($nomeEvento, $descricao, $local, $dataEvento, $horarioI
 function verificareventoExistente($nomeEvento)
 {
     global $pdo;
-    // Seleciona o eventos
+    // Seleciona o evento
     $sql = "SELECT * FROM eventos WHERE nomeEvento = :nomeEvento";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':nomeEvento', $nomeEvento, PDO::PARAM_STR);

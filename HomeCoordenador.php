@@ -42,7 +42,7 @@ var_dump($_SESSION);
 
     <?php
         include_once('./Views/CadastroEventos.php');
-        include_once('./Views/ListarEventos.php');
+        include_once('./Views/ListaEvt_Coord.php');
     ?>
 
 

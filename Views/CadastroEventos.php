@@ -14,7 +14,7 @@
 
           <div class="form-group">
             <label for="descricao" class="form-label">Descrição:</label>
-            <textarea name="descricao" id="descricao" cols="30" rows="5"></textarea>
+            <textarea name="descricao" id="descricao" cols="50" rows="10"></textarea>
           </div>
 
           <div class="form-group">
@@ -23,8 +23,8 @@
           </div>
 
           <div class="form-group">
-            <label for="nomeEvento" class="form-label">Data do evento:</label>
-            <input type="date" name="nomeEvento" id="nomeEvento" class="form-control">
+            <label for="dataEvento" class="form-label">Data do evento:</label>
+            <input type="date" name="dataEvento" id="dataEvento" class="form-control">
           </div>
 
           <div class="form-group">

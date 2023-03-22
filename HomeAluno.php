@@ -42,7 +42,7 @@ var_dump($_SESSION);
 
 
     <br>
-    <?php include_once('./Views/ListarEventos.php'); ?>
+    <?php include_once('./Views/ListaEvt_Aluno.php'); ?>
 
     <a href="../libs/logout.php" class="btn btn-danger ml-3"><button class="btn btn-danger">Sair da conta</button></a>
 

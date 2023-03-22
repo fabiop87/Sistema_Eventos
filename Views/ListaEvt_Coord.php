@@ -6,6 +6,8 @@ global $pdo;
 $sql = "SELECT * FROM eventos";
 $resultado = $pdo->query($sql);
 $eventos = $resultado->fetchAll(PDO::FETCH_ASSOC);
+
+
 ?>
 
 <h1>Eventos cadastrados</h1>
@@ -20,6 +22,7 @@ $eventos = $resultado->fetchAll(PDO::FETCH_ASSOC);
       <th>Data</th>
       <th>Início</th>
       <th>Término</th>
+      <th>Código</th>
     </tr>
   </thead>
   <tbody>
@@ -32,9 +35,9 @@ $eventos = $resultado->fetchAll(PDO::FETCH_ASSOC);
         <td><?= date('d/m/Y', strtotime($evento['dataEvento'])) ?></td>
         <td><?= date('H:i', strtotime($evento['horarioInicio'])) ?></td>
         <td><?= date('H:i', strtotime($evento['horarioTermino'])) ?></td>
-        <td></td>
+        <td><?= $evento['codigoCoord'] ?></td>
         <td>
-          <form action="../Controllers/controllerEvento.php" method="POST">
+          <form action="../Funcoes/updateEvento.php" method="POST">
             <input type="hidden" name="idEvento" value="<?= $evento['idEvento'] ?>">
             <button class="btn btn-warning" type="submit">Atualizar</button>
             <input type="hidden" name="tiporeq_evt" value="Update">
@@ -47,6 +50,7 @@ $eventos = $resultado->fetchAll(PDO::FETCH_ASSOC);
             <input type="hidden" name="tiporeq_evt" value="Delete">
           </form>
         </td>
+
 
 
 

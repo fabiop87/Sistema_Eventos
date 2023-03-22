@@ -29,7 +29,7 @@ var_dump($_SESSION);
 echo 'awawawawawaa';
 echo '<br>';
 
-print_r($dadosAluno);
+//print_r($dadosAluno);
 
 // Nao pode pegar a senha no select  **importante**
 

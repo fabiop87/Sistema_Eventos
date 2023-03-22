@@ -20,25 +20,33 @@ $horarioInicio = $_POST['horarioInicio'] ?? null;
 $horarioTermino = $_POST['horarioTermino'] ?? null;
 $codigoCoord = $_POST['codigoCoord'] ?? null;
 
+//converter data para inserir 
+
+
 switch ($_POST['tiporeq_evt']) {
   case 'Register':
     if (!verificareventoExistente($nomeEvento)) {
       $evento = cadastrarEvento($nomeEvento, $descricao, $local, $dataEvento, $horarioInicio, $horarioTermino, $codigoCoord);
     } else {
-      echo 'Este envento ja foi cadastrado.';
+      echo 'Este evento ja foi cadastrado.';
     }
+    
     break;
   case 'Delete':
     excluirEvento($idEvento);
-    $fallback = '../HomeCoordenador.php';
+    
+    break;
+  case 'Update':
+    $evento = atualizarEvento($idEvento, $nomeEvento, $descricao, $local, $dataEvento, $horarioInicio, $horarioTermino, $codigoCoord);
+    if (!$evento) {
+      die('Erro ao atualizar evento');
+    }
 
-    $anterior = isset($_SERVER['HTTP_REFERER']) ??  $fallback;
-
-    header("location: {$anterior}");
-    exit;
     break;
 
   default:
-    # code...
+    die('calma que deu merda');
     break;
 }
+
+header('Location: ../HomeCoordenador.php');

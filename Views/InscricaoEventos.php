@@ -27,7 +27,7 @@
 
 
 
-    <?php require_once('ListarEventos.php');
+    <?php require_once('ListarEvt_Aluno.php');
         //fazer um botao na lista dos eventos com o nome INSCREVER que pega os dados do aluno e faz os bagulho (insert)
 
         //depois ver como fazer o update pra fazer a presença
