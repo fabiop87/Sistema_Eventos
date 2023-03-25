@@ -1,85 +1,84 @@
 <?php
-require_once('../libs/conexao.php');
+require('Model.php');
 
-
-
-function cadastrarEvento($nomeEvento, $descricao, $local, $dataEvento, $horarioInicio, $horarioTermino, $codigoCoord)
+class Evento extends conexao
 {
-  global $pdo;
 
-  $sql = "INSERT INTO eventos (nomeEvento, descricao, local, dataEvento, horarioInicio, horarioTermino, codigoCoord) VALUES (:nomeEvento, :descricao, :local, :dataEvento, :horarioInicio, :horarioTermino, :codigoCoord)";
-  $stmt = $pdo->prepare($sql);
-  $stmt->bindParam(':nomeEvento', $nomeEvento, PDO::PARAM_STR);
-  $stmt->bindParam(':descricao', $descricao, PDO::PARAM_STR);
-  $stmt->bindParam(':local', $local, PDO::PARAM_STR);
-  $stmt->bindParam(':dataEvento', $dataEvento, PDO::PARAM_STR);
-  $stmt->bindParam(':horarioInicio', $horarioInicio, PDO::PARAM_STR);
-  $stmt->bindParam(':horarioTermino', $horarioTermino, PDO::PARAM_STR);
-  $stmt->bindParam('codigoCoord', $codigoCoord, PDO::PARAM_STR);
+  public function cadastrarEvento($nomeEvento, $descricao, $local, $dataEvento, $horarioInicio, $horarioTermino, $codigoCoord):bool
+  {
 
-  if ($stmt->execute()) {
-    echo 'Evento cadastrado.';
-  } else {
-    echo "Erro ao cadastrar o evento.";
-  }
-}
-
-function verificareventoExistente($nomeEvento)
-{
-    global $pdo;
-    // Seleciona o evento
-    $sql = "SELECT * FROM eventos WHERE nomeEvento = :nomeEvento";
-    $stmt = $pdo->prepare($sql);
+  
+    $sql = "INSERT INTO eventos (nomeEvento, descricao, local, dataEvento, horarioInicio, horarioTermino, codigoCoord) VALUES (:nomeEvento, :descricao, :local, :dataEvento, :horarioInicio, :horarioTermino, :codigoCoord)";
+    $stmt = $this->pdo->prepare($sql);
     $stmt->bindParam(':nomeEvento', $nomeEvento, PDO::PARAM_STR);
+    $stmt->bindParam(':descricao', $descricao, PDO::PARAM_STR);
+    $stmt->bindParam(':local', $local, PDO::PARAM_STR);
+    $stmt->bindParam(':dataEvento', $dataEvento, PDO::PARAM_STR);
+    $stmt->bindParam(':horarioInicio', $horarioInicio, PDO::PARAM_STR);
+    $stmt->bindParam(':horarioTermino', $horarioTermino, PDO::PARAM_STR);
+    $stmt->bindParam('codigoCoord', $codigoCoord, PDO::PARAM_STR);
+  
+    return $stmt->execute();
+  }
+  
+  public function verificareventoExistente($nomeEvento):bool
+  {
+  
+      // Seleciona o evento
+      $sql = "SELECT * FROM eventos WHERE nomeEvento = :nomeEvento";
+      $stmt = $this->pdo->prepare($sql);
+      $stmt->bindParam(':nomeEvento', $nomeEvento, PDO::PARAM_STR);
+      $stmt->execute();
+      $nomeEvento = $stmt->fetch(PDO::FETCH_ASSOC);
+  
+      // Verifica se o envento foi encontrado
+      if ($nomeEvento) 
+      {
+          return true;
+  
+      } else 
+      {
+          return false;
+      }
+  }
+  
+  public function consultarEvento($idEvento)
+  {
+
+  
+    $sql = "SELECT * FROM eventos WHERE idEvento = :idEvento";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindParam(':idEvento', $idEvento);
     $stmt->execute();
-    $nomeEvento = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $stmt->fetch();
+  }
+  
+  function atualizarEvento($idEvento, $nomeEvento, $descricao, $local, $dataEvento, $horarioInicio, $horarioTermino, $codigoCoord):bool
+  {
 
-    // Verifica se o envento foi encontrado
-    if ($nomeEvento) 
-    {
-        return true;
+  
+    $sql = "UPDATE eventos SET nomeEvento = :nomeEvento, descricao = :descricao, local = :local, dataEvento = :dataEvento, horarioInicio = :horarioInicio, horarioTermino = :horarioTermino, codigoCoord = :codigoCoord WHERE idEvento = :idEvento";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindParam(':idEvento', $idEvento, PDO::PARAM_INT);
+    $stmt->bindParam(':nomeEvento', $nomeEvento, PDO::PARAM_STR);
+    $stmt->bindParam(':descricao', $descricao, PDO::PARAM_STR);
+    $stmt->bindParam(':local', $local, PDO::PARAM_STR);
+    $stmt->bindParam(':dataEvento', $dataEvento);
+    $stmt->bindParam(':horarioInicio', $horarioInicio);
+    $stmt->bindParam(':horarioTermino', $horarioTermino);
+    $stmt->bindParam('codigoCoord', $codigoCoord);
+    return $stmt->execute();
+  }
+  
+  public function excluirEvento($idEvento):bool
+  {
 
-    } else 
-    {
-        return false;
-    }
-}
+  
+    $sql = "DELETE FROM eventos WHERE idEvento = :idEvento";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindParam(':idEvento', $idEvento);
+    return $stmt->execute();
+  }
 
-function consultarEvento($idEvento)
-{
-  global $pdo;
-
-  $sql = "SELECT * FROM eventos WHERE idEvento = :idEvento";
-  $stmt = $pdo->prepare($sql);
-  $stmt->bindParam(':idEvento', $idEvento);
-  $stmt->execute();
-  return $stmt->fetch();
-}
-
-function atualizarEvento($idEvento, $nomeEvento, $descricao, $local, $dataEvento, $horarioInicio, $horarioTermino, $codigoCoord)
-{
-  global $pdo;
-
-  $sql = "UPDATE eventos SET nomeEvento = :nomeEvento, descricao = :descricao, local = :local, dataEvento = :dataEvento, horarioInicio = :horarioInicio, horarioTermino = :horarioTermino, codigoCoord = :codigoCoord WHERE idEvento = :idEvento";
-  $stmt = $pdo->prepare($sql);
-  $stmt->bindParam(':idEvento', $idEvento, PDO::PARAM_INT);
-  $stmt->bindParam(':nomeEvento', $nomeEvento, PDO::PARAM_STR);
-  $stmt->bindParam(':descricao', $descricao, PDO::PARAM_STR);
-  $stmt->bindParam(':local', $local, PDO::PARAM_STR);
-  $stmt->bindParam(':dataEvento', $dataEvento);
-  $stmt->bindParam(':horarioInicio', $horarioInicio);
-  $stmt->bindParam(':horarioTermino', $horarioTermino);
-  $stmt->bindParam('codigoCoord', $codigoCoord);
-  return $stmt->execute();
-}
-
-function excluirEvento($idEvento)
-{
-  global $pdo;
-
-  $sql = "DELETE FROM eventos WHERE idEvento = :idEvento";
-  $stmt = $pdo->prepare($sql);
-  $stmt->bindParam(':idEvento', $idEvento);
-  return $stmt->execute();
-}
+}  
 

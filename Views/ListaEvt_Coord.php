@@ -1,11 +1,17 @@
 <?php
 // require_once('../libs/conexao.php');
 
-global $pdo;
+
+
+// require_once('./libs/DadosAlunoouCoord.php');
 
 $sql = "SELECT * FROM eventos";
-$resultado = $pdo->query($sql);
+
+$resultado = $Coordenador->pdo->prepare($sql);
+$resultado->execute();
 $eventos = $resultado->fetchAll(PDO::FETCH_ASSOC);
+
+
 
 
 ?>

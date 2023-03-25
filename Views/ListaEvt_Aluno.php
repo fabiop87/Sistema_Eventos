@@ -1,12 +1,17 @@
 <?php
-// require_once('../libs/conexao.php');
-
-global $pdo;
+// require_once('./libs/conexao.php');
+// require('./Funcoes/Aluno.php');
+// $Aluno = new Aluno();
+// require_once('./libs/DadosAlunoouCoord.php');
 
 $sql = "SELECT * FROM eventos";
-$resultado = $pdo->query($sql);
-$eventos = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
+$resultado = $Aluno->pdo->prepare($sql);
+$resultado->execute();
+$eventos = $resultado->fetchAll(PDO::FETCH_ASSOC);
+// echo '======================';
+// var_dump($dadosAluno);
+// echo '======================';
 
 ?>
 
@@ -39,10 +44,22 @@ $eventos = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
                 <td>
                     <form action="../Controllers/controllerPresenca.php" method="POST">
-                        <input type="hidden" name="idEvento" value="<?= $evento['idEvento'] ?>">
-                        <input type="hidden" name="idEvento" value="<?= $Aluno['idAluno'] ?>">
+                        <input type="text" readonly name="idEvento" value="<?= $evento['idEvento'] ?>">
+                        <input type="text" readonly name="idAluno" value="<?= $_SESSION['idAluno'] ?>">
+                        <!-- trocar esses 2 para hidden / usando pra testar -->
                         <button class="btn btn-danger" type="submit">Inscrever</button>
-                        <input type="hidden" name="tiporeq_presenca" value="Register">
+                        <input type="hidden" name="tiporeq_presenca" value="Inscrever">
+                    </form>
+                </td>
+                <td>
+                    <form action="../Controllers/controllerPresenca.php" method="POST">
+                        <input type="text" readonly name="idEvento" value="<?= $evento['idEvento'] ?>">
+                        <input type="text" readonly name="idAluno" value="<?= $_SESSION['idAluno'] ?>">
+                        <!-- trocar esses 2 para hidden / usando pra testar -->
+                        <label for="codigoAluno">Código para registrar presença:</label>
+                        <input type="text" name="codigoAluno" id="codigoAluno">
+                        <input type="submit" value="Enviar">
+                        <input type="hidden" name="tiporeq_presenca" value="Confirmar">
                     </form>
                 </td>
 
@@ -56,10 +73,7 @@ $eventos = $resultado->fetchAll(PDO::FETCH_ASSOC);
         <?php endforeach; ?>
     </tbody>
 </table>
-<?php
 
-
-?>
 
 
 <?php

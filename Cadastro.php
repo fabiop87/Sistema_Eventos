@@ -40,7 +40,7 @@
 
                         <div class="form-group">
                             <label for="senha">Confirmar senha:</label>
-                            <input type="password" name="confirm_senha" id="confirm_senha" required class="form-control" placeholder="******"> 
+                            <input type="password" name="confirm_senha" id="confirm_senha" required class="form-control" placeholder="******">
                         </div>
 
                         <div class="form-group">
@@ -104,13 +104,13 @@
                         <!-- <input type="hidden" name="tipo_usuario" value="coordenador"> -->
                         <input type="hidden" name="LoginouRegister" value="Register">
 
-                        <input type="submit" value="Registrar" class="btn btn-primary">
 
-                        
                         <div class="form-group">
                             <label for="nome" class="form-label">Código Coordenador:</label>
                             <input type="text" name="cdcod" id="cdcod" required class="form-control" placeholder="só quem tiver o código vai poder fazer uma conta com privilegios de coordenador">
                         </div>
+                        
+                        <input type="submit" value="Registrar" class="btn btn-primary">
 
 
                     </fieldset>

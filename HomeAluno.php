@@ -3,16 +3,19 @@
 
 session_start();
 // require_once('./libs/conexao.php');
-require_once('./libs/DadosAlunoouCoord.php');
+// require_once('./libs/DadosAlunoouCoord.php');
 
 
 
-if (!isset($_SESSION['online'])) {
+if (!isset($_SESSION) && !isset($_SESSION['idAluno'])) {
     header('Location: ../index.php');
 }
 
 var_dump($_POST);
 var_dump($_SESSION);
+
+require('./Funcoes/Aluno.php');
+$Aluno = new Aluno();
 
 ?>
 
@@ -36,7 +39,7 @@ var_dump($_SESSION);
         <a class="nav-link" href="./Views/Certificados.php">Certificados</a>
         <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <button class="btn btn-outline-success" type="submit">Buscar</button>
         </form>
     </nav>
 

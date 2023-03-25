@@ -1,46 +1,40 @@
 <?php
 
-if(isset($_POST['tiporeq'])){
-  header('Location:/?erro=url');
-  return false;
-}
+// if (isset($_POST['tiporeq'])) {
+//   header('Location:/?erro=url');
+//   return false;
+// }
+var_dump($_POST);
 
 require('../Funcoes/Aluno.php');
+$Aluno = new Aluno();
 
-var_dump($_POST);
-//die();
 $tiporeq = $_POST['LoginouRegister'];
 // Os tipos podem ser Login ou Registrar
 
-$nome = $_POST['nome'];
-$ra = $_POST['ra'];
-$idCurso = $_POST['idCurso'];
-$senha = $_POST['senha'];
-$confirm_senha = $_POST['confirm_senha'];
 
 
 switch ($tiporeq) {
   case 'Register':
     // Confirmar se as senhas batem
-    if ($senha != $confirm_senha) {
+    if ($_POST['senha'] != $_POST['confirm_senha']) {
       echo 'As senhas devem coincidir';
-      die('tem que confirmar a senha...');
     }
-    var_dump($_POST);
 
-    if (!verificarAlunoExistente($ra)) {
-      $Aluno = cadastrarAluno($nome, $ra, $idCurso, $senha);
+    if (!$Aluno->verificarAlunoExistente($_POST['ra'])) {
+      $novoAluno = $Aluno->cadastrarAluno($_POST['nome'], $_POST['ra'], $_POST['idCurso'], $_POST['senha']);
     } else {
       echo 'Este aluno já está cadastrado';
     }
-
     // Verifica se o cadastro foi bem sucedido
-    if ($Aluno) {
+    if ($novoAluno) {
       // Define uma mensagem de sucesso para ser exibida na página
       $mensagem = 'Aluno cadastrado com sucesso!';
+      header('Location:/index.php');
     } else {
       // Define uma mensagem de erro para ser exibida na página
       $mensagem = 'Ocorreu um erro ao cadastrar o aluno.';
+      header('Location:/Cadastro.php');
     }
     echo $mensagem;
 
@@ -48,19 +42,21 @@ switch ($tiporeq) {
     break;
   case 'Login':
 
-    $Aluno = verificarLoginAluno($ra, $senha);
+    $aluno = $Aluno->verificarLoginAluno($_POST['ra'], $_POST['senha']);
 
-    if ($Aluno) {
+    if ($aluno) {
       // Define uma mensagem de sucesso para ser exibida na página
       $mensagem = 'Aluno logado com sucesso!';
       session_start();
       $_SESSION['online'] = true;
-      $_SESSION['idAluno'] = $Aluno['idAluno'];
-      var_dump($_SESSION);
-      ///  TA ERRADO ISSO AQUI
+      $_SESSION['idAluno'] = $aluno['idAluno'];
+      header('Location:/HomeAluno.php');
+      //var_dump($_SESSION);
+      ///  verificar isso
     } else {
       // Define uma mensagem de erro para ser exibida na página
       $mensagem = 'Ocorreu um erro ao fazer login.';
+      header('Location:/Cadastro.php');
     }
     echo $mensagem;
     // Redireciona o usuário para a página desejada
@@ -69,5 +65,3 @@ switch ($tiporeq) {
     throw new Exception('deu ruim');
     break;
 }
-
-header('Location: ../HomeAluno.php');

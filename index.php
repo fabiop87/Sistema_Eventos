@@ -12,12 +12,12 @@ if (!isset($_SESSION)) {
 
 var_dump($_SESSION);
 
-if(isset($_SESSION['idAluno'])){
-    header('Location: ./HomeAluno.php');
-}elseif(isset($_SESSION['idCoordenador'])){
-    header('Location: ./HomeCoordenador.php');
-}
-?>
+// if(isset($_SESSION['idAluno'])){
+//     header('Location: ./HomeAluno.php');
+// }elseif(isset($_SESSION['idCoordenador'])){
+//     header('Location: ./HomeCoordenador.php');
+// }
+// ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -99,7 +99,7 @@ if(isset($_SESSION['idAluno'])){
 
 
     <a href="Cadastro.php">Novo Usuário</a>
-
+    <a href="../libs/logout.php" class="btn btn-danger ml-3"><button class="btn btn-danger">Sair da conta</button></a>
     <script src="./assets/validacoes.js"></script>
     <script src="./assets/bootstrap.bundle.min.js"></script>
 </body>

@@ -1,28 +1,17 @@
-
-CREATE TABLE presenca (
-    idEvento INT NOT NULL,
-    idAluno INT NOT NULL,
-    --codigoCoord VARCHAR(25),  -> alterado para a tabela eventos e fazer um join para comparar
-    codigoAluno VARCHAR(25),
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP 
-                     ON UPDATE CURRENT_TIMESTAMP,
-  KEY (updated_at),
-    qtdTentativas TINYINT unsigned DEFAULT 0,
-    PRIMARY KEY (idEvento, idAluno),
-    CONSTRAINT fk_evt FOREIGN KEY (idEvento) REFERENCES eventos(idEvento),
-    CONSTRAINT fk_aln FOREIGN KEY (idAluno) REFERENCES alunos(idAluno)
-);
 <?php
 
-require_once('../libs/conexao.php');
-
-function inscrever($idEvento, $idAluno)
+require_once('Model.php');
+class Presenca extends conexao
 {
-    global $pdo;
+
+
+
+    public function inscrever($idEvento, $idAluno)
+{
+
 
     $sql ="INSERT INTO presenca(idEvento, idAluno) VALUES (:idEvento, :idAluno)";
-    $stmt = $pdo->prepare($sql);
+    $stmt = $this->pdo->prepare($sql);
     $stmt->bindParam(':idEvento', $idEvento, PDO::PARAM_INT);
     $stmt->bindParam(':idAluno', $idAluno, PDO::PARAM_INT);
 
@@ -33,14 +22,14 @@ function inscrever($idEvento, $idAluno)
     }
 }
 
-function verificarInscricao($idEvento, $idAluno)
+public function verificarInscricao($idEvento, $idAluno)
 {
-    global $pdo;
 
-    $sql = "SELECT * FROM presenca WHERE nomeEvento = :nomeEvento  && idAluno = :idAluno";
-    $stmt = $pdo->prepare($sql);
+    $sql = "SELECT * FROM presenca WHERE idEvento = :idEvento AND idAluno = :idAluno";
+    $stmt = $this->pdo->prepare($sql);
     $stmt->bindParam(':idEvento', $idEvento, PDO::PARAM_INT);
     $stmt->bindParam(':idAluno', $idAluno, PDO::PARAM_INT);
+    var_dump($stmt);
     $stmt->execute();
     $verificacao = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -54,17 +43,16 @@ function verificarInscricao($idEvento, $idAluno)
     }
 }
 
-function validarPresenca($idEvento, $idAluno)
+public function validarCertificado($idEvento, $idAluno)
 {
-    global $pdo;
+
 
     $sql = "SELECT e.*, p.*
     FROM eventos e
     INNER JOIN presenca p ON p.idEvento = e.idEvento
     WHERE p.idEvento = :idEvento AND p.idAluno = :idAluno AND p.codigoAluno = e.codigoCoord;";
 
-    $stmt = $pdo->prepare($sql);
-    $stmt = $pdo->prepare($sql);
+    $stmt = $this->pdo->prepare($sql);
     $stmt->bindParam(':idEvento', $idEvento, PDO::PARAM_INT);
     $stmt->bindParam(':idAluno', $idAluno, PDO::PARAM_INT);
     $stmt->execute();
@@ -72,11 +60,49 @@ function validarPresenca($idEvento, $idAluno)
 
     return $stmt->fetch();
     
+}
+
+public function confirmarPresenca($idEvento, $idAluno, $codigoAluno)
+{
+
+    //verificar quantidade de tentativas
+    // pegar update 
+    $limiteTentativas = 3;
+    
+    $sql = "UPDATE presenca SET codigoAluno = :codigoAluno, qtdTentativas = qtdTentativas + 1 WHERE idEvento = :idEvento AND idAluno = :idAluno  AND qtdTentativas <= '$limiteTentativas'";
+
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindParam(':idEvento', $idEvento, PDO::PARAM_INT);
+    $stmt->bindParam(':idAluno', $idAluno, PDO::PARAM_INT);
+    $stmt->bindParam(':codigoAluno', $codigoAluno, PDO::PARAM_STR);
+    $stmt->execute();
+
+    // Retorna verdadeiro se a atualização foi bem sucedida  | true/false
+    return $stmt->rowCount() > 0;
 
 }
 
 
+
+function desinscrever($idEvento, $idAluno)
+{
+
+
+    $sql = "DELETE FROM presenca WHERE idEvento = :idEvento AND idAluno = :idAluno";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->bindParam(':idEvento', $idEvento, PDO::PARAM_INT);
+    $stmt->bindParam(':idAluno', $idAluno, PDO::PARAM_INT);
+    return $stmt->execute();
+}
+
+}
 /* 
+update
+UPDATE presenca SET qtdTentativas = 1 WHERE idEvento = 1 AND idAluno = 2;
+UPDATE presenca
+SET qtdTentativas = qtdTentativas + 1
+WHERE idEvento = valor_idEvento AND idAluno = valor_idAluno;
+(fazer um if qtd tentativas >= 3 nao pode mais)
 
 confirmar presenca
 
@@ -104,12 +130,6 @@ INNER JOIN eventos e ON p.idEvento = e.idEvento
 WHERE p.codigoAluno = e.codigoCoord;
 
 
-update
-UPDATE presenca SET qtdTentativas = 1 WHERE idEvento = 1 AND idAluno = 2;
-UPDATE presenca
-SET qtdTentativas = qtdTentativas + 1
-WHERE idEvento = valor_idEvento AND idAluno = valor_idAluno;
-(fazer um if qtd tentativas >= 3 nao pode mais)
 
 
 delete

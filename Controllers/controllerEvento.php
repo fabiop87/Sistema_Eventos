@@ -10,34 +10,26 @@ if (!isset($_POST['tiporeq_evt'])) {
 }
 
 require('../Funcoes/Evento.php');
-
-$idEvento = $_POST['idEvento'] ?? null;
-$nomeEvento = $_POST['nomeEvento'] ?? null;
-$descricao = $_POST['descricao'] ?? null;
-$local = $_POST['local'] ?? null;
-$dataEvento = $_POST['dataEvento'] ?? null;
-$horarioInicio = $_POST['horarioInicio'] ?? null;
-$horarioTermino = $_POST['horarioTermino'] ?? null;
-$codigoCoord = $_POST['codigoCoord'] ?? null;
+$Evento = new Evento();
 
 //converter data para inserir 
 
 
 switch ($_POST['tiporeq_evt']) {
   case 'Register':
-    if (!verificareventoExistente($nomeEvento)) {
-      $evento = cadastrarEvento($nomeEvento, $descricao, $local, $dataEvento, $horarioInicio, $horarioTermino, $codigoCoord);
+    if (!$Evento->verificareventoExistente($_POST['nomeEvento'])) {
+      $novoEvento = $Evento->cadastrarEvento($_POST['nomeEvento'], $_POST['descricao'], $_POST['local'], $_POST['dataEvento'], $_POST['horarioInicio'], $_POST['horarioTermino'], $_POST['codigoCoord']);
     } else {
       echo 'Este evento ja foi cadastrado.';
     }
     
     break;
   case 'Delete':
-    excluirEvento($idEvento);
+    $Evento->excluirEvento($_POST['idEvento']);
     
     break;
   case 'Update':
-    $evento = atualizarEvento($idEvento, $nomeEvento, $descricao, $local, $dataEvento, $horarioInicio, $horarioTermino, $codigoCoord);
+    $evento = $Evento->atualizarEvento($_POST['idEvento'], $_POST['nomeEvento'], $_POST['descricao'], $_POST['local'], $_POST['dataEvento'], $_POST['horarioInicio'], $_POST['horarioTermino'], $_POST['codigoCoord']);
     if (!$evento) {
       die('Erro ao atualizar evento');
     }

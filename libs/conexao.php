@@ -1,13 +1,19 @@
 <?php
-$host = 'localhost';
-$bd = 'eventosfaculdade';
-$user = 'fabio';
-$pass = 'sapato';
 
-try{
-$pdo = new PDO("mysql:host=$host;dbname=$bd", $user, $pass);
-
- $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch(PDOException $e){
-    die("ERROR: Não foi possível conectar." . $e->getMessage());
+class conexao
+{
+    protected $_host = 'localhost';
+    protected $_bd = 'eventosfaculdade';
+    protected $_user = 'fabio';
+    protected $_pass = 'sapato';
+    public $pdo;
+    public function __construct()
+    {
+        try{
+            $this->pdo = new PDO("mysql:host=$this->_host;dbname=$this->_bd", $this->_user, $this->_pass);
+            $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }catch(PDOException $e){
+            echo "deu ruim" . $e->getMessage();
+        }
+    }
 }

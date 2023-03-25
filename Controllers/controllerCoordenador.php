@@ -1,17 +1,16 @@
 <?php
 
-require('../Funcoes/Coordenador.php');
+if (isset($_POST['tiporeq'])) {
+  header('Location:/?erro=url');
+  return false;
+}
 
 var_dump($_POST);
 //die();
+require('../Funcoes/Coordenador.php');
+$Coordenador = new Coordenador();
 $tiporeq = $_POST['LoginouRegister'];
 // Os tipos podem ser Login ou Registrar
-
-
-$nome = $_POST['nome'];
-$idCurso = $_POST['idCurso'];
-$senha = $_POST['senha'];
-$confirm_senha = $_POST['confirm_senha'];
 
 
 switch ($tiporeq) {
@@ -22,13 +21,13 @@ switch ($tiporeq) {
     }  
 
     // Confirmar se as senhas batem
-    if ($senha != $confirm_senha) {
+    if ($_POST['senha'] != $_POST['confirm_senha']) {
       echo 'As senhas devem coincidir';
     }
 
 
-    if (!verificarCoordenadorExistente($nome)) {
-      $Coordenador = cadastrarCoordenador($nome, $idCurso, $senha);
+    if (!$Coordenador->verificarCoordenadorExistente($_POST['nome'])) {
+      $novoCoordenador = $Coordenador->cadastrarCoordenador($_POST['nome'], $_POST['idCurso'], $_POST['senha']);
     } else {
       echo 'Este coordenador já está cadastrado';
     }
@@ -37,28 +36,32 @@ switch ($tiporeq) {
     if ($Coordenador) {
       // Define uma mensagem de sucesso para ser exibida na página
       $mensagem = 'Coordenador cadastrado com sucesso!';
+      header('Location:/index.php');
     } else {
       // Define uma mensagem de erro para ser exibida na página
       $mensagem = 'Ocorreu um erro ao cadastrar o coordenador.';
+      header('Location:/Cadastro.php');
     }
     echo $mensagem;
 
     break;
   case 'Login':
 
-    $Coordenador = verificarLoginCoordenador($nome, $senha);
+    $coordenador = $Coordenador->verificarLoginCoordenador($_POST['nome'], $_POST['senha']);
 
-    if ($Coordenador) {
+    if ($coordenador) {
       // Define uma mensagem de sucesso para ser exibida na página
       $mensagem = 'Coordenador logado com sucesso!';
       session_start();
       $_SESSION['online'] = true;
-      $_SESSION['idCoordenador'] = $Coordenador['idCoordenador'];
-      var_dump($_SESSION);
-      ///  TA ERRADO ISSO AQUI
+      $_SESSION['idCoordenador'] = $coordenador['idCoordenador'];
+      header('Location:/HomeCoordenador.php');
+      //var_dump($_SESSION);
+ 
     } else {
       // Define uma mensagem de erro para ser exibida na página
       $mensagem = 'Ocorreu um erro ao fazer login.';
+      header('Location:/Cadastro.php');
     }
     echo $mensagem;
     break;
@@ -70,4 +73,4 @@ switch ($tiporeq) {
 
 
 
-header('Location: ../HomeCoordenador.php');
+

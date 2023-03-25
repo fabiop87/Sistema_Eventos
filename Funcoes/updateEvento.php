@@ -1,15 +1,27 @@
 <?php
 // fazer a permissao só para coordenador
+session_start();
 
-require_once('../libs/conexao.php');
+
 var_dump($_POST);
+var_dump($_SESSION);
+require('../Funcoes/Coordenador.php');
+$Coordenador = new Coordenador();
+
+
+if(!isset($_SESSION) && !isset($_SESSION['idCoordenador'])){
+    die('sem permissao para alterar dados dos eventos');
+}
+
+
+
 $idEvento =  $_POST['idEvento'];
 
-global $pdo;
 
 $sql = "SELECT * FROM eventos WHERE idEvento = $idEvento";
-$resultado = $pdo->query($sql);
-$evento = $resultado->fetch();
+$resultado = $Coordenador->pdo->prepare($sql);
+$resultado->execute();
+$evento = $resultado->fetch(PDO::FETCH_ASSOC);
 echo '<pre>';
 print_r($evento);
 
