@@ -7,14 +7,14 @@ session_start();
 
 
 
-if (!isset($_SESSION) && !isset($_SESSION['idAluno'])) {
-    header('Location: ../index.php');
+if (!isset($_SESSION) && !$_SESSION['idAluno']) {
+    header('Location: /index.php');
 }
 
 var_dump($_POST);
 var_dump($_SESSION);
 
-require('./Funcoes/Aluno.php');
+require_once('./Funcoes/Aluno.php');
 $Aluno = new Aluno();
 
 ?>

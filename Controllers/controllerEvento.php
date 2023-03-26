@@ -9,7 +9,7 @@ if (!isset($_POST['tiporeq_evt'])) {
   return false;
 }
 
-require('../Funcoes/Evento.php');
+require_once('../Funcoes/Evento.php');
 $Evento = new Evento();
 
 //converter data para inserir 

@@ -7,14 +7,14 @@ session_start();
 
 
 
-if(!isset($_SESSION) && !isset($_SESSION['idCoordenador'])){
-    header('Location: ../index.php');
+if(!isset($_SESSION) && !$_SESSION['idCoordenador']){
+    header('Location: /index.php');
 }
 
 var_dump($_POST);
 var_dump($_SESSION);
 
-require('./Funcoes/Coordenador.php');
+require_once('./Funcoes/Coordenador.php');
 $Coordenador = new Coordenador();
 
 

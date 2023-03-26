@@ -5,7 +5,7 @@ session_start();
 
 var_dump($_POST);
 var_dump($_SESSION);
-require('../Funcoes/Coordenador.php');
+require_once('../Funcoes/Coordenador.php');
 $Coordenador = new Coordenador();
 
 

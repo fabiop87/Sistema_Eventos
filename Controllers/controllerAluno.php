@@ -6,7 +6,7 @@
 // }
 var_dump($_POST);
 
-require('../Funcoes/Aluno.php');
+require_once('../Funcoes/Aluno.php');
 $Aluno = new Aluno();
 
 $tiporeq = $_POST['LoginouRegister'];

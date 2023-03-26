@@ -9,7 +9,7 @@ if (!isset($_POST['tiporeq_presenca'])) {
     return false;
 }
 
-require('../Funcoes/Presenca.php');
+require_once('../Funcoes/Presenca.php');
 
 $Presenca = new Presenca();
 
@@ -24,12 +24,18 @@ switch ($_POST['tiporeq_presenca']) {
         }
         break;
     case 'Confirmar':
-        # code...
+        if($Presenca->verificarInscricao($_POST['idEvento'], $_POST['idAluno'])){
+            $Presenca->confirmarPresenca($_POST['idEvento'], $_POST['idAluno'], $_POST['codigoAluno']);
+        }
         break;
     case 'Certificado':
-        # code...
+        if($Presenca->validarCertificado($_POST['idEvento'], $_POST['idAluno'])){
+            echo 'acabou o antidepressivo';
+        }
         break;
-
+    case 'Desinscrever':
+        $Presenca->desinscrever($_POST['idEvento'], $_POST['idAluno']);
+        break;
     default:
         die('deu merda');
         break;
