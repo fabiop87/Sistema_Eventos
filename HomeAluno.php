@@ -38,8 +38,8 @@ $Aluno = new Aluno();
         <a class="nav-link-active" aria-current="page" href="#">Pagina do Aluno</a>
         <a class="nav-link" href="./Views/Certificados.php">Certificados</a>
         <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Buscar</button>
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Buscar</button>
         </form>
     </nav>
 
@@ -48,6 +48,12 @@ $Aluno = new Aluno();
     <?php include_once('./Views/ListaEvt_Aluno.php'); ?>
 
     <a href="../libs/logout.php" class="btn btn-danger ml-3"><button class="btn btn-danger">Sair da conta</button></a>
+
+
+    <div>
+        <a href="./Redefinir_Senha.php">Trocar senha</a>
+    </div>
+
 
     <script src="../assets/validacoes.js"></script>
     <script src="../assets/bootstrap.bundle.min.js"></script>

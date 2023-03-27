@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 
 session_start();
@@ -7,7 +7,7 @@ session_start();
 
 
 
-if(!isset($_SESSION) && !$_SESSION['idCoordenador']){
+if (!isset($_SESSION) && !$_SESSION['idCoordenador']) {
     header('Location: /index.php');
 }
 
@@ -39,19 +39,26 @@ $Coordenador = new Coordenador();
         <a class="nav-link-active" aria-current="page" href="#">Pagina do Coordenador</a>
         <a class="nav-link" href="./Views/Certificados.php">Certificados</a>
         <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Buscar</button>
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Buscar</button>
         </form>
     </nav>
 
     <?php
-        include_once('./Views/CadastroEventos.php');
-        include_once('./Views/ListaEvt_Coord.php');
+    include_once('./Views/CadastroEventos.php');
+    include_once('./Views/ListaEvt_Coord.php');
     ?>
 
 
     <a href="../libs/logout.php" class="btn btn-danger ml-3"><button class="btn btn-danger">Sair da conta</button></a>
-    
+
+
+
+    <div>
+        <a href="./Redefinir_Senha.php">Trocar senha</a>
+    </div>
+
+
     <script src="../assets/validacoes.js"></script>
     <script src="../assets/bootstrap.bundle.min.js"></script>
 </body>
