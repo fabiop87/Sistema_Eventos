@@ -1,3 +1,21 @@
+<?php 
+
+require_once('./libs/conexao.php');
+
+$conn = new conexao();
+
+$sql = "SELECT idCurso, nomeCurso FROM cursos";
+$stmt = $conn->pdo->query($sql);
+$cursos = $stmt->fetchAll();
+
+// echo '<pre>';
+print_r($cursos);
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,6 +24,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/app.css">
     <title>Document</title>
 </head>
 
@@ -46,10 +65,15 @@
                         <div class="form-group">
                             <label for="curso" class="form-label">Curso:</label>
                             <select class="form-select" name="idCurso" id="curso" required>
-                                <option value="">Selecione um curso</option>
+                                <option value="">Selecione seu curso</option>
+                                <?php foreach($cursos as $curso) {?>
+                                    <option value="<?= $curso['idCurso'] ?>"><?= $curso['nomeCurso'] ?></option>
+                                <?php } ?>
+
+                                <!-- <option value="">Selecione um curso</option>
                                 <option value="1">TADS</option>
                                 <option value="2">Psicologia</option>
-                                <option value="3">Eng. Civil</option>
+                                <option value="3">Eng. Civil</option> -->
                                 <!-- Adicionar outras opções do banco de dados aqui -->
                             </select>
                         </div>
@@ -94,10 +118,15 @@
                         <div class="form-group">
                             <label for="curso" class="form-label">Curso:</label>
                             <select class="form-select" name="idCurso" id="curso" required>
-                                <option value="">Selecione um curso</option>
+                                <option value="">Selecione seu curso</option>
+                                <?php foreach($cursos as $curso) {?>
+                                    <option value="<?= $curso['idCurso'] ?>"><?= $curso['nomeCurso'] ?></option>
+                                <?php } ?>
+
+                                <!-- <option value="">Selecione um curso</option>
                                 <option value="1">TADS</option>
                                 <option value="2">Psicologia</option>
-                                <option value="3">Eng. Civil</option>
+                                <option value="3">Eng. Civil</option> -->
                                 <!-- Adicionar outras opções do banco de dados aqui -->
                             </select>
                         </div>
@@ -109,7 +138,7 @@
                             <label for="nome" class="form-label">Código Coordenador:</label>
                             <input type="text" name="cdcod" id="cdcod" required class="form-control" placeholder="só quem tiver o código vai poder fazer uma conta com privilegios de coordenador">
                         </div>
-                        
+
                         <input type="submit" value="Registrar" class="btn btn-primary">
 
 
