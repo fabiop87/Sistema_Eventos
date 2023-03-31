@@ -1,8 +1,6 @@
 <?php
 
 // session_start();
-// require_once('../libs/conexao.php');
-// require_once('../libs/DadosAlunoouCoord.php');
 
 // var_dump($_POST);
 

@@ -29,7 +29,6 @@ public function verificarInscricao($idEvento, $idAluno)
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindParam(':idEvento', $idEvento, PDO::PARAM_INT);
     $stmt->bindParam(':idAluno', $idAluno, PDO::PARAM_INT);
-    var_dump($stmt);
     $stmt->execute();
     $verificacao = $stmt->fetch(PDO::FETCH_ASSOC);
 

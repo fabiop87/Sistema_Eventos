@@ -12,9 +12,17 @@ $Presenca = new Presenca();
 
 $idAluno = $_SESSION['idAluno'];
 // WHERE idAluno = '$idAluno'"
-$sql = "SELECT * FROM presenca";
+$sql = "SELECT p.*, e.* FROM presenca p INNER JOIN eventos e ON p.idEvento = e.idEvento AND p.codigoAluno = e.codigoCoord";
 $resultado = $Presenca->pdo->query($sql);
 $eventos = $resultado->fetchAll(PDO::FETCH_ASSOC);
+
+
+
+// SELECT e.*, p.*
+// FROM eventos e
+// INNER JOIN presenca p ON p.idEvento = e.idEvento
+// WHERE p.idEvento = 1 AND p.idAluno = 2 AND p.codigoAluno = e.codigoCoord;
+
 
 echo '<pre>';
 print_r($eventos);
@@ -61,30 +69,34 @@ print_r($eventos);
                     <td><?= date('H:i', strtotime($evento['horarioTermino'])) ?></td>
                     <td></td>
                     <td>
-                        <button class="btn btn-secondary">Gerar certificado</button>
-                    <td>
-                        <form action="../Controllers/controllerPresenca.php" method="POST">
-                            <input type="hidden" name="idEvento" value="<?= $evento['idEvento'] ?>">
-                            <input type="hidden" name="idEvento" value="<?= $Aluno['idAluno'] ?>">
-                            <input type="text" name="codigoAluno" id="codigoAluno" maxlength="8">
-                            <button class="btn btn-danger" type="submit">Enviar Código</button>
-                            <input type="hidden" name="tiporeq_presenca" value="Confirmar">
-                        </form>
-                    </td>
-                    <td>
                         <?php
                         if ($Presenca->verificarInscricao($evento['idEvento'], $idAluno) && $Presenca->validarCertificado($evento['idEvento'], $idAluno)) {
+                            $idEvento = $evento['idEvento'];
+                            $nomeEvento = $evento['nomeEvento'];
+                            $local = $evento['local'];
+                            $dataEvento = $evento['dataEvento'];
+                            $horarioInicio = $evento['horarioInicio'];
+                            $horarioTermino = $evento['horarioTermino'];
                             # code...
                             //fazer que ele pode receber o certificado
                             //botao?
-                            return '<button class="btn btn-secondary">Gerar certificado</button>';
-                        }
-                        ?>
+                            echo "<form action='../gerarCertificado.php' method='POST'>";
+                            echo " <input type='hidden' name='idAluno' value='$idAluno'>";
+                            echo " <input type='hidden' name='idEvento' value='$idEvento'>";
+                            echo " <input type='hidden' name='nomeEvento' value='$nomeEvento'>";
+                            echo " <input type='hidden' name='local' value='$local'>";
+                            echo " <input type='hidden' name='horarioInicio' value='$horarioInicio'>";
+                            echo " <input type='hidden' name='horarioTermino' value='$horarioTermino'>";
+                            echo '<button type="submit">Gerar Certificado</button>';
+                            echo "</form>";
+                            
+                        }?>
+
+                        </form>
                     </td>
 
 
 
-                    <!-- acho que aqui fazer um jhonson pra se inscrever -->
                 </tr>
             <?php endforeach; ?>
         </tbody>

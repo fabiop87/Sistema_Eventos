@@ -65,7 +65,7 @@ print_r($cursos);
                         <div class="form-group">
                             <label for="curso" class="form-label">Curso:</label>
                             <select class="form-select" name="idCurso" id="curso" required>
-                                <option value="">Selecione seu curso</option>
+                                <option disabled value="">Selecione seu curso</option>
                                 <?php foreach($cursos as $curso) {?>
                                     <option value="<?= $curso['idCurso'] ?>"><?= $curso['nomeCurso'] ?></option>
                                 <?php } ?>
@@ -118,7 +118,7 @@ print_r($cursos);
                         <div class="form-group">
                             <label for="curso" class="form-label">Curso:</label>
                             <select class="form-select" name="idCurso" id="curso" required>
-                                <option value="">Selecione seu curso</option>
+                                <option disabled value="">Selecione seu curso</option>
                                 <?php foreach($cursos as $curso) {?>
                                     <option value="<?= $curso['idCurso'] ?>"><?= $curso['nomeCurso'] ?></option>
                                 <?php } ?>
