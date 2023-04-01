@@ -59,7 +59,7 @@ $Coordenador = new Coordenador();
     </div>
 
 
-    <script src="../assets/validacoes.js"></script>
+    <script src="../assets/funcoes.js"></script>
     <script src="../assets/bootstrap.bundle.min.js"></script>
 </body>
 

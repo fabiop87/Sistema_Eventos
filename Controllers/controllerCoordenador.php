@@ -16,7 +16,7 @@ $tiporeq = $_POST['LoginouRegister'];
 switch ($tiporeq) {
   case 'Register':
 
-    if(!isset($_POST['cdcod']) && !$_POST['cdcod'] == 'bananinha'){
+    if(!isset($_POST['cdcod']) || $_POST['cdcod'] != 'bananinha'){
       die('aluno nao pode criar conta pra fazer caquinha');
     }  
 

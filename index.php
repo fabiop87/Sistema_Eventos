@@ -27,6 +27,7 @@ var_dump($_SESSION);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/app.css">
     <title>Document</title>
 </head>
 
@@ -98,7 +99,8 @@ var_dump($_SESSION);
     </div>
 
 
-    <a href="Cadastro.php">Novo Usuário</a>
+    <a href="CadastroAluno.php">Novo Aluno</a>
+    <a href="CadastroCoord.php">Novo Coordenador</a>
     <a href="../libs/logout.php" class="btn btn-danger ml-3"><button class="btn btn-danger">Sair da conta</button></a>
     <script src="./assets/validacoes.js"></script>
     <script src="./assets/bootstrap.bundle.min.js"></script>
