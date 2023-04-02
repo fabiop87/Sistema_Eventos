@@ -6,9 +6,8 @@ session_start();
 // require_once('./libs/DadosAlunoouCoord.php');
 
 
-
-if (!isset($_SESSION) && !$_SESSION['idAluno']) {
-    header('Location: /index.php');
+if (!isset($_SESSION) || !isset($_SESSION['idAluno'])) {
+    die('faz o login mano');
 }
 
 var_dump($_POST);
@@ -55,7 +54,6 @@ $Aluno = new Aluno();
     </div>
 
 
-    <script src="../assets/validacoes.js"></script>
     <script src="../assets/bootstrap.bundle.min.js"></script>
 </body>
 

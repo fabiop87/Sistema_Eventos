@@ -20,23 +20,27 @@ switch ($_POST['tiporeq_presenca']) {
         if(!$Presenca->verificarInscricao($_POST['idEvento'], $_POST['idAluno'])){
             $Presenca->inscrever($_POST['idEvento'], $_POST['idAluno']);
         } else {
-            echo 'ja está inscrito' ;
+            $mensagem = 'ja-está-inscrito';  
         }
         break;
     case 'Confirmar':
         if($Presenca->verificarInscricao($_POST['idEvento'], $_POST['idAluno'])){
             $Presenca->confirmarPresenca($_POST['idEvento'], $_POST['idAluno'], $_POST['codigoAluno']);
+            $mensagem = 'presença-confirmada';
         }
         break;
     case 'Certificado':
         if($Presenca->validarCertificado($_POST['idEvento'], $_POST['idAluno'])){
-            echo 'acabou o antidepressivo';
+            echo 'validado';
         }
         break;
     case 'Desinscrever':
         $Presenca->desinscrever($_POST['idEvento'], $_POST['idAluno']);
+        $mensagem = 'desinscrito';
         break;
     default:
         die('deu merda');
         break;
 }
+
+header('Location:/HomeAluno.php?message='. $mensagem);

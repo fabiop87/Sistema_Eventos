@@ -9,7 +9,7 @@ require_once('../Funcoes/Coordenador.php');
 $Coordenador = new Coordenador();
 
 
-if(!isset($_SESSION) && !isset($_SESSION['idCoordenador'])){
+if(!isset($_SESSION) || !isset($_SESSION['idCoordenador'])){
     die('sem permissao para alterar dados dos eventos');
 }
 
@@ -115,7 +115,7 @@ print_r($evento);
     </div>
 
 
-    <script src="../assets/validacoes.js"></script>
+    <script src="../assets/funcoes.js"></script>
     <script src="../assets/bootstrap.bundle.min.js"></script>
 </body>
 

@@ -1,9 +1,9 @@
 <?php
 
-// if (isset($_POST['tiporeq'])) {
-//   header('Location:/?erro=url');
-//   return false;
-// }
+if (isset($_POST['tiporeq'])) {
+  header('Location:/?erro=url');
+  return false;
+}
 var_dump($_POST);
 
 require_once('../Funcoes/Aluno.php');

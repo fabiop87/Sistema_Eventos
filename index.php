@@ -5,12 +5,12 @@ if(isset($_GET['erro']) && $_GET['erro'] == "url") {
     die();
 }
 
-if (!isset($_SESSION)) {
-    session_start();
-  }
+// if (!isset($_SESSION)) {
+//     session_start();
+//   }
 
 
-var_dump($_SESSION);
+// var_dump($_SESSION);
 
 // if(isset($_SESSION['idAluno'])){
 //     header('Location: ./HomeAluno.php');

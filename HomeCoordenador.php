@@ -7,8 +7,8 @@ session_start();
 
 
 
-if (!isset($_SESSION) && !$_SESSION['idCoordenador']) {
-    header('Location: /index.php');
+if (!isset($_SESSION) || !isset($_SESSION['idCoordenador'])) {
+    die();
 }
 
 var_dump($_POST);

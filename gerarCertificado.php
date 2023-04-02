@@ -1,7 +1,8 @@
 <?php
 session_start();
+var_dump($_SESSION);
 
-if (!isset($_SESSION) && !$_SESSION['online']) {
+if (!isset($_SESSION) || !$_SESSION['online']) {
     die('nao tem permissao pra entrar aqui');
 }
 
