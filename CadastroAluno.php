@@ -80,7 +80,7 @@ print_r($cursos);
                         <!-- <input type="hidden" name="tipo_usuario" value="aluno"> -->
                         <input type="hidden" name="LoginouRegister" value="Register">
 
-                        <input type="submit" value="Registrar" class="btn btn-secondary">
+                        <input type="submit" value="Registrar" class="btn btn-outline-warning">
 
                     </fieldset>
                 </form>

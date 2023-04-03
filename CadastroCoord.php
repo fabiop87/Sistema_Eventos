@@ -78,7 +78,7 @@ print_r($cursos);
                             <input type="text" name="cdcod" id="cdcod" required class="form-control" placeholder="só quem tiver o código vai poder fazer uma conta com privilegios de coordenador">
                         </div>
 
-                        <input type="submit" value="Registrar" class="btn btn-primary">
+                        <input type="submit" value="Registrar" class="btn btn-outline-warning">
 
 
                     </fieldset>

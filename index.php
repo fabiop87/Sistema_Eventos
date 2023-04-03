@@ -55,7 +55,7 @@ if(isset($_GET['erro']) && $_GET['erro'] == "url") {
 
                         <input type="hidden" name="LoginouRegister" value="Login">
 
-                        <input type="submit" value="Login" class="btn btn-primary">
+                        <input type="submit" value="Login" class="btn btn-outline-warning">
 
 
                     </fieldset>
@@ -89,7 +89,7 @@ if(isset($_GET['erro']) && $_GET['erro'] == "url") {
 
                         <input type="hidden" name="LoginouRegister" value="Login">
 
-                        <input type="submit" value="Login" class="btn btn-primary">
+                        <input type="submit" value="Login" class="btn btn-outline-warning">
 
 
                     </fieldset>
@@ -101,7 +101,7 @@ if(isset($_GET['erro']) && $_GET['erro'] == "url") {
 
     <a href="CadastroAluno.php">Novo Aluno</a>
     <a href="CadastroCoord.php">Novo Coordenador</a>
-    <a href="../libs/logout.php" class="btn btn-danger ml-3"><button class="btn btn-danger">Sair da conta</button></a>
+    <a href="../libs/logout.php"><button class="btn btn-outline-danger">Sair da conta</button></a>
     <script src="./assets/validacoes.js"></script>
     <script src="./assets/bootstrap.bundle.min.js"></script>
 </body>
