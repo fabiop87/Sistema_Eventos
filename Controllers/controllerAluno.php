@@ -34,7 +34,7 @@ switch ($tiporeq) {
     } else {
       // Define uma mensagem de erro para ser exibida na página
       $mensagem = 'Ocorreu um erro ao cadastrar o aluno.';
-      header('Location:/Cadastro.php');
+      header('Location:/CadastroAluno.php');
     }
     echo $mensagem;
 
@@ -56,7 +56,7 @@ switch ($tiporeq) {
     } else {
       // Define uma mensagem de erro para ser exibida na página
       $mensagem = 'Ocorreu um erro ao fazer login.';
-      header('Location:/Cadastro.php');
+      header('Location:/CadastroAluno.php');
     }
     echo $mensagem;
     // Redireciona o usuário para a página desejada

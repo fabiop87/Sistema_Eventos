@@ -32,7 +32,7 @@ $Aluno = new Aluno();
 
 <body>
     <h1>HOME ALUNO</h1>
-
+    
     <nav class="nav justify-content-end">
         <a class="nav-link-active" aria-current="page" href="#">Pagina do Aluno</a>
         <a class="nav-link" href="./Views/Certificados.php">Certificados</a>
@@ -41,20 +41,20 @@ $Aluno = new Aluno();
             <button class="btn btn-outline-success" type="submit">Buscar</button>
         </form>
     </nav>
-
-
+    
+    
     <br>
     <?php include_once('./Views/ListaEvt_Aluno.php'); ?>
-
+    
     <a href="../libs/logout.php" ><button class="btn btn-outline-danger">Sair da conta</button></a>
-
-
+    
+    
     <div>
         <a href="./Redefinir_Senha.php">Trocar senha</a>
     </div>
-
-
-    <script src="../assets/bootstrap.bundle.min.js"></script>
+    
+    <script src="../assets/funcoes.js"></script>
+    <script src="./assets/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

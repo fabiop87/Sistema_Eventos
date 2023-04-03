@@ -10,7 +10,7 @@ require_once('../Funcoes/Presenca.php');
 $Presenca = new Presenca();
 // $Aluno = new Aluno();
 
-$idAluno = $_SESSION['idAluno'];
+$idAluno = $_SESSION['idAluno']?? '';
 // WHERE idAluno = '$idAluno'"
 $sql = "SELECT p.*, e.* FROM presenca p INNER JOIN eventos e ON p.idEvento = e.idEvento AND p.codigoAluno = e.codigoCoord";
 $resultado = $Presenca->pdo->query($sql);

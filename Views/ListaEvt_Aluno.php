@@ -57,8 +57,8 @@ $eventos = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         <input type="text" readonly name="idAluno" value="<?= $_SESSION['idAluno'] ?>">
                         <!-- trocar esses 2 para hidden / usando pra testar -->
                         <label for="codigoAluno">Código para registrar presença:</label>
-                        <input type="text" name="codigoAluno" id="codigoAluno">
-                        <input type="submit" value="Enviar">
+                        <input type="text" name="codigoAluno" class="codigoAluno">
+                        <input type="submit" class="codigo_submit" value="Enviar">
                         <input type="hidden" name="tiporeq_presenca" value="Confirmar">
                     </form>
                 </td>
