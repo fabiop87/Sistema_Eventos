@@ -9,14 +9,30 @@ function stringAleatoria() {
   
 console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
 
-const inputField = document.querySelectorAll("codigoAluno");
-const submitInput = document.querySelectorAll("codigo_submit");
+// const inputField = document.querySelectorAll("codigoAluno");
+// const submitInput = document.querySelectorAll("codigo_submit");
 
-inputField.addEventListener("input", function() {
-  if (inputField.value.trim() == "") {
-    console.log('aaaaaaabbbbbbbbbaaaaaa');
-    submitInput.disabled = true;
-  } else {
-    submitInput.disabled = false;
-  }
-});
+// inputField.addEventListener("input", function() {
+//   if (inputField.value.trim() == "") {
+//     console.log('aaaaaaabbbbbbbbbaaaaaa');
+//     submitInput.disabled = true;
+//   } else {
+//     submitInput.disabled = false;
+//   }
+// });
+
+
+  const codigoAlunoInputs = document.querySelectorAll('.codigoAluno');
+  codigoAlunoInputs.forEach(codigoAlunoInput => {
+    const codigoSubmit = codigoAlunoInput.closest('td').querySelector('.codigo_submit');
+     codigoSubmit.disabled = true;
+    codigoAlunoInput.addEventListener('input', () => {
+      if (codigoAlunoInput != '') {
+        codigoSubmit.disabled = false;
+      } else {
+        codigoSubmit.disabled = true;
+      }
+    });
+  });
+
+  

@@ -39,7 +39,7 @@
 
           <div class="form-group">
             <label for="codigoCoord" class="form-label">Código para a presença dos alunos:</label>
-            <input type="text" name="codigoCoord" id="codigoCoord" class="form-control">
+            <input type="text" name="codigoCoord" id="codigoCoord" class="form-control" maxlength="8">
             <button type="button" class="btn btn-secondary" onclick="stringAleatoria()">Gerar Código</button>
           </div>
 

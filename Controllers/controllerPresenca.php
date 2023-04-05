@@ -23,10 +23,13 @@ switch ($_POST['tiporeq_presenca']) {
             $mensagem = 'ja-está-inscrito';  
         }
         break;
-    case 'Confirmar':
+        case 'Confirmar':
+        if($Presenca->validarCertificado($_POST['idEvento'], $_POST['idAluno'])){
+                $mensagem = "você ja tem acesso ao certificado";
+        }
         if($Presenca->verificarInscricao($_POST['idEvento'], $_POST['idAluno'])){
             $Presenca->confirmarPresenca($_POST['idEvento'], $_POST['idAluno'], $_POST['codigoAluno']);
-            $mensagem = 'presença-confirmada';
+            $mensagem = 'código-enviado';
         }
         break;
     case 'Certificado':

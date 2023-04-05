@@ -17,7 +17,7 @@ class Evento extends conexao
     $stmt->bindParam(':horarioInicio', $horarioInicio, PDO::PARAM_STR);
     $stmt->bindParam(':horarioTermino', $horarioTermino, PDO::PARAM_STR);
     $stmt->bindParam('codigoCoord', $codigoCoord, PDO::PARAM_STR);
-  
+ 
     return $stmt->execute();
   }
   

@@ -17,7 +17,7 @@ $eventos = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 <h1>Eventos cadastrados</h1>
 
-<table>
+<table class="table">
     <thead>
         <tr>
             <th>ID</th>
@@ -44,22 +44,36 @@ $eventos = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
                 <td>
                     <form action="../Controllers/controllerPresenca.php" method="POST">
-                        <input type="text" readonly name="idEvento" value="<?= $evento['idEvento'] ?>">
-                        <input type="text" readonly name="idAluno" value="<?= $_SESSION['idAluno'] ?>">
-                        <!-- trocar esses 2 para hidden / usando pra testar -->
+                        <input type="hidden" name="idEvento" value="<?= $evento['idEvento'] ?>">
+                        <input type="hidden" name="idAluno" value="<?= $_SESSION['idAluno'] ?>">
+
                         <button class="btn btn-danger" type="submit">Inscrever</button>
                         <input type="hidden" name="tiporeq_presenca" value="Inscrever">
                     </form>
                 </td>
                 <td>
                     <form action="../Controllers/controllerPresenca.php" method="POST">
-                        <input type="text" readonly name="idEvento" value="<?= $evento['idEvento'] ?>">
-                        <input type="text" readonly name="idAluno" value="<?= $_SESSION['idAluno'] ?>">
-                        <!-- trocar esses 2 para hidden / usando pra testar -->
+                        <input type="hidden" name="idEvento" value="<?= $evento['idEvento'] ?>">
+                        <input type="hidden" name="idAluno" value="<?= $_SESSION['idAluno'] ?>">
+
                         <label for="codigoAluno">Código para registrar presença:</label>
-                        <input type="text" name="codigoAluno" class="codigoAluno">
-                        <input type="submit" class="codigo_submit" value="Enviar">
+
+                        <!-- <input type="text" name="codigoAluno" class="codigoAluno"> -->
+                        <input type="text" name="codigoAluno" class="codigoAluno" maxlength="8" id="codigoAluno-<?= $evento['idEvento'] ?>">
+
+                        <input type="submit" class="codigo_submit btn btn-secondary" value="Enviar">
                         <input type="hidden" name="tiporeq_presenca" value="Confirmar">
+                    </form>
+                </td>
+                <td>
+                    <form action="../Controllers/controllerPresenca.php" method="POST">
+                        <input type="hidden" name="idEvento" value="<?= $evento['idEvento'] ?>">
+                        <input type="hidden" name="idAluno" value="<?= $_SESSION['idAluno'] ?>">
+
+                        <input type="submit" class="codigo_submit btn btn-dark" value="Desinscrever">
+
+                        <input type="hidden" name="tiporeq_presenca" value="Desinscrever">
+
                     </form>
                 </td>
 

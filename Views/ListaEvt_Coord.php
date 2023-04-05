@@ -18,7 +18,7 @@ $eventos = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 <h1>Eventos cadastrados</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>ID</th>

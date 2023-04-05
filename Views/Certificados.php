@@ -45,7 +45,7 @@ print_r($eventos);
 <body>
     <h1>Certificados</h1>
 
-    <table>
+    <table class="table">
         <thead>
             <tr>
                 <th>ID</th>
@@ -87,7 +87,7 @@ print_r($eventos);
                             echo " <input type='hidden' name='local' value='$local'>";
                             echo " <input type='hidden' name='horarioInicio' value='$horarioInicio'>";
                             echo " <input type='hidden' name='horarioTermino' value='$horarioTermino'>";
-                            echo '<button type="submit">Gerar Certificado</button>';
+                            echo '<button type="submit" class="btn btn secondary">Gerar Certificado</button>';
                             echo "</form>";
                             
                         }?>
