@@ -29,12 +29,12 @@ switch ($tiporeq) {
     // Verifica se o cadastro foi bem sucedido
     if ($novoAluno) {
       // Define uma mensagem de sucesso para ser exibida na página
-      $mensagem = 'Aluno cadastrado com sucesso!';
-      header('Location:/index.php');
+      $mensagem = 'Aluno-cadastrado-com-sucesso!';
+      header('Location:/index.php?message='. $mensagem);
     } else {
       // Define uma mensagem de erro para ser exibida na página
-      $mensagem = 'Ocorreu um erro ao cadastrar o aluno.';
-      header('Location:/CadastroAluno.php');
+      $mensagem = 'Ocorreu-um-erro-ao-cadastrar-o-aluno.';
+      header('Location:/CadastroAluno.php?message='. $mensagem);
     }
     echo $mensagem;
 
@@ -46,17 +46,17 @@ switch ($tiporeq) {
 
     if ($aluno) {
       // Define uma mensagem de sucesso para ser exibida na página
-      $mensagem = 'Aluno logado com sucesso!';
+      $mensagem = 'Aluno-logado-com-sucesso!';
       session_start();
       $_SESSION['online'] = true;
       $_SESSION['idAluno'] = $aluno['idAluno'];
-      header('Location:/HomeAluno.php');
+      header('Location:/HomeAluno.php?message='. $mensagem);
       //var_dump($_SESSION);
       ///  verificar isso
     } else {
       // Define uma mensagem de erro para ser exibida na página
-      $mensagem = 'Ocorreu um erro ao fazer login.';
-      header('Location:/CadastroAluno.php');
+      $mensagem = 'Ocorreu-um-erro-ao-fazer-login.';
+      header('Location:/CadastroAluno.php?message='. $mensagem);
     }
     echo $mensagem;
     // Redireciona o usuário para a página desejada

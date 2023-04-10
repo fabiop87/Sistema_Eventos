@@ -72,7 +72,6 @@ $pdf->loadHtml($certificado);
 $pdf->render();
 
 
-
 //Imprime o pdf na tela
 header('Content-type: application/pdf');
 echo $pdf->output();

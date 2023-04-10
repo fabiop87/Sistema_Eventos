@@ -28,7 +28,7 @@ function validarFormulario() {
     erro = true;
   }
 
-  if(cdcod !== 'bananinha'){
+  if(cdcod.value != 'bananinha'){
     texto.textContent = 'A senha do coordenador nao confere';
     erro = true;
   }

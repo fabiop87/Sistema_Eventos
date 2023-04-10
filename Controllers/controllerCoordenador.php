@@ -35,12 +35,12 @@ switch ($tiporeq) {
     // Verifica se o cadastro foi bem sucedido
     if ($Coordenador) {
       // Define uma mensagem de sucesso para ser exibida na página
-      $mensagem = 'Coordenador cadastrado com sucesso!';
-      header('Location:/index.php');
+      $mensagem = 'Coordenador-cadastrado-com-sucesso!';
+      header('Location:/index.php?message='. $mensagem);
     } else {
       // Define uma mensagem de erro para ser exibida na página
-      $mensagem = 'Ocorreu um erro ao cadastrar o coordenador.';
-      header('Location:/CadastroCoord.php');
+      $mensagem = 'Ocorreu-um-erro-ao-cadastrar-o-coordenador.';
+      header('Location:/CadastroCoord.php?message='. $mensagem);
     }
     echo $mensagem;
 
@@ -51,17 +51,17 @@ switch ($tiporeq) {
 
     if ($coordenador) {
       // Define uma mensagem de sucesso para ser exibida na página
-      $mensagem = 'Coordenador logado com sucesso!';
+      $mensagem = 'Coordenador-logado-com-sucesso!';
       session_start();
       $_SESSION['online'] = true;
       $_SESSION['idCoordenador'] = $coordenador['idCoordenador'];
-      header('Location:/HomeCoordenador.php');
+      header('Location:/HomeCoordenador.php?message='. $mensagem);
       //var_dump($_SESSION);
  
     } else {
       // Define uma mensagem de erro para ser exibida na página
-      $mensagem = 'Ocorreu um erro ao fazer login.';
-      header('Location:/CadastroCadastroCoord.php');
+      $mensagem = 'Ocorreu-um-erro-ao-fazer-login.';
+      header('Location:/CadastroCoord.php?message='. $mensagem);
     }
     echo $mensagem;
     break;
