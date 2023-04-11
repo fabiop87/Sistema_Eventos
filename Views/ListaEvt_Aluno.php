@@ -1,10 +1,12 @@
 <?php
-// require_once('./libs/conexao.php');
-// require('./Funcoes/Aluno.php');
-// $Aluno = new Aluno();
-// require_once('./libs/DadosAlunoouCoord.php');
 
-$sql = "SELECT * FROM eventos";
+if(isset($_GET['search']) && $_GET['search'] != ''){
+    $pesquisa = ($_GET['search']);
+    $sql = "SELECT * FROM eventos WHERE nomeEvento LIKE '$pesquisa'";
+}else{
+    $sql = "SELECT * FROM eventos";
+}
+
 
 $resultado = $Aluno->pdo->prepare($sql);
 $resultado->execute();

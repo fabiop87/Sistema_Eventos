@@ -64,9 +64,6 @@ if(isset($_GET['erro']) && $_GET['erro'] == "url") {
         </div>
     </div>
 
-    <!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
-
-
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-6 mt-5">

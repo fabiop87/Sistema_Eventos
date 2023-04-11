@@ -1,5 +1,15 @@
 <?php
 
+session_start();
+
+
+
+if (!isset($_SESSION) || !isset($_SESSION['idCoordenador'])) {
+    echo "<marquee> Apenas pessoas autorizadas podem criar usuario de aluno </marquee>";
+    die();
+}
+
+
 require_once('./libs/conexao.php');
 
 $conn = new conexao();

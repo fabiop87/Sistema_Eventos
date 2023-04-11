@@ -39,13 +39,13 @@ $horarioTermino = $_POST['horarioTermino'];
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
-require __DIR__.'/PDF/vendor/autoload.php';
+require __DIR__ . '/PDF/vendor/autoload.php';
 
 $options = new Options();
 $options->setChroot(__DIR__);
 
 $pdf = new Dompdf($options);
-// $options->setIsRemoteEnabled(true);
+//$options->setIsRemoteEnabled(true);
 
 $pdf->setPaper('A4', 'landscape');
 
@@ -55,9 +55,34 @@ $pdf->setPaper('A4', 'landscape');
 //Carrega o arquivo html
 // $pdf->loadHtmlFile(__DIR__.'/arquivo.php');
 
-$certificado = "    
+$certificado = "
+    <style>
+    p {
+        text-align: justify;
+        line-height: 1.5em;
+        font-size: 18pt;
+    }
+    #center {
+        display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+      }
+      
+    h1, h2, h3, h4 {
+        color: #372991;
+        margin: 0 0 10px 0;
+        text-align:center;
+    }
+    
+    </style>
+
     <h1>EINSTEIN LIMEIRA</h1>
-    <img src='../PDF/img/logo.png' alt=''>
+<div id='center'>
+<img src='./PDF/img/logo.png' alt=''>
+</div>
+
     <p>O aluno $nome ra: $ra do curso $curso tem presença confirmada no evento $nomeEvento no $local</p>
 
     <p>Data: $dataEvento   Horario de inicio: $horarioInicio       Horario de término: $horarioTermino</p>
@@ -75,4 +100,3 @@ $pdf->render();
 //Imprime o pdf na tela
 header('Content-type: application/pdf');
 echo $pdf->output();
-
