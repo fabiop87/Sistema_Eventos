@@ -33,28 +33,31 @@ $Coordenador = new Coordenador();
 <body>
     <h1>HOME Coordenador</h1>
 
+
+    <div class="d-flex flex-row-reverse mb-4">
+        <div class="p-2">
+            <a href="../libs/logout.php"><button class="btn btn-outline-danger">Sair da conta</button></a>
+        </div>
+        <div class="p-2">
+            <a class="btn btn-outline-info" href="./Redefinir_Senha.php">Trocar senha</a>
+        </div>
+    </div>
+</div>
+
     <nav class="nav justify-content-end">
         <a class="nav-link-active" aria-current="page" href="#">Pagina do Coordenador</a>
         <!-- <a class="nav-link" href="./Views/Certificados.php">Certificados</a> -->
         <form class="d-flex" role="search">
-            <input name="search" value="<?php if(isset($_GET['search'])) echo $_GET['search']; ?>" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <input name="search" value="<?php if (isset($_GET['search'])) echo $_GET['search']; ?>" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Buscar</button>
         </form>
     </nav>
 
     <?php
-    include_once('./Views/CadastroEventos.php');
     include_once('./Views/ListaEvt_Coord.php');
+    include_once('./Views/CadastroEventos.php');
     ?>
 
-
-    <a href="../libs/logout.php"><button class="btn btn-outline-danger">Sair da conta</button></a>
-
-
-
-    <div>
-        <a href="./Redefinir_Senha.php">Trocar senha</a>
-    </div>
 
 
     <script src="../assets/funcoes.js"></script>

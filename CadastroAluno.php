@@ -18,8 +18,6 @@ $sql = "SELECT idCurso, nomeCurso FROM cursos";
 $stmt = $conn->pdo->query($sql);
 $cursos = $stmt->fetchAll();
 
-// echo '<pre>';
-print_r($cursos);
 
 ?>
 
@@ -79,26 +77,18 @@ print_r($cursos);
                                 <?php foreach ($cursos as $curso) { ?>
                                     <option value="<?= $curso['idCurso'] ?>"><?= $curso['nomeCurso'] ?></option>
                                 <?php } ?>
-
-                                <!-- <option value="">Selecione um curso</option>
-                                <option value="1">TADS</option>
-                                <option value="2">Psicologia</option>
-                                <option value="3">Eng. Civil</option> -->
-                                <!-- Adicionar outras opções do banco de dados aqui -->
                             </select>
                         </div>
-                        <!-- <input type="hidden" name="tipo_usuario" value="aluno"> -->
                         <input type="hidden" name="LoginouRegister" value="Register">
 
                         <input type="submit" value="Registrar" class="btn btn-outline-warning">
 
                     </fieldset>
                 </form>
-                <a href="index.php">Voltar ao Login</a>
+                <a class="btn btn-secondary btn-sm" href="index.php">Voltar ao Login</a>
             </div>
         </div>
     </div>
-    <!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
 
 
     <script src="./assets/validacoesaluno.js"></script>

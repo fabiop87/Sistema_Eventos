@@ -96,14 +96,13 @@ if(isset($_GET['erro']) && $_GET['erro'] == "url") {
     </div>
 
 
-    <a href="CadastroAluno.php">Novo Aluno</a>
-    <a href="CadastroCoord.php">Novo Coordenador</a>
+    <a class="btn btn-secondary btn-sm" href="CadastroAluno.php">Novo Aluno</a>
+    <a class="btn btn-secondary btn-sm" href="CadastroCoord.php">Novo Coordenador</a>
     <a href="../libs/logout.php"><button class="btn btn-outline-danger">Sair da conta</button></a>
-    <script src="./assets/validacoes.js"></script>
+    <script src="./assets/validacoesaluno.js"></script>
     <script src="./assets/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
 
 <?php
-var_dump($_POST);

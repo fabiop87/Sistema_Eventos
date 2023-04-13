@@ -6,28 +6,17 @@ if (!isset($_SESSION) && !$_SESSION['online']) {
 }
 var_dump($_SESSION);
 require_once('../Funcoes/Presenca.php');
-// require_once('../Funcoes/Aluno.php');
+
 $Presenca = new Presenca();
-// $Aluno = new Aluno();
+
 
 $idAluno = $_SESSION['idAluno'] ?? '';
-// WHERE idAluno = '$idAluno'"
+
 $sql = "SELECT p.*, e.* FROM presenca p INNER JOIN eventos e ON p.idEvento = e.idEvento AND p.codigoAluno = e.codigoCoord WHERE idAluno = '$idAluno'";
 $resultado = $Presenca->pdo->query($sql);
 $eventos = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 
-
-// SELECT e.*, p.*
-// FROM eventos e
-// INNER JOIN presenca p ON p.idEvento = e.idEvento
-// WHERE p.idEvento = 1 AND p.idAluno = 2 AND p.codigoAluno = e.codigoCoord;
-
-
-echo '<pre>';
-print_r($eventos);
-
-// select com join nas 2 tabelas la e fazer o negócio
 
 ?>
 
@@ -84,26 +73,12 @@ print_r($eventos);
                         <?php
                         }
                         ?>
-
-
-
-
-
-
                     </td>
 
                 </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
-
-
-
-
-
-
-
-    <p>fazer os negocios com join e tudo mais</p>
 
     <script src="../assets/bootstrap.bundle.min.js"></script>
 </body>
