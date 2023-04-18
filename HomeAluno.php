@@ -10,11 +10,11 @@ if (!isset($_SESSION) || !isset($_SESSION['idAluno'])) {
     die('faz o login mano');
 }
 
-var_dump($_POST);
-var_dump($_SESSION);
 
 require_once('./Funcoes/Aluno.php');
 $Aluno = new Aluno();
+
+$idAluno = $_SESSION['idAluno'];
 
 ?>
 
@@ -53,9 +53,13 @@ $Aluno = new Aluno();
     </nav>
 
     
-    <br>
+    <h2>Eventos Disponíveis</h2>
+
     <?php include_once('./Views/ListaEvt_Aluno.php'); ?>
-    
+
+    <h2>Eventos Inscritos</h2>
+    <?php include_once('./Views/EventosInscritos.php') ?>
+
 
     <script src="../assets/funcoes.js"></script>
     <script src="./assets/bootstrap.bundle.min.js"></script>

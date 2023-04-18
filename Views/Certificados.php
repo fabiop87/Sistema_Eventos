@@ -80,6 +80,9 @@ $eventos = $resultado->fetchAll(PDO::FETCH_ASSOC);
         </tbody>
     </table>
 
+    <a class="btn btn-secondary btn-sm" href="../HomeAluno.php">Voltar à pagina do aluno</a>
+
+
     <script src="../assets/bootstrap.bundle.min.js"></script>
 </body>
 

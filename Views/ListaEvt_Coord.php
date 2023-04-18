@@ -3,7 +3,7 @@
 
 if (isset($_GET['search']) && $_GET['search'] != '') {
   $pesquisa = ($_GET['search']);
-  $sql = "SELECT * FROM eventos WHERE nomeEvento LIKE '$pesquisa'";
+  $sql = "SELECT * FROM eventos WHERE nomeEvento LIKE '%$pesquisa%'";
 } else {
   $sql = "SELECT * FROM eventos ORDER BY created_at DESC LIMIT 10";
 }

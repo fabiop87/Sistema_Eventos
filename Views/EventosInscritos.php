@@ -2,23 +2,16 @@
 
 //$data = date('d/m/Y'); // fazer o negocio de nao puxar evento que ja passou
 
- if (isset($_GET['search']) && $_GET['search'] != '') {
-    $pesquisa = ($_GET['search']);
-     $sql = "SELECT * FROM eventos WHERE nomeEvento LIKE '%$pesquisa%'";
- } else {
-     $sql = "SELECT *
-     FROM eventos
-     WHERE idEvento NOT IN (
-       SELECT DISTINCT e.idEvento
-       FROM eventos e
-       INNER JOIN presenca p ON e.idEvento = p.idEvento 
-       WHERE p.idAluno = '$idAluno'
-     )
-     ";
- }
 
- 
-
+$sql = "SELECT *
+FROM eventos
+WHERE idEvento IN (
+  SELECT DISTINCT e.idEvento
+  FROM eventos e
+  INNER JOIN presenca p ON e.idEvento = p.idEvento 
+  WHERE p.idAluno = '$idAluno'
+)
+";
 
 $resultado = $Aluno->pdo->prepare($sql);
 $resultado->execute();
