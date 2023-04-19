@@ -17,7 +17,8 @@ if(isset($_GET['erro']) && $_GET['erro'] == "url") {
 // }elseif(isset($_SESSION['idCoordenador'])){
 //     header('Location: ./HomeCoordenador.php');
 // }
-// ?>
+
+ ?>
 
 <!DOCTYPE html>
 <html lang="en">
