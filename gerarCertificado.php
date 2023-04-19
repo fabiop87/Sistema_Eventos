@@ -1,12 +1,12 @@
 <?php
-echo '<pre>';
+
 session_start();
-var_dump($_SESSION);
+
 
 print_r($_POST);
 
 
-if (!isset($_SESSION) || !$_SESSION['online']) {
+if (!isset($_SESSION) && !$_SESSION['ra']) {
     die('nao tem permissao pra entrar aqui');
 }
 
@@ -56,30 +56,24 @@ $pdf->setPaper('A4', 'landscape');
 // $pdf->loadHtmlFile(__DIR__.'/arquivo.php');
 
 $certificado = "
-    <style>
-    p {
-        text-align: justify;
-        line-height: 1.5em;
-        font-size: 18pt;
-    }
-    #center {
-        display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
-      }
-      
-    h1, h2, h3, h4 {
-        color: #372991;
-        margin: 0 0 10px 0;
-        text-align:center;
-    }
-    
-    </style>
+<style>
+p {
+    text-align: center;
+    line-height: 1.5em;
+    font-size: 18pt;
+}
+.center {  text-align:center  }
+  
+h1, h2, h3, h4 {
+    color: #372991;
+    margin: 0 0 10px 0;
+    text-align:center;
+}
 
-    <h1>EINSTEIN LIMEIRA</h1>
-<div id='center'>
+</style>
+
+<h1>EINSTEIN LIMEIRA</h1>
+<div class='center'>
 <img src='./PDF/img/logo.png' alt=''>
 </div>
 

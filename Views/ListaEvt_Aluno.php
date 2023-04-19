@@ -33,6 +33,7 @@ $eventos = $resultado->fetchAll(PDO::FETCH_ASSOC);
     <?php foreach ($eventos as $evento) : ?>
         <div class="card col-md-3">
             <div>
+                <p><?= $evento['idEvento'] ?></p>
                 <h5> <?= $evento['nomeEvento'] ?> </h5>
                 <p> <?= date('d/m/Y', strtotime($evento['dataEvento'])) ?> </p>
                 <p>Local: <?= $evento['local'] ?> </p>
