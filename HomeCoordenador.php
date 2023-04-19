@@ -9,8 +9,7 @@ if (!isset($_SESSION) || !isset($_SESSION['idCoordenador'])) {
     die();
 }
 
-var_dump($_POST);
-var_dump($_SESSION);
+
 
 require_once('./Funcoes/Coordenador.php');
 $Coordenador = new Coordenador();
@@ -46,7 +45,7 @@ $Coordenador = new Coordenador();
 
     <nav class="nav justify-content-end">
         <a class="nav-link-active" aria-current="page" href="#">Pagina do Coordenador</a>
-        <!-- <a class="nav-link" href="./Views/Certificados.php">Certificados</a> -->
+        <a class="nav-link" href="./Views/CadastroEventos.php">Cadastrar novo evento</a>
         <form class="d-flex" role="search">
             <input name="search" value="<?php if (isset($_GET['search'])) echo $_GET['search']; ?>" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Buscar</button>
@@ -55,7 +54,7 @@ $Coordenador = new Coordenador();
 
     <?php
     include_once('./Views/ListaEvt_Coord.php');
-    include_once('./Views/CadastroEventos.php');
+    // include_once('./Views/CadastroEventos.php');
     ?>
 
 

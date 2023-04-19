@@ -9,7 +9,7 @@ WHERE idEvento IN (
   SELECT DISTINCT e.idEvento
   FROM eventos e
   INNER JOIN presenca p ON e.idEvento = p.idEvento 
-  WHERE p.idAluno = '$idAluno'
+  WHERE p.ra = '$ra'
 )
 ";
 
@@ -44,21 +44,12 @@ $eventos = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     <td><?= date('H:i', strtotime($evento['horarioInicio'])) ?></td>
                     <td><?= date('H:i', strtotime($evento['horarioTermino'])) ?></td>
                     <td></td>
-                    <td>
+
 
                     <td>
                         <form action="../Controllers/controllerPresenca.php" method="POST">
                             <input type="hidden" name="idEvento" value="<?= $evento['idEvento'] ?>">
-                            <input type="hidden" name="idAluno" value="<?= $_SESSION['idAluno'] ?>">
-
-                            <button class="btn btn-danger" type="submit">Inscrever</button>
-                            <input type="hidden" name="tiporeq_presenca" value="Inscrever">
-                        </form>
-                    </td>
-                    <td>
-                        <form action="../Controllers/controllerPresenca.php" method="POST">
-                            <input type="hidden" name="idEvento" value="<?= $evento['idEvento'] ?>">
-                            <input type="hidden" name="idAluno" value="<?= $_SESSION['idAluno'] ?>">
+                            <input type="hidden" name="ra" value="<?= $_SESSION['ra'] ?>">
 
                             <label for="codigoAluno">Código para registrar presença:</label>
 
@@ -69,10 +60,11 @@ $eventos = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             <input type="hidden" name="tiporeq_presenca" value="Confirmar">
                         </form>
                     </td>
+
                     <td>
-                        <form action="../Controllers/controllerPresenca.php" method="POST">
+                        <form action="../Controllers/controllerPresenca.php" method="POST" onsubmit="return pedirConfirmacao();">
                             <input type="hidden" name="idEvento" value="<?= $evento['idEvento'] ?>">
-                            <input type="hidden" name="idAluno" value="<?= $_SESSION['idAluno'] ?>">
+                            <input type="hidden" name="ra" value="<?= $_SESSION['ra'] ?>">
 
                             <input type="submit" class="codigo_submit btn btn-dark" value="Desinscrever">
 
@@ -80,6 +72,7 @@ $eventos = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
                         </form>
                     </td>
+
                 </tr>
             <?php endforeach; ?>
         </tbody>

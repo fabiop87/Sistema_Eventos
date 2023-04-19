@@ -6,7 +6,7 @@ session_start();
 // require_once('./libs/DadosAlunoouCoord.php');
 
 
-if (!isset($_SESSION) || !isset($_SESSION['idAluno'])) {
+if (!isset($_SESSION) || !isset($_SESSION['ra'])) {
     die('faz o login mano');
 }
 
@@ -14,7 +14,7 @@ if (!isset($_SESSION) || !isset($_SESSION['idAluno'])) {
 require_once('./Funcoes/Aluno.php');
 $Aluno = new Aluno();
 
-$idAluno = $_SESSION['idAluno'];
+$ra = $_SESSION['ra'];
 
 ?>
 

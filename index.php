@@ -12,7 +12,7 @@ if(isset($_GET['erro']) && $_GET['erro'] == "url") {
 
 // var_dump($_SESSION);
 
-// if(isset($_SESSION['idAluno'])){
+// if(isset($_SESSION['ra'])){
 //     header('Location: ./HomeAluno.php');
 // }elseif(isset($_SESSION['idCoordenador'])){
 //     header('Location: ./HomeCoordenador.php');

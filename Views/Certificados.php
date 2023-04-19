@@ -4,15 +4,15 @@ session_start();
 if (!isset($_SESSION) && !$_SESSION['online']) {
     die('nao tem permissao pra entrar aqui');
 }
-var_dump($_SESSION);
+
 require_once('../Funcoes/Presenca.php');
 
 $Presenca = new Presenca();
 
 
-$idAluno = $_SESSION['idAluno'] ?? '';
+$ra = $_SESSION['ra'] ?? '';
 
-$sql = "SELECT p.*, e.* FROM presenca p INNER JOIN eventos e ON p.idEvento = e.idEvento AND p.codigoAluno = e.codigoCoord WHERE idAluno = '$idAluno'";
+$sql = "SELECT p.*, e.* FROM presenca p INNER JOIN eventos e ON p.idEvento = e.idEvento AND p.codigoAluno = e.codigoCoord WHERE ra = '$ra'";
 $resultado = $Presenca->pdo->query($sql);
 $eventos = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
@@ -59,7 +59,7 @@ $eventos = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     <td></td>
                     <td>
                         <?php
-                        if ($Presenca->verificarInscricao($evento['idEvento'], $idAluno) && $Presenca->validarCertificado($evento['idEvento'], $idAluno)) {
+                        if ($Presenca->verificarInscricao($evento['idEvento'], $ra) && $Presenca->validarCertificado($evento['idEvento'], $ra)) {
                         ?>
                             <form action="../gerarCertificado.php" method="POST">
                                 <input type="hidden" name="idEvento" value="<?= $evento['idEvento']; ?>">

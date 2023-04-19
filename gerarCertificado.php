@@ -10,7 +10,7 @@ if (!isset($_SESSION) || !$_SESSION['online']) {
     die('nao tem permissao pra entrar aqui');
 }
 
-$idAluno = $_SESSION['idAluno'];
+$ra = $_SESSION['ra'];
 
 
 
@@ -18,7 +18,7 @@ require_once('./Funcoes/Presenca.php');
 // require_once('../Funcoes/Aluno.php');
 $Presenca = new Presenca();
 
-$sql = "SELECT a.nome, c.nomeCurso, a.ra FROM alunos a INNER JOIN cursos c WHERE a.idAluno = $idAluno AND c.idCurso = a.idCurso ";
+$sql = "SELECT a.nome, c.nomeCurso, a.ra FROM alunos a INNER JOIN cursos c WHERE a.ra = $ra AND c.idCurso = a.idCurso ";
 $resultado = $Presenca->pdo->query($sql);
 $dadosAluno = $resultado->fetch(PDO::FETCH_ASSOC);
 

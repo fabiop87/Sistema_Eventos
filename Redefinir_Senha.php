@@ -7,8 +7,9 @@ if (!isset($_SESSION["online"]) || $_SESSION["online"] !== true) {
     die('ué');
 }
 
+var_dump($_SESSION);
 
-if (isset($_SESSION['idAluno'])) {
+if (isset($_SESSION['ra'])) {
     $tipo_usuario = 'aluno';
 }
 
@@ -49,12 +50,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Prepare uma declaração de atualização
 
         if ($tipo_usuario == 'aluno') {
-
-            $sql = "UPDATE aluno SET senha = :senha WHERE idAluno = :idAluno";
-            $id = $_SESSION['idAluno'];
+            $id = $_SESSION['ra'];
+            $sql = "UPDATE alunos SET senha = :senha WHERE ra = :id";
         } elseif ($tipo_usuario == 'coordenador') {
-            $sql = "UPDATE aluno SET senha = :senha WHERE idAluno = :idAluno";
             $id = $_SESSION['idCoordenador'];
+            $sql = "UPDATE coordenadores SET senha = :senha WHERE idCoordenador = :id";
         } else {
             die('ué');
         }
@@ -64,14 +64,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $stmt = $conn->pdo->prepare($sql);
 
-
         $stmt->bindParam(':id', $id);
         $stmt->bindParam(':senha', $senhaCriptografada);
+        var_dump($stmt);
         // Executa a query passando os parâmetros
         if ($stmt->execute()) {
             // Senha atualizada com sucesso. Destrua a sessão e redirecione para a página de login
             session_destroy();
-            header("location: login.php");
+            header("location: index.php");
             exit();
         } else {
             echo "ae deu merda";
@@ -83,6 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -90,16 +91,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Document</title>
     <link rel="stylesheet" href="./assets/bootstrap.min.css">
 </head>
+
 <body>
 
-<h2>Redefinir senha</h2>
+    <h2>Redefinir senha</h2>
 
 
-<div class="container">
+    <div class="container">
         <div class="row justify-content-center">
             <div class="col-6 mt-5">
 
-                <form action="./Controllers/controllerAluno.php" method="POST" autocomplete="off"> <!--  action  -->
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" autocomplete="off"> <!--  action  -->
 
                     <fieldset>
 
@@ -108,7 +110,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <input type="password" name="novaSenha" id="novaSenha" required class="form-control" placeholder="******">
                         </div>
                         <div class="form-group">
-                            <label for="confirmaSenha" class="form-label">Senha:</label>
+                            <label for="confirmaSenha" class="form-label">Confirme a nova senha:</label>
                             <input type="password" name="confirmaSenha" id="confirmaSenha" required class="form-control" placeholder="******">
                         </div>
 
@@ -130,7 +132,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-<script src="../assets/validacoes.js"></script>
+    <script src="../assets/validacoes.js"></script>
     <script src="../assets/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

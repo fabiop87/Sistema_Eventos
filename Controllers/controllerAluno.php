@@ -49,7 +49,7 @@ switch ($tiporeq) {
       $mensagem = 'Aluno-logado-com-sucesso!';
       session_start();
       $_SESSION['online'] = true;
-      $_SESSION['idAluno'] = $aluno['idAluno'];
+      $_SESSION['ra'] = $aluno['ra'];
       header('Location:/HomeAluno.php?message='. $mensagem);
       //var_dump($_SESSION);
       ///  verificar isso

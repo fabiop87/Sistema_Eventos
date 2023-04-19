@@ -27,9 +27,9 @@ class Aluno extends conexao
     public function getAluno()
     {
         // Prepara o SQL para buscar todos os eventos
-        $sql = "SELECT * FROM alunos WHERE idAluno = :idAluno";
+        $sql = "SELECT * FROM alunos WHERE ra = :ra";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':idAluno', $_SESSION['idAluno'], PDO::PARAM_STR);
+        $stmt->bindParam(':ra', $_SESSION['ra'], PDO::PARAM_STR);
         // Executa a query
         $stmt->execute();
 
@@ -76,13 +76,13 @@ class Aluno extends conexao
 
 
     // Função para atualizar o curso do aluno
-    public function atualizarCursoAluno($idAluno, $idCurso): bool
+    public function atualizarCursoAluno($ra, $idCurso): bool
     {
         // Prepara o SQL para atualizar o curso do aluno
-        $sql = "UPDATE alunos SET idCurso = :idCurso WHERE idAluno = :idAluno";
+        $sql = "UPDATE alunos SET idCurso = :idCurso WHERE ra = :ra";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':idCurso', $idCurso);
-        $stmt->bindParam(':idAluno', $idAluno);
+        $stmt->bindParam(':ra', $ra);
         // Executa a query passando os parâmetros
         $stmt->execute();
 
@@ -91,12 +91,12 @@ class Aluno extends conexao
     }
 
 
-    public function excluirAluno($idAluno): bool
+    public function excluirAluno($ra): bool
     {
         // Prepara o SQL para excluir o aluno pelo ID
-        $sql = "DELETE FROM alunos WHERE idAluno = :idAluno";
+        $sql = "DELETE FROM alunos WHERE ra = :ra";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':idAluno', $idAluno, PDO::PARAM_INT);
+        $stmt->bindParam(':ra', $ra, PDO::PARAM_INT);
         // Executa a query passando os parâmetros
         return $stmt->execute();
     }

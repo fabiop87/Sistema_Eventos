@@ -6,14 +6,14 @@ class Presenca extends conexao
 
 
 
-    public function inscrever($idEvento, $idAluno)
+    public function inscrever($idEvento, $ra)
 {
 
 
-    $sql ="INSERT INTO presenca(idEvento, idAluno) VALUES (:idEvento, :idAluno)";
+    $sql ="INSERT INTO presenca(idEvento, ra) VALUES (:idEvento, :ra)";
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindParam(':idEvento', $idEvento, PDO::PARAM_INT);
-    $stmt->bindParam(':idAluno', $idAluno, PDO::PARAM_INT);
+    $stmt->bindParam(':ra', $ra, PDO::PARAM_STR);
 
     if ($stmt->execute()) {
         header('Location: ../HomeAluno.php');
@@ -22,13 +22,13 @@ class Presenca extends conexao
     }
 }
 
-public function verificarInscricao($idEvento, $idAluno)
+public function verificarInscricao($idEvento, $ra)
 {
 
-    $sql = "SELECT * FROM presenca WHERE idEvento = :idEvento AND idAluno = :idAluno";
+    $sql = "SELECT * FROM presenca WHERE idEvento = :idEvento AND ra = :ra";
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindParam(':idEvento', $idEvento, PDO::PARAM_INT);
-    $stmt->bindParam(':idAluno', $idAluno, PDO::PARAM_INT);
+    $stmt->bindParam(':ra', $ra, PDO::PARAM_STR);
     $stmt->execute();
     $verificacao = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -42,18 +42,18 @@ public function verificarInscricao($idEvento, $idAluno)
     }
 }
 
-public function validarCertificado($idEvento, $idAluno)
+public function validarCertificado($idEvento, $ra)
 {
 
 
     $sql = "SELECT e.*, p.*
     FROM eventos e
     INNER JOIN presenca p ON p.idEvento = e.idEvento
-    WHERE p.idEvento = :idEvento AND p.idAluno = :idAluno AND p.codigoAluno = e.codigoCoord;";
+    WHERE p.idEvento = :idEvento AND p.ra = :ra AND p.codigoAluno = e.codigoCoord;";
 
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindParam(':idEvento', $idEvento, PDO::PARAM_INT);
-    $stmt->bindParam(':idAluno', $idAluno, PDO::PARAM_INT);
+    $stmt->bindParam(':ra', $ra, PDO::PARAM_STR);
     $stmt->execute();
 
 
@@ -61,18 +61,18 @@ public function validarCertificado($idEvento, $idAluno)
     
 }
 
-public function confirmarPresenca($idEvento, $idAluno, $codigoAluno)
+public function confirmarPresenca($idEvento, $ra, $codigoAluno)
 {
 
     //verificar quantidade de tentativas
     // pegar update 
     $limiteTentativas = 3;
     
-    $sql = "UPDATE presenca SET codigoAluno = :codigoAluno, qtdTentativas = qtdTentativas + 1 WHERE idEvento = :idEvento AND idAluno = :idAluno  AND qtdTentativas <= '$limiteTentativas'";
+    $sql = "UPDATE presenca SET codigoAluno = :codigoAluno, qtdTentativas = qtdTentativas + 1 WHERE idEvento = :idEvento AND ra = :ra  AND qtdTentativas <= '$limiteTentativas'";
 
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindParam(':idEvento', $idEvento, PDO::PARAM_INT);
-    $stmt->bindParam(':idAluno', $idAluno, PDO::PARAM_INT);
+    $stmt->bindParam(':ra', $ra, PDO::PARAM_STR);
     $stmt->bindParam(':codigoAluno', $codigoAluno, PDO::PARAM_STR);
     $stmt->execute();
 
@@ -83,64 +83,15 @@ public function confirmarPresenca($idEvento, $idAluno, $codigoAluno)
 
 
 
-function desinscrever($idEvento, $idAluno)
+function desinscrever($idEvento, $ra)
 {
 
 
-    $sql = "DELETE FROM presenca WHERE idEvento = :idEvento AND idAluno = :idAluno";
+    $sql = "DELETE FROM presenca WHERE idEvento = :idEvento AND ra = :ra";
     $stmt = $this->pdo->prepare($sql);
     $stmt->bindParam(':idEvento', $idEvento, PDO::PARAM_INT);
-    $stmt->bindParam(':idAluno', $idAluno, PDO::PARAM_INT);
+    $stmt->bindParam(':ra', $ra, PDO::PARAM_STR);
     return $stmt->execute();
 }
 
 }
-/* 
-update
-UPDATE presenca SET qtdTentativas = 1 WHERE idEvento = 1 AND idAluno = 2;
-UPDATE presenca
-SET qtdTentativas = qtdTentativas + 1
-WHERE idEvento = valor_idEvento AND idAluno = valor_idAluno;
-(fazer um if qtd tentativas >= 3 nao pode mais)
-
-confirmar presenca
-
-SELECT e.*, p.*
-FROM eventos e
-INNER JOIN presenca p ON p.idEvento = e.idEvento
-WHERE p.idEvento = 1 AND p.idAluno = 2 AND p.codigoAluno = e.codigoCoord;
-
-
-
-insert 
-
-INSERT INTO presenca (idEvento, idAluno, codigoAluno) VALUES (1, 2, 'CODIGO_ALUNO');
-
-INSERT INTO presenca (idEvento, idAluno, codigoAluno)
-VALUES (valor_idEvento, valor_idAluno, valor_codigoAluno);
-
-
-
-read
-SELECT * FROM presenca;
-SELECT e.nomeEvento, e.local, e.dataEvento, e.horarioInicio, e.horarioTermino, p.codigoAluno, p.qtdTentativas
-FROM presenca p
-INNER JOIN eventos e ON p.idEvento = e.idEvento
-WHERE p.codigoAluno = e.codigoCoord;
-
-
-
-
-delete
-DELETE FROM presenca WHERE idEvento = 1 AND idAluno = 2;
-DELETE FROM presenca
-WHERE idEvento = valor_idEvento AND idAluno = valor_idAluno;
-
-
-
-
-
-
-
-
-*/

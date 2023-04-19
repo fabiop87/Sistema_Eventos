@@ -16,15 +16,10 @@ $tiporeq = $_POST['LoginouRegister'];
 switch ($tiporeq) {
   case 'Register':
 
-    if(!isset($_POST['cdcod']) || $_POST['cdcod'] != 'bananinha'){
-      die('aluno nao pode criar conta pra fazer caquinha');
-    }  
-
     // Confirmar se as senhas batem
     if ($_POST['senha'] != $_POST['confirm_senha']) {
       echo 'As senhas devem coincidir';
     }
-
 
     if (!$Coordenador->verificarCoordenadorExistente($_POST['nome'])) {
       $novoCoordenador = $Coordenador->cadastrarCoordenador($_POST['nome'], $_POST['idCurso'], $_POST['senha']);

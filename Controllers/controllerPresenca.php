@@ -17,28 +17,28 @@ $Presenca = new Presenca();
 
 switch ($_POST['tiporeq_presenca']) {
     case 'Inscrever':
-        if(!$Presenca->verificarInscricao($_POST['idEvento'], $_POST['idAluno'])){
-            $Presenca->inscrever($_POST['idEvento'], $_POST['idAluno']);
+        if(!$Presenca->verificarInscricao($_POST['idEvento'], $_POST['ra'])){
+            $Presenca->inscrever($_POST['idEvento'], $_POST['ra']);
         } else {
             $mensagem = 'ja-está-inscrito';  
         }
         break;
         case 'Confirmar':
-        if($Presenca->validarCertificado($_POST['idEvento'], $_POST['idAluno'])){
+        if($Presenca->validarCertificado($_POST['idEvento'], $_POST['ra'])){
                 $mensagem = "você ja tem acesso ao certificado";
         }
-        if($Presenca->verificarInscricao($_POST['idEvento'], $_POST['idAluno'])){
-            $Presenca->confirmarPresenca($_POST['idEvento'], $_POST['idAluno'], $_POST['codigoAluno']);
+        if($Presenca->verificarInscricao($_POST['idEvento'], $_POST['ra'])){
+            $Presenca->confirmarPresenca($_POST['idEvento'], $_POST['ra'], $_POST['codigoAluno']);
             $mensagem = 'código-enviado';
         }
         break;
     case 'Certificado':
-        if($Presenca->validarCertificado($_POST['idEvento'], $_POST['idAluno'])){
+        if($Presenca->validarCertificado($_POST['idEvento'], $_POST['ra'])){
             echo 'validado';
         }
         break;
     case 'Desinscrever':
-        $Presenca->desinscrever($_POST['idEvento'], $_POST['idAluno']);
+        $Presenca->desinscrever($_POST['idEvento'], $_POST['ra']);
         $mensagem = 'desinscrito';
         break;
     default:
