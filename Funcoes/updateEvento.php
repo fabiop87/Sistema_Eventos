@@ -3,8 +3,7 @@
 session_start();
 
 
-var_dump($_POST);
-var_dump($_SESSION);
+
 require_once('../Funcoes/Coordenador.php');
 $Coordenador = new Coordenador();
 
@@ -22,17 +21,9 @@ $sql = "SELECT * FROM eventos WHERE idEvento = $idEvento";
 $resultado = $Coordenador->pdo->prepare($sql);
 $resultado->execute();
 $evento = $resultado->fetch(PDO::FETCH_ASSOC);
-echo '<pre>';
-print_r($evento);
 
 
-// $nomeEvento = $evento['idEvento'] ?? null;
-// $descricao = $_POST['descricao'] ?? null;
-// $local = $_POST['local'] ?? null;
-// $dataEvento = $_POST['dataEvento'] ?? null;
-// $horarioInicio = $_POST['horarioInicio'] ?? null;
-// $horarioTermino = $_POST['horarioTermino'] ?? null;
-// $codigoCoord = $_POST['codigoCoord'] ?? null;
+
 
 
 ?>

@@ -5,7 +5,7 @@ if (isset($_GET['search']) && $_GET['search'] != '') {
   $pesquisa = ($_GET['search']);
   $sql = "SELECT * FROM eventos WHERE nomeEvento LIKE '%$pesquisa%'";
 } else {
-  $sql = "SELECT * FROM eventos ORDER BY created_at DESC LIMIT 10";
+  $sql = "SELECT * FROM eventos ORDER BY dataEvento DESC LIMIT 10";
 }
 
 $resultado = $Coordenador->pdo->prepare($sql);
@@ -25,7 +25,7 @@ $eventos = $resultado->fetchAll(PDO::FETCH_ASSOC);
       <tr>
         <th>Numero</th>
         <th>Nome</th>
-        <th>Descricao</th>
+        <!-- <th>Descricao</th> -->
         <th>Local</th>
         <th>Data</th>
         <th>Início</th>
@@ -38,7 +38,7 @@ $eventos = $resultado->fetchAll(PDO::FETCH_ASSOC);
         <tr>
           <td><?= $evento['idEvento'] ?></td>
           <td><?= $evento['nomeEvento'] ?></td>
-          <td><?= $evento['descricao'] ?></td>
+          <!-- descricao -->
           <td><?= $evento['local'] ?></td>
           <td><?= date('d/m/Y', strtotime($evento['dataEvento'])) ?></td>
           <td><?= date('H:i', strtotime($evento['horarioInicio'])) ?></td>

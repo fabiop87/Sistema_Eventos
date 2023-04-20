@@ -29,6 +29,7 @@ $eventos = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 <p>Local: <?= $evento['local'] ?> </p>
                 <a href="./Views/Evento.php?id=<?= $evento['idEvento'] ?>" class="btn btn-primary">Saber mais</a>
             </div>
+            
             <form action="../Controllers/controllerPresenca.php" method="POST" autocomplete="off">
                 <input type="hidden" name="idEvento" value="<?= $evento['idEvento'] ?>">
                 <input type="hidden" name="ra" value="<?= $_SESSION['ra'] ?>">

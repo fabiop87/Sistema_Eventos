@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-var_dump($_GET);
+
 
 $idEvento = $_GET['id'];
 $ra = $_SESSION['ra'];
@@ -47,16 +47,51 @@ $evento = $resultado->fetch(PDO::FETCH_ASSOC);
         <p>Horario de Inicio: <?= date('H:i', strtotime($evento['horarioInicio'])) ?></p>
         <p>Horario de Término: <?= date('H:i', strtotime($evento['horarioTermino'])) ?></p>
 
-        <?php if (!$Presenca->verificarInscricao($evento['idEvento'], $ra)) { ?>
-            <form action="../Controllers/controllerPresenca.php" method="POST">
-                <input type="hidden" name="idEvento" value="<?= $evento['idEvento'] ?>">
-                <input type="hidden" name="ra" value="<?= $_SESSION['ra'] ?>">
+        <div class="container text-center">
+            <div class="row-gap-4">
+                <div class="col-12 p-2">
+                    <?php if (!$Presenca->verificarInscricao($evento['idEvento'], $ra)) { ?>
+                        <form action="../Controllers/controllerPresenca.php" method="POST">
+                            <input type="hidden" name="idEvento" value="<?= $evento['idEvento'] ?>">
+                            <input type="hidden" name="ra" value="<?= $_SESSION['ra'] ?>">
 
-                <button class="btn btn-danger" type="submit">Inscrever</button>
-                <input type="hidden" name="tiporeq_presenca" value="Inscrever">
-            </form>
+                            <button class="btn btn-danger" type="submit">Inscrever</button>
+                            <input type="hidden" name="tiporeq_presenca" value="Inscrever">
+                        </form>
 
-        <?php } ?>
+                    <?php } ?>
+                </div>
+                <div class="col-12 p-4">
+                    <?php if ($Presenca->verificarInscricao($evento['idEvento'], $ra)) { ?>
+
+                        <form action="../Controllers/controllerPresenca.php" method="POST" autocomplete="off">
+                            <input type="hidden" name="idEvento" value="<?= $evento['idEvento'] ?>">
+                            <input type="hidden" name="ra" value="<?= $_SESSION['ra'] ?>">
+                            <label for="codigoAluno">Código para registrar presença:</label>
+                            <input type="text" name="codigoAluno" class="codigoAluno" maxlength="8" id="codigoAluno-<?= $evento['idEvento'] ?>">
+                            <input type="submit" class="codigo_submit btn btn-secondary" value="Enviar">
+                            <input type="hidden" name="tiporeq_presenca" value="Confirmar">
+                        </form>
+                </div>
+                <div class="col-12 p-4">
+                    <form action="../Controllers/controllerPresenca.php" method="POST" onsubmit="return pedirConfirmacao();">
+                        <input type="hidden" name="idEvento" value="<?= $evento['idEvento'] ?>">
+                        <input type="hidden" name="ra" value="<?= $_SESSION['ra'] ?>">
+                        <input type="submit" class="codigo_submit btn btn-dark" value="Desinscrever">
+                        <input type="hidden" name="tiporeq_presenca" value="Desinscrever">
+                    </form>
+                </div>
+            <?php } ?>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
 
     </div>
 
