@@ -30,7 +30,7 @@ $eventos = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 <a href="./Views/Evento.php?id=<?= $evento['idEvento'] ?>" class="btn btn-primary">Saber mais</a>
             </div>
             
-            <form action="../Controllers/controllerPresenca.php" method="POST" autocomplete="off">
+            <!-- <form action="../Controllers/controllerPresenca.php" method="POST" autocomplete="off">
                 <input type="hidden" name="idEvento" value="<?= $evento['idEvento'] ?>">
                 <input type="hidden" name="ra" value="<?= $_SESSION['ra'] ?>">
                 <label for="codigoAluno">Código para registrar presença:</label>
@@ -45,7 +45,7 @@ $eventos = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 <input type="hidden" name="ra" value="<?= $_SESSION['ra'] ?>">
                 <input type="submit" class="codigo_submit btn btn-dark" value="Desinscrever">
                 <input type="hidden" name="tiporeq_presenca" value="Desinscrever">
-            </form>
+            </form> -->
         </div>
     <?php endforeach; ?>
 </div>

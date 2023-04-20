@@ -30,7 +30,7 @@ $Coordenador = new Coordenador();
 </head>
 
 <body>
-    <h1>HOME Coordenador</h1>
+    <h1 class="text-center">Pagina Inicial Coordenador</h1>
 
 
     <div class="d-flex flex-row-reverse mb-4">
@@ -41,7 +41,7 @@ $Coordenador = new Coordenador();
             <a class="btn btn-outline-info" href="./Redefinir_Senha.php">Trocar senha</a>
         </div>
     </div>
-</div>
+
 
     <nav class="nav justify-content-end">
         <a class="nav-link-active" aria-current="page" href="#">Pagina do Coordenador</a>
