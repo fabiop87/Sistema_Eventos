@@ -12,7 +12,7 @@ function validarFormulario() {
   let erro = false;
   const regexRa = /^\d{7}$/;
   const regexSenha = /.{6,}/;
-
+  
   if (!regexRa.test(ra.value)) {
     texto.textContent = 'O RA deve ter 7 dígitos';
     erro = true;
@@ -22,17 +22,17 @@ function validarFormulario() {
     texto.textContent = 'O nome deve ter no mínimo 3 caracteres';
     erro = true;
   }
-
+  
   if (!regexSenha.test(senha.value)) {
     texto.textContent = 'A senha deve ter pelo menos 6 caracteres';
     erro = true;
   }
-
+  
   if (senha.value !== confirmSenha.value) {
     texto.textContent = 'As senhas não coincidem';
     erro = true;
   }
-
+  
   return !erro;
 }
 
@@ -42,24 +42,42 @@ form.addEventListener('submit', (event) => {
   }
 });
 
+function validarNumeros(event) {
+    const tecla = event.key;
+    const permiteNumeros = (tecla >= '0' && tecla <= '9');
+    if (!permiteNumeros) {
+      event.preventDefault();
+    }
+  }
+
+  
+// function stringAleatoria() {
+//   let a = 0;
+//   let b = 8;
+//   let strings = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+//   let randomString = Array.from({ length: b }, () => strings[Math.floor(Math.random() * strings.length)]).join('').substring(a);
+//   var campo = document.getElementById('codigoCoord');
+//   campo.value = randomString;
+// }
+
 // form.addEventListener('submit', (event) => {
-//   if (!validarRa(ra.value)) {
-//     texto.textContent = 'RA inválido. Deve conter exatamente 7 números.';
-//     event.preventDefault();
-//   } else if (nome.value.trim() === '') {
-//     texto.textContent = 'O campo nome não pode estar vazio.';
-//     event.preventDefault();
-//   } else if (!validarSenha(senha.value)) {
-//     texto.textContent = 'Senha inválida. Deve conter no mínimo 6 caracteres, 1 número e 1 caractere especial.';
-//     event.preventDefault();
-//   } else if (senha.value !== confirmSenha.value) {
-//     texto.textContent = 'As senhas não coincidem.';
-//     event.preventDefault();
-//   } else if (curso.value === '') {
-//     texto.textContent = 'Por favor, selecione um curso.';
-//     event.preventDefault();
-//   } else {
-//     // todos os campos foram validados com sucesso, então você pode enviar o formulário
+  //   if (!validarRa(ra.value)) {
+    //     texto.textContent = 'RA inválido. Deve conter exatamente 7 números.';
+    //     event.preventDefault();
+    //   } else if (nome.value.trim() === '') {
+      //     texto.textContent = 'O campo nome não pode estar vazio.';
+      //     event.preventDefault();
+      //   } else if (!validarSenha(senha.value)) {
+        //     texto.textContent = 'Senha inválida. Deve conter no mínimo 6 caracteres, 1 número e 1 caractere especial.';
+        //     event.preventDefault();
+        //   } else if (senha.value !== confirmSenha.value) {
+          //     texto.textContent = 'As senhas não coincidem.';
+          //     event.preventDefault();
+          //   } else if (curso.value === '') {
+            //     texto.textContent = 'Por favor, selecione um curso.';
+            //     event.preventDefault();
+            //   } else {
+              //     // todos os campos foram validados com sucesso, então você pode enviar o formulário
 //   }
 // });
 
@@ -95,20 +113,3 @@ form.addEventListener('submit', (event) => {
 //   return senhaPattern.test(senha);
 // }
 
-
-function stringAleatoria() {
-  let a = 0;
-  let b = 8;
-  let strings = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  let randomString = Array.from({ length: b }, () => strings[Math.floor(Math.random() * strings.length)]).join('').substring(a);
-  var campo = document.getElementById('codigoCoord');
-  campo.value = randomString;
-}
-
-function validarNumeros(event) {
-    const tecla = event.key;
-    const permiteNumeros = (tecla >= '0' && tecla <= '9');
-    if (!permiteNumeros) {
-      event.preventDefault();
-    }
-  }

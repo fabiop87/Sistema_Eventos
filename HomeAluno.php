@@ -2,15 +2,17 @@
 
 
 session_start();
-// require_once('./libs/conexao.php');
-// require_once('./libs/DadosAlunoouCoord.php');
 
 
-if (!isset($_SESSION) || !isset($_SESSION['ra'])) {
+if (!isset($_SESSION) && !isset($_SESSION['ra'])) {
     die('faz o login mano');
 }
 
+if (isset($_SESSION['idCoordenador'])) {
+    die('calma lá que nao era pra acontecer isso, faz o logout ai');
+}
 
+$ano = date('Y');
 require_once('./Funcoes/Aluno.php');
 $Aluno = new Aluno();
 
@@ -61,6 +63,7 @@ $ra = $_SESSION['ra'];
     <h2>Eventos Inscritos</h2>
     <?php include_once('./Views/EventosInscritos.php') ?>
 
+    <footer class="footer text-center fixed-bottom">Einstein Limeira <?= $ano ?></footer>
 
     <script src="../assets/funcoes.js"></script>
     <script src="./assets/bootstrap.bundle.min.js"></script>

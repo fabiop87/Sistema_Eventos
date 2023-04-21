@@ -4,8 +4,8 @@ class conexao
 {
     protected $_host = 'localhost';
     protected $_bd = 'eventosfaculdade';
-    protected $_user = 'fabio';
-    protected $_pass = 'sapato';
+    protected $_user = 'Josney';
+    protected $_pass = 'sapatosalsicha';
     public $pdo;
     public function __construct()
     {

@@ -74,9 +74,9 @@ $cursos = $stmt->fetchAll();
 
                     </fieldset>
                 </form>
-                <a class="btn btn-secondary btn-sm" href="index.php">Voltar ao Login</a>
             </div>
         </div>
+        <a class="btn btn-secondary btn-sm p-2" href="index.php">Voltar ao Login</a>
     </div>
     <script src="./assets/validacoescoord.js"></script>
     <script src="./assets/bootstrap.bundle.min.js"></script>

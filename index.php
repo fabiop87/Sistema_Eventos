@@ -96,10 +96,13 @@ if(isset($_GET['erro']) && $_GET['erro'] == "url") {
         </div>
     </div>
 
+    <div class="row-gap-4 p-4">
+        <a class="btn btn-secondary btn-sm" href="CadastroAluno.php">Novo Aluno</a>
+        <a class="btn btn-secondary btn-sm" href="CadastroCoord.php">Novo Coordenador</a>
 
-    <a class="btn btn-secondary btn-sm" href="CadastroAluno.php">Novo Aluno</a>
-    <a class="btn btn-secondary btn-sm" href="CadastroCoord.php">Novo Coordenador</a>
+    </div>
     <a href="../libs/logout.php"><button class="btn btn-outline-danger">Sair da conta</button></a>
+    </div>
     <script src="./assets/validacoesaluno.js"></script>
     <script src="./assets/bootstrap.bundle.min.js"></script>
 </body>

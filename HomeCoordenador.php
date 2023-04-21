@@ -4,13 +4,15 @@
 session_start();
 
 
-
-if (!isset($_SESSION) || !isset($_SESSION['idCoordenador'])) {
+if (!isset($_SESSION) && !isset($_SESSION['idCoordenador'])) {
     die();
 }
 
+if (isset($_SESSION['idAluno'])) {
+    die('calma lá que nao era pra acontecer isso, faz o logout ai');
+}
 
-
+$ano = date('Y');
 require_once('./Funcoes/Coordenador.php');
 $Coordenador = new Coordenador();
 
@@ -58,6 +60,7 @@ $Coordenador = new Coordenador();
     ?>
 
 
+    <footer class="footer text-center fixed-bottom">Einstein Limeira <?= $ano ?></footer>
 
     <script src="../assets/funcoes.js"></script>
     <script src="../assets/bootstrap.bundle.min.js"></script>

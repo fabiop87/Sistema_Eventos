@@ -24,7 +24,8 @@ switch ($tiporeq) {
     if (!$Coordenador->verificarCoordenadorExistente($_POST['nome'])) {
       $novoCoordenador = $Coordenador->cadastrarCoordenador($_POST['nome'], $_POST['idCurso'], $_POST['senha']);
     } else {
-      echo 'Este coordenador já está cadastrado';
+      $mensagem = 'Este coordenador já está cadastrado';
+      header('Location:/CadastroCoord.php?message='. $mensagem);
     }
 
     // Verifica se o cadastro foi bem sucedido
