@@ -50,9 +50,9 @@ switch ($tiporeq) {
       session_start();
       $_SESSION['online'] = true;
       $_SESSION['ra'] = $aluno['ra'];
+      $_SESSION['nome'] = $aluno['nome'];
       header('Location:/HomeAluno.php?message='. $mensagem);
-      //var_dump($_SESSION);
-      ///  verificar isso
+
     } else {
       // Define uma mensagem de erro para ser exibida na página
       $mensagem = 'Ocorreu-um-erro-ao-fazer-login.';

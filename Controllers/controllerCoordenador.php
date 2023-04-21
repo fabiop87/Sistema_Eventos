@@ -51,6 +51,7 @@ switch ($tiporeq) {
       session_start();
       $_SESSION['online'] = true;
       $_SESSION['idCoordenador'] = $coordenador['idCoordenador'];
+      $_SESSION['nome'] = $coordenador['nome'];
       header('Location:/HomeCoordenador.php?message='. $mensagem);
       //var_dump($_SESSION);
  

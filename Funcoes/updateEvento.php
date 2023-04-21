@@ -57,7 +57,7 @@ $evento = $resultado->fetch(PDO::FETCH_ASSOC);
 
                         <div class="form-group">
                             <label for="descricao" class="form-label">Descrição:</label>
-                            <textarea name="descricao" id="descricao" cols="40" rows="8"></textarea value="<?= $evento['descricao'] ?>">
+                            <textarea class="form-control" name="descricao" id="descricao" cols="40" rows="8"></textarea value="<?= $evento['descricao'] ?>">
                         </div>
 
                         <div class="form-group">
@@ -88,7 +88,7 @@ $evento = $resultado->fetch(PDO::FETCH_ASSOC);
                         <input type="hidden" name="idEvento" value="<?= $idEvento?>">
                         <input type="hidden" name="tiporeq_evt" value="Update">
 
-                        <input type="submit" value="Salvar Alterações" class="btn btn-primary">
+                        <input type="submit" value="Salvar Alterações" class="btn btn-primary mt-3">
 
 
 
@@ -102,7 +102,7 @@ $evento = $resultado->fetch(PDO::FETCH_ASSOC);
         </div>
     </div>
     <div>
-        <a class="link-primary" href="../HomeCoordenador.php">Voltar</a>
+        <a class="btn btn-secondary btn-sm" href="../HomeCoordenador.php">Voltar</a>
     </div>
 
 

@@ -36,7 +36,7 @@ if (!isset($_SESSION) && !$_SESSION['idCoordenador']) {
 
             <div class="form-group">
               <label for="descricao" class="form-label">Descrição:</label>
-              <textarea name="descricao" id="descricao" cols="40" rows="8"></textarea>
+              <textarea class="form-control" name="descricao" id="descricao" cols="40" rows="8"></textarea>
             </div>
 
             <div class="form-group">
@@ -67,7 +67,7 @@ if (!isset($_SESSION) && !$_SESSION['idCoordenador']) {
 
             <input type="hidden" name="tiporeq_evt" value="Register">
 
-            <input type="submit" value="Enviar" class="btn btn-primary">
+            <input type="submit" value="Enviar" class="btn btn-primary mt-3">
 
           </fieldset>
 

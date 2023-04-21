@@ -16,6 +16,8 @@ $ano = date('Y');
 require_once('./Funcoes/Coordenador.php');
 $Coordenador = new Coordenador();
 
+$nome = $_SESSION['nome'];
+
 
 ?>
 
@@ -34,6 +36,7 @@ $Coordenador = new Coordenador();
 <body>
     <h1 class="text-center">Pagina Inicial Coordenador</h1>
 
+    <p> Olá <?= $nome ?></p>
 
     <div class="d-flex flex-row-reverse mb-4">
         <div class="p-2">
