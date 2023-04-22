@@ -20,17 +20,17 @@ class Coordenador extends conexao
         return $stmt->execute();
     }
 
-    // Função para buscar os dados do aluno
+    // Função para buscar os dados do coordenador
     public function getCoordenador()
     {
-        // Prepara o SQL para buscar todos os eventos
+        
         $sql = "SELECT * FROM coordenadores WHERE idCoordenador = :idCoordenador";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':idCoordenador', $_SESSION['idCoordenador'], PDO::PARAM_STR);
         // Executa a query
         $stmt->execute();
 
-        // Retorna um array com todos os eventos
+        
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
@@ -69,6 +69,17 @@ class Coordenador extends conexao
     }
 
 
+    // Função para excluir um coordenador pelo ID
+    public function excluirCoordenador($idCoordenador): bool
+    {
+        // Prepara o SQL para excluir o coordenador pelo ID
+        $sql = "DELETE FROM coordenadores WHERE idCoordenador = :idCoordenador";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':idCoordenador', $idCoordenador, PDO::PARAM_INT);
+        // Executa a query passando os parâmetros
+        return $stmt->execute();
+    }
+
     public function atualizarCursoCoordenador($idCoordenador, $idCurso): bool
     {
         global $pdo;
@@ -82,17 +93,5 @@ class Coordenador extends conexao
 
         // Retorna verdadeiro se a atualização foi bem sucedida
         return $stmt->rowCount() > 0;
-    }
-
-
-    // Função para excluir um coordenador pelo ID
-    public function excluirCoordenador($idCoordenador): bool
-    {
-        // Prepara o SQL para excluir o coordenador pelo ID
-        $sql = "DELETE FROM coordenadores WHERE idCoordenador = :idCoordenador";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':idCoordenador', $idCoordenador, PDO::PARAM_INT);
-        // Executa a query passando os parâmetros
-        return $stmt->execute();
     }
 }

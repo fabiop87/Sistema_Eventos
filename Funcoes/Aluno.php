@@ -26,14 +26,14 @@ class Aluno extends conexao
     // Função para buscar os dados do aluno
     public function getAluno()
     {
-        // Prepara o SQL para buscar todos os eventos
+        
         $sql = "SELECT * FROM alunos WHERE ra = :ra";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':ra', $_SESSION['ra'], PDO::PARAM_STR);
         // Executa a query
         $stmt->execute();
 
-        // Retorna um array com todos os eventos
+        
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
@@ -73,6 +73,15 @@ class Aluno extends conexao
         }
     }
 
+    public function excluirAluno($ra): bool
+    {
+        // Prepara o SQL para excluir o aluno pelo ID
+        $sql = "DELETE FROM alunos WHERE ra = :ra";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':ra', $ra, PDO::PARAM_INT);
+        // Executa a query passando os parâmetros
+        return $stmt->execute();
+    }
 
 
     // Função para atualizar o curso do aluno
@@ -91,13 +100,4 @@ class Aluno extends conexao
     }
 
 
-    public function excluirAluno($ra): bool
-    {
-        // Prepara o SQL para excluir o aluno pelo ID
-        $sql = "DELETE FROM alunos WHERE ra = :ra";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':ra', $ra, PDO::PARAM_INT);
-        // Executa a query passando os parâmetros
-        return $stmt->execute();
-    }
 }
