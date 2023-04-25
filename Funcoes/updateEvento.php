@@ -25,7 +25,6 @@ $evento = $resultado->fetch(PDO::FETCH_ASSOC);
 
 
 
-
 ?>
 
 <!DOCTYPE html>
@@ -57,7 +56,7 @@ $evento = $resultado->fetch(PDO::FETCH_ASSOC);
 
                         <div class="form-group">
                             <label for="descricao" class="form-label">Descrição:</label>
-                            <textarea class="form-control" name="descricao" id="descricao" cols="40" rows="8"></textarea value="<?= $evento['descricao'] ?>">
+                            <textarea class="form-control" name="descricao" id="descricao" cols="40" rows="8"><?=$evento['descricao']?> </textarea>
                         </div>
 
                         <div class="form-group">

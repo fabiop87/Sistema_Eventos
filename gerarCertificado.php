@@ -74,7 +74,7 @@ h1, h2, h3, h4 {
 <img src='./PDF/img/logo.png' alt=''>
 </div>
 
-    <p>O aluno $nome ra: $ra do curso $curso tem presença confirmada no evento $nomeEvento no $local</p>
+    <p>O aluno <strong>$nome</strong> ra: <strong>$ra</strong> do curso <strong>$curso</strong> tem presença confirmada no evento <strong>$nomeEvento</strong> no $local</p>
 
     <p>Data: $dataEvento   Horario de inicio: $horarioInicio       Horario de término: $horarioTermino</p>
     <p>'?assinatura da pessoa que precisa assinar?'</p>

@@ -4,7 +4,7 @@
 session_start();
 
 
-if (!isset($_SESSION) && !isset($_SESSION['ra'])) {
+if (!isset($_SESSION) || !isset($_SESSION['ra'])) {
     die('faz o login mano');
 }
 

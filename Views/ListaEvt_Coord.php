@@ -19,47 +19,30 @@ $eventos = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 <h1>Eventos cadastrados</h1>
 
-<div class="table-responsive">
-  <table class="table align-middle">
-    <thead>
-      <tr>
-        <th>Numero</th>
-        <th>Nome</th>
-        <!-- <th>Descricao</th> -->
-        <th>Local</th>
-        <th>Data</th>
-        <th>Início</th>
-        <th>Término</th>
-        <th>Código</th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php foreach ($eventos as $evento) : ?>
-        <tr>
-          <td><?= $evento['idEvento'] ?></td>
-          <td><?= $evento['nomeEvento'] ?></td>
-          <!-- descricao -->
-          <td><?= $evento['local'] ?></td>
-          <td><?= date('d/m/Y', strtotime($evento['dataEvento'])) ?></td>
-          <td><?= date('H:i', strtotime($evento['horarioInicio'])) ?></td>
-          <td><?= date('H:i', strtotime($evento['horarioTermino'])) ?></td>
-          <td><?= $evento['codigoCoord'] ?></td>
-          <td>
-            <form action="../Funcoes/updateEvento.php" method="POST">
-              <input type="hidden" name="idEvento" value="<?= $evento['idEvento'] ?>">
-              <button class="btn btn-warning" type="submit">Atualizar</button>
-              <input type="hidden" name="tiporeq_evt" value="Update">
-            </form>
-          </td>
-          <td>
+<div class="row d-flex flex-wrap">
+  <?php foreach ($eventos as $evento) : ?>
+    <div class="card col-md-2 corzinha-evento m-2">
+      <div>
+        <p><?= $evento['idEvento'] ?></p>
+        <h5> <?= $evento['nomeEvento'] ?> </h5>
+        <p> Data: <?= date('d/m/Y', strtotime($evento['dataEvento'])) ?> </p>
+        <p>Local: <?= $evento['local'] ?> </p>
+        <p>desc: <?= $evento['descricao'] ?></p>
+        <div class="d-flex m-2">
+          <form action="../Funcoes/updateEvento.php" method="POST">
+            <input type="hidden" name="idEvento" value="<?= $evento['idEvento'] ?>">
+            <button class="btn btn-warning" type="submit">Atualizar</button>
+            <input type="hidden" name="tiporeq_evt" value="Update">
+          </form>
+          <div class="d-flex mx-2">
             <form action="../Controllers/controllerEvento.php" method="POST" onsubmit="return pedirConfirmacao();">
               <input type="hidden" name="idEvento" value="<?= $evento['idEvento'] ?>">
               <button class="btn btn-danger" type="submit">Excluir</button>
               <input type="hidden" name="tiporeq_evt" value="Delete">
             </form>
-          </td>
-        </tr>
-      <?php endforeach; ?>
-    </tbody>
-  </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  <?php endforeach; ?>
 </div>
