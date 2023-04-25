@@ -7,8 +7,6 @@ if (!isset($_SESSION["online"]) || $_SESSION["online"] !== true) {
     die('ué');
 }
 
-var_dump($_SESSION);
-
 if (isset($_SESSION['ra'])) {
     $tipo_usuario = 'aluno';
 }
@@ -17,7 +15,7 @@ if (isset($_SESSION['idCoordenador'])) {
     $tipo_usuario = 'coordenador';
 }
 
-require_once('./libs/conexao.php');
+require_once('./Funcoes/Model.php');
 
 $conn = new conexao();
 
@@ -132,7 +130,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-    <script src="../assets/validacoes.js"></script>
+    <script src="./assets/validacoesaluno.js"></script>
+    <script src="./assets/validacoescoord.js"></script>
     <script src="../assets/bootstrap.bundle.min.js"></script>
 </body>
 
