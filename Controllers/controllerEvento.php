@@ -1,9 +1,5 @@
 <?php
 
-var_dump($_POST);
-
-
-
 if (!isset($_POST['tiporeq_evt'])) {
   header('Location:/?erro=url');
   return false;

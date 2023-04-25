@@ -5,11 +5,10 @@ if (isset($_POST['tiporeq'])) {
   return false;
 }
 
-var_dump($_POST);
-//die();
 require_once('../Funcoes/Coordenador.php');
 $Coordenador = new Coordenador();
 $tiporeq = $_POST['LoginouRegister'];
+
 // Os tipos podem ser Login ou Registrar
 
 

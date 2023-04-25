@@ -3,8 +3,6 @@
 session_start();
 
 
-print_r($_POST);
-
 
 if (!isset($_SESSION) && !$_SESSION['ra']) {
     die('nao tem permissao pra entrar aqui');
@@ -13,16 +11,15 @@ if (!isset($_SESSION) && !$_SESSION['ra']) {
 $ra = $_SESSION['ra'];
 
 
-
-require_once('./Funcoes/Presenca.php');
+require_once('./Funcoes/Model.php');
 // require_once('../Funcoes/Aluno.php');
-$Presenca = new Presenca();
+$Presenca = new conexao();
 
 $sql = "SELECT a.nome, c.nomeCurso, a.ra FROM alunos a INNER JOIN cursos c WHERE a.ra = $ra AND c.idCurso = a.idCurso ";
 $resultado = $Presenca->pdo->query($sql);
 $dadosAluno = $resultado->fetch(PDO::FETCH_ASSOC);
 
-print_r($dadosAluno);
+
 
 $nome = $dadosAluno['nome'];
 $curso = $dadosAluno['nomeCurso'];

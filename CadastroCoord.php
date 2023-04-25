@@ -1,6 +1,6 @@
 <?php
 
-require_once('./libs/conexao.php');
+require_once('./Funcoes/Model.php');
 
 $conn = new conexao();
 
