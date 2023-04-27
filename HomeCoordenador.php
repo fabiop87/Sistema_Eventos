@@ -3,9 +3,9 @@
 
 session_start();
 
-
 if (!isset($_SESSION) || !isset($_SESSION['idCoordenador'])) {
-    die();
+    session_destroy();
+    header('Location: index.php');
 }
 
 if (isset($_SESSION['idAluno'])) {

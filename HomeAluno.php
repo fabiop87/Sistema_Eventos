@@ -5,7 +5,8 @@ session_start();
 
 
 if (!isset($_SESSION) || !isset($_SESSION['ra'])) {
-    die('faz o login mano');
+    session_destroy();
+    header('Location: index.php');
 }
 
 if (isset($_SESSION['idCoordenador'])) {

@@ -57,7 +57,7 @@ switch ($tiporeq) {
     } else {
       // Define uma mensagem de erro para ser exibida na página
       $mensagem = 'Ocorreu-um-erro-ao-fazer-login.';
-      header('Location:/CadastroCoord.php?message='. $mensagem);
+      header('Location:/index.php?message='. $mensagem);
     }
     echo $mensagem;
     break;

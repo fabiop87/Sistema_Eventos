@@ -56,7 +56,7 @@ switch ($tiporeq) {
     } else {
       // Define uma mensagem de erro para ser exibida na página
       $mensagem = 'Ocorreu-um-erro-ao-fazer-login.';
-      header('Location:/CadastroAluno.php?message='. $mensagem);
+      header('Location:/index.php?message='. $mensagem);
     }
     echo $mensagem;
     // Redireciona o usuário para a página desejada
