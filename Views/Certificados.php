@@ -37,7 +37,7 @@ $eventos = $resultado->fetchAll(PDO::FETCH_ASSOC);
     <table class="table">
         <thead>
             <tr>
-                <th>ID</th>
+                <!-- <th>ID</th> -->
                 <th>Nome</th>
                 <!-- <th>Descricao</th> -->
                 <th>Local</th>
@@ -49,7 +49,7 @@ $eventos = $resultado->fetchAll(PDO::FETCH_ASSOC);
         <tbody>
             <?php foreach ($eventos as $evento) : ?>
                 <tr>
-                    <td><?= $evento['idEvento'] ?></td>
+                    <!-- <td><?= $evento['idEvento'] ?></td> -->
                     <td><?= $evento['nomeEvento'] ?></td>
                     <!-- <td><?= $evento['descricao'] ?></td> -->
                     <td><?= $evento['local'] ?></td>

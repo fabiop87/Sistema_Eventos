@@ -50,7 +50,7 @@ $nome = $_SESSION['nome'];
 
 
     <nav class="nav justify-content-end">
-        <a class="nav-link-active" aria-current="page" href="#">Pagina do Coordenador</a>
+        <a class="nav-link-active btn" aria-current="page" href="#">Pagina do Coordenador</a>
         <a class="nav-link" href="./Views/CadastroEventos.php">Cadastrar novo evento</a>
         <form class="d-flex" role="search">
             <input name="search" value="<?php if (isset($_GET['search'])) echo $_GET['search']; ?>" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
