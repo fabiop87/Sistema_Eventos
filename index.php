@@ -1,5 +1,5 @@
 <?php
-
+exit;
 if (isset($_GET['erro']) && $_GET['erro'] == "url") {
     echo "<marquee> Você é um bobão sai daqui </marquee>";
     die();

@@ -7,46 +7,6 @@ function stringAleatoria() {
     campo.value = randomString;
   }
   
-console.log(`Nas patas traseiras
-sentada no chão,
-não é cachorrinho.
-Que será então?
-
-Sossegada e mansa,
-seguindo meus passos,
-não é cachorrinho.
-Que será que eu faço?
-
-Roeu minha abóbora,
-o milho e o arroz.
-Se rói tudo, tudo,
-que faço depois?
-
-Se quero pegá-la,
-assobia assim…
-chamando a família,
-e foge de mim!
-
-Mergulha no rio
-e pula e rebola,
-e come a plantinha
-que n’água se enrola.
-
-De pêlo tão duro,
-tal qual um porquinho,
-em volta da casa,
-sem ser cachorrinho!
-
-Não posso puxá-la,
-pois rabo não tem.
-Mas chamo baixinho.
-Será que ela vem?
-
-Se eu ando, ela anda.
-Se eu paro, ela pára.
-Quem sabe seu nome?
-Será capivara?`);
-
 // const inputField = document.querySelectorAll("codigoAluno");
 // const submitInput = document.querySelectorAll("codigo_submit");
 
