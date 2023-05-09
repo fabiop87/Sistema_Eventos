@@ -31,37 +31,37 @@ if (!isset($_SESSION) && !$_SESSION['idCoordenador']) {
 
             <div class="form-group">
               <label for="nomeEvento" class="form-label">Nome do evento:</label>
-              <input type="text" name="nomeEvento" id="nomeEvento" class="form-control">
+              <input type="text" name="nomeEvento" id="nomeEvento" class="form-control" required>
             </div>
 
             <div class="form-group">
               <label for="descricao" class="form-label">Descrição:</label>
-              <textarea class="form-control" name="descricao" id="descricao" cols="40" rows="8"></textarea>
+              <textarea class="form-control" name="descricao" id="descricao" cols="40" rows="8"></textarea required>
             </div>
 
             <div class="form-group">
               <label for="local" class="form-label">Local:</label>
-              <input type="text" name="local" id="local" class="form-control">
+              <input type="text" name="local" id="local" class="form-control" required>
             </div>
 
             <div class="form-group">
               <label for="dataEvento" class="form-label">Data do evento:</label>
-              <input type="date" name="dataEvento" id="dataEvento" class="form-control">
+              <input type="date" name="dataEvento" id="dataEvento" class="form-control" required>
             </div>
 
             <div class="form-group">
               <label for="horarioInicio" class="form-label">Horário de início:</label>
-              <input type="time" name="horarioInicio" id="horarioInicio" class="form-control">
+              <input type="time" name="horarioInicio" id="horarioInicio" class="form-control" required>
             </div>
 
             <div class="form-group">
               <label for="horarioTermino" class="form-label">Horário de término:</label>
-              <input type="time" name="horarioTermino" id="horarioTermino" class="form-control">
+              <input type="time" name="horarioTermino" id="horarioTermino" class="form-control" required>
             </div>
 
             <div class="form-group">
               <label for="codigoCoord" class="form-label">Código para a presença dos alunos:</label>
-              <input type="text" name="codigoCoord" id="codigoCoord" class="form-control" maxlength="8">
+              <input type="text" name="codigoCoord" id="codigoCoord" class="form-control" maxlength="8" required>
               <button type="button" class="btn btn-secondary" onclick="stringAleatoria()">Gerar Código</button>
             </div>
 
@@ -76,7 +76,9 @@ if (!isset($_SESSION) && !$_SESSION['idCoordenador']) {
       </div>
     </div>
   </div>
-  <a class="btn btn-secondary btn-sm" href="../HomeCoordenador.php">Voltar</a>
+  <div class="mt-4">
+    <a class="btn btn-secondary btn-sm" href="../HomeCoordenador.php">Voltar</a>
+  </div>
 
   <script src="../assets/funcoes.js"></script>
 </body>

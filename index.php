@@ -1,5 +1,5 @@
 <?php
-exit;
+
 if (isset($_GET['erro']) && $_GET['erro'] == "url") {
     echo "<marquee> Você é um bobão sai daqui </marquee>";
     die();
@@ -32,12 +32,15 @@ if (isset($_SESSION['idCoordenador'])) {
 </head>
 
 <body>
-
+    <div class="position-absolute top-0 start-0 nav navIndex">
+        <button id="coordenador-btn">Coordenador</button>
+        <button id="aluno-btn">Aluno</button>
+    </div>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-6 mt-5">
 
-                <form action="./Controllers/controllerAluno.php" method="POST" autocomplete="off"> <!--  action  -->
+                <form action="./Controllers/controllerAluno.php" method="POST" autocomplete="off" id="aluno-form"> <!--  action  -->
 
                     <fieldset>
                         <legend class="text-center">Login Aluno</legend>
@@ -68,7 +71,7 @@ if (isset($_SESSION['idCoordenador'])) {
         <div class="row justify-content-center">
             <div class="col-6 mt-5">
 
-                <form action="./Controllers/controllerCoordenador.php" method="POST" autocomplete="off"> <!--  action  -->
+                <form action="./Controllers/controllerCoordenador.php" method="POST" autocomplete="off" id="coordenador-form"> <!--  action  -->
 
                     <fieldset>
                         <legend class="text-center">Login Coordenador</legend>
@@ -104,6 +107,7 @@ if (isset($_SESSION['idCoordenador'])) {
     </div>
     <script src="./assets/validacoesaluno.js"></script>
     <script src="./assets/bootstrap.bundle.min.js"></script>
+    <script src="./assets/funcoes.js"></script>
 </body>
 
 </html>

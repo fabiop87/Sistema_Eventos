@@ -5,52 +5,58 @@ $dataAtual = date('d/m/Y'); // fazer o negocio de nao puxar evento que ja passou
 
 
 if (isset($_GET['search']) && $_GET['search'] != '') {
-    $pesquisa = ($_GET['search']);
-    $sql = "SELECT * FROM eventos WHERE nomeEvento LIKE '%$pesquisa%'      
-    AND dataEvento >= NOW()
-     AND idEvento NOT IN (
-       SELECT DISTINCT e.idEvento
-       FROM eventos e
-       INNER JOIN presenca p ON e.idEvento = p.idEvento 
-       WHERE p.ra = '$ra'
-     )
-     ORDER BY dataEvento DESC LIMIT 10
-     ";
+    $pesquisa = $_GET['search'];
+    $sql = "SELECT * FROM eventos WHERE nomeEvento LIKE :pesquisa      
+      AND dataEvento >= NOW()
+       AND idEvento NOT IN (
+         SELECT DISTINCT e.idEvento
+         FROM eventos e
+         INNER JOIN presenca p ON e.idEvento = p.idEvento 
+         WHERE p.ra = :ra
+       )
+       ORDER BY dataEvento DESC LIMIT 10
+       ";
+    $stmt = $Aluno->pdo->prepare($sql);
+    $stmt->bindParam(':pesquisa', "%$pesquisa%", PDO::PARAM_STR);
+    $stmt->bindParam(':ra', $ra, PDO::PARAM_INT);
 } else {
     $sql = "SELECT *
-     FROM eventos  
-     WHERE dataEvento >= NOW() 
-      AND idEvento NOT IN (
-       SELECT DISTINCT e.idEvento
-       FROM eventos e
-       INNER JOIN presenca p ON e.idEvento = p.idEvento 
-       WHERE p.ra = '$ra'
-     )
-     ORDER BY dataEvento DESC
-     ";
+       FROM eventos  
+       WHERE dataEvento >= NOW() 
+        AND idEvento NOT IN (
+         SELECT DISTINCT e.idEvento
+         FROM eventos e
+         INNER JOIN presenca p ON e.idEvento = p.idEvento 
+         WHERE p.ra = :ra
+       )
+       ORDER BY dataEvento DESC
+       ";
+    $stmt = $Aluno->pdo->prepare($sql);
+    $stmt->bindParam(':ra', $ra, PDO::PARAM_INT);
 }
 
+$stmt->execute();
+$eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$resultado = $Aluno->pdo->prepare($sql);
-$resultado->execute();
-$eventos = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
 
+<div class="container-fluid">
 
 
-<div class="row d-flex flex-wrap">
-    <?php foreach ($eventos as $evento) : ?>
-        <div class="card col-md-3 corzinha-evento m-2">
-            <div>
-                <p><?= $evento['idEvento'] ?></p>
-                <h5> <?= $evento['nomeEvento'] ?> </h5>
-                <p> Data: <?= date('d/m/Y', strtotime($evento['dataEvento'])) ?> </p>
-                <p>Local: <?= $evento['local'] ?> </p>
-                <a href="./Views/Evento.php?id=<?= $evento['idEvento'] ?>" class="btn btn-secondary">Saber mais</a>
+    <div class="row d-flex flex-wrap">
+        <?php foreach ($eventos as $evento) : ?>
+            <div class="col-12 col-md-3 col-lg-4 col-xl-2 mb-4">
+                <div class="card corzinha-evento">
+                    <p><?= $evento['idEvento'] ?></p>
+                    <h5> <?= $evento['nomeEvento'] ?> </h5>
+                    <p> Data: <?= date('d/m/Y', strtotime($evento['dataEvento'])) ?> </p>
+                    <p>Local: <?= $evento['local'] ?> </p>
+                    <a href="./Views/Evento.php?id=<?= $evento['idEvento'] ?>" class="btn btn-secondary">Saber mais</a>
+                </div>
             </div>
-        </div>
-    <?php endforeach; ?>
-</div>
+        <?php endforeach; ?>
+    </div>
 
+</div>

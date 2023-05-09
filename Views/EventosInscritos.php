@@ -19,35 +19,20 @@ $eventos = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
+<div class="container-fluid">
+
 <div class="row d-flex flex-wrap ">
     <?php foreach ($eventos as $evento) : ?>
-        <div class="card col-md-3 corzinha-evento-inscrito m-2">
-            <div>
+        <div class="col-12 col-md-3 col-lg-4 col-xl-2 mb-4">
+            <div class="card corzinha-evento-inscrito">
                 <p><?= $evento['idEvento'] ?></p>
                 <h5> <?= $evento['nomeEvento'] ?> </h5>
                 <p> Data: <?= date('d/m/Y', strtotime($evento['dataEvento'])) ?> </p>
                 <p>Local: <?= $evento['local'] ?> </p>
                 <a href="./Views/Evento.php?id=<?= $evento['idEvento'] ?>" class="btn btn-secondary">Saber mais</a>
             </div>
-            
-            <!-- <form action="../Controllers/controllerPresenca.php" method="POST" autocomplete="off">
-                <input type="hidden" name="idEvento" value="<?= $evento['idEvento'] ?>">
-                <input type="hidden" name="ra" value="<?= $_SESSION['ra'] ?>">
-                <label for="codigoAluno">Código para registrar presença:</label>
-                <input type="text" name="codigoAluno" class="codigoAluno" maxlength="8" id="codigoAluno-<?= $evento['idEvento'] ?>">
-                <input type="submit" class="codigo_submit btn btn-secondary" value="Enviar">
-                <input type="hidden" name="tiporeq_presenca" value="Confirmar">
-            </form>
-
-
-            <form action="../Controllers/controllerPresenca.php" method="POST" onsubmit="return pedirConfirmacao();">
-                <input type="hidden" name="idEvento" value="<?= $evento['idEvento'] ?>">
-                <input type="hidden" name="ra" value="<?= $_SESSION['ra'] ?>">
-                <input type="submit" class="codigo_submit btn btn-dark" value="Desinscrever">
-                <input type="hidden" name="tiporeq_presenca" value="Desinscrever">
-            </form> -->
         </div>
     <?php endforeach; ?>
 </div>
 
-
+</div>

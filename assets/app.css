@@ -5,3 +5,24 @@
 .corzinha-evento {
     background-color: tomato;
 }
+
+#aluno-form {
+    display: none;
+}
+
+
+.navIndex button {
+    background-color: yellow;
+    border: none;
+    border-radius: 5px;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    margin-right: 10px;
+  }
+  
+  .navIndex button:hover {
+    background-color: #aaa;
+    cursor: pointer;
+  }

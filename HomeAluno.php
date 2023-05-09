@@ -37,9 +37,9 @@ $nome = $_SESSION['nome'];
 </head>
 
 <body>
-    <h1 class="text-center">Pagina Inicial Aluno</h1>
+    <h1 class="text-center">Página Inicial Aluno</h1>
 
-    <p> Olá <?= $nome ?></p>
+    <p> Olá, <?= $nome ?></p>
 
     <div class="d-flex flex-row-reverse mb-4">
         <div class="p-2">
@@ -52,7 +52,7 @@ $nome = $_SESSION['nome'];
 
 
     <nav class="nav justify-content-end">
-        <a class="nav-link-active btn" aria-current="page" href="#">Pagina do Aluno</a>
+        <a class="nav-link-active btn" aria-current="page" href="#">Página do Aluno</a>
         <a class="nav-link" href="./Views/Certificados.php">Certificados</a>
         <form class="d-flex" role="search">
             <input name="search" value="<?php if (isset($_GET['search'])) echo $_GET['search']; ?>" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

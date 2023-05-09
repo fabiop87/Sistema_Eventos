@@ -79,7 +79,7 @@ $certificado = "
     
     <p>O aluno <strong>{$nome}</strong> ra: <strong>{$ra}</strong> do curso <strong>{$curso}</strong> tem presença confirmada no evento <strong>{$nomeEvento}</strong> no {$local}</p>
     
-    <p>Data: {$dataEvento}   Horario de inicio: {$horarioInicio}       Horario de término: {$horarioTermino}</p>
+    <p>Data: {$dataEvento}   Horário de início: {$horarioInicio}       Horário de término: {$horarioTermino}</p>
 
 ";
 
