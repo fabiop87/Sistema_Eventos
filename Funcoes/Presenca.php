@@ -32,14 +32,7 @@ public function verificarInscricao($idEvento, $ra)
     $stmt->execute();
     $verificacao = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($verificacao) 
-    {
-        return true;
-
-    } else 
-    {
-        return false;
-    }
+    return $verificacao;
 }
 
 public function validarCertificado($idEvento, $ra)

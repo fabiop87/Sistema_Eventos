@@ -21,7 +21,7 @@ class Evento extends conexao
     return $stmt->execute();
   }
   
-  public function verificareventoExistente($nomeEvento):bool
+  public function verificareventoExistente($nomeEvento)
   {
   
       // Seleciona o evento
@@ -32,14 +32,8 @@ class Evento extends conexao
       $nomeEvento = $stmt->fetch(PDO::FETCH_ASSOC);
   
       // Verifica se o envento foi encontrado
-      if ($nomeEvento) 
-      {
-          return true;
-  
-      } else 
-      {
-          return false;
-      }
+
+      return $nomeEvento;
   }
   
   public function consultarEvento($idEvento)
