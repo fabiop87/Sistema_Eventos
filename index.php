@@ -99,7 +99,7 @@ if (isset($_SESSION['idCoordenador'])) {
     <?php include_once('./Views/MensagemGET.php') ?>
 
     <div class="row-gap-4 p-4">
-        <a class="btn btn-secondary btn-sm" href="CadastroAluno.php">Novo Aluno</a>
+        <!-- <a class="btn btn-secondary btn-sm" href="CadastroAluno.php">Novo Aluno</a> -->
         <a class="btn btn-secondary btn-sm" href="CadastroCoord.php">Novo Coordenador</a>
 
     </div>
