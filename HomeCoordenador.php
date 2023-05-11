@@ -35,6 +35,9 @@ $nome = $_SESSION['nome'];
 </head>
 
 <body>
+    
+    <?php include_once('./Views/MensagemGET.php') ?>
+
     <h1 class="text-center">Página Inicial Coordenador</h1>
 
     <p> Olá, <?= $nome ?></p>

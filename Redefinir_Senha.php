@@ -60,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $senhaCriptografada = password_hash($novaSenha, PASSWORD_BCRYPT);
 
 
-        $stmt = $conn->pdo->prepare($sql);
+        $stmt = $conn->getPDO()->prepare($sql);
 
         $stmt->bindParam(':id', $id);
         $stmt->bindParam(':senha', $senhaCriptografada);
@@ -69,7 +69,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($stmt->execute()) {
             // Senha atualizada com sucesso. Destrua a sessão e redirecione para a página de login
             session_destroy();
-            header("location: index.php");
+            $mensagem = 'Senha alterada com sucesso, faça login novamente';
+            header('Location: index.php?message='. $mensagem);
             exit();
         } else {
             echo "ae deu merda";

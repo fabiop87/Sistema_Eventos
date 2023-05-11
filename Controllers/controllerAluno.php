@@ -24,7 +24,8 @@ switch ($tiporeq) {
     if (!$Aluno->verificarAlunoExistente($_POST['ra'])) {
       $novoAluno = $Aluno->cadastrarAluno($_POST['nome'], $_POST['ra'], $_POST['idCurso'], $_POST['senha']);
     } else {
-      echo 'Este aluno já está cadastrado';
+      $mensagem = 'Este aluno já está cadastrado';
+      header('Location:/index.php?message='. $mensagem);
     }
     // Verifica se o cadastro foi bem sucedido
     if ($novoAluno) {

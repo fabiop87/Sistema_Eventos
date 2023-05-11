@@ -1,10 +1,9 @@
 <?php
 require('Model.php');
 
+
 class Aluno extends conexao
 {
-
-
     // Função para cadastrar um novo aluno
     public function cadastrarAluno($nome, $ra, $idCurso, $senha): bool
     {
@@ -14,7 +13,7 @@ class Aluno extends conexao
 
         // Prepara o SQL para inserir o novo aluno
         $sql = "INSERT INTO alunos (nome, ra, idCurso, senha) VALUES (:nome, :ra, :idCurso, :senha)";
-        $stmt = $this->pdo->prepare($sql);
+        $stmt = $this->getPdo()->prepare($sql);
         $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
         $stmt->bindParam(':ra', $ra, PDO::PARAM_STR);
         $stmt->bindParam(':idCurso', $idCurso, PDO::PARAM_INT);
@@ -26,14 +25,14 @@ class Aluno extends conexao
     // Função para buscar os dados do aluno
     public function getAluno()
     {
-        
+
         $sql = "SELECT * FROM alunos WHERE ra = :ra";
-        $stmt = $this->pdo->prepare($sql);
+        $stmt = $this->getPdo()->prepare($sql);
         $stmt->bindParam(':ra', $_SESSION['ra'], PDO::PARAM_STR);
         // Executa a query
         $stmt->execute();
 
-        
+
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
@@ -44,7 +43,7 @@ class Aluno extends conexao
 
         // Seleciona o aluno pelo RA
         $sql = "SELECT * FROM alunos WHERE ra = :ra";
-        $stmt = $this->pdo->prepare($sql);
+        $stmt = $this->getPdo()->prepare($sql);
         $stmt->bindParam(':ra', $ra, PDO::PARAM_STR);
         $stmt->execute();
         $aluno = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -61,7 +60,7 @@ class Aluno extends conexao
     public function verificarLoginAluno($ra, $senha)
     {
         // Busca o aluno pelo RA
-        $stmt = $this->pdo->prepare("SELECT * FROM alunos WHERE ra = :ra");
+        $stmt = $this->getPDO()->prepare("SELECT * FROM alunos WHERE ra = :ra");
         $stmt->bindParam(':ra', $ra, PDO::PARAM_STR);
         $stmt->execute();
         $aluno = $stmt->fetch();
@@ -77,7 +76,7 @@ class Aluno extends conexao
     {
         // Prepara o SQL para excluir o aluno pelo ID
         $sql = "DELETE FROM alunos WHERE ra = :ra";
-        $stmt = $this->pdo->prepare($sql);
+        $stmt = $this->getPdo()->prepare($sql);
         $stmt->bindParam(':ra', $ra, PDO::PARAM_INT);
         // Executa a query passando os parâmetros
         return $stmt->execute();
@@ -89,7 +88,7 @@ class Aluno extends conexao
     {
         // Prepara o SQL para atualizar o curso do aluno
         $sql = "UPDATE alunos SET idCurso = :idCurso WHERE ra = :ra";
-        $stmt = $this->pdo->prepare($sql);
+        $stmt = $this->getPdo()->prepare($sql);
         $stmt->bindParam(':idCurso', $idCurso);
         $stmt->bindParam(':ra', $ra);
         // Executa a query passando os parâmetros
@@ -98,6 +97,4 @@ class Aluno extends conexao
         // Retorna verdadeiro se a atualização foi bem sucedida
         return $stmt->rowCount() > 0;
     }
-
-
 }

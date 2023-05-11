@@ -28,8 +28,8 @@ function validarFormulario() {
     erro = true;
   }
 
-  if(cdcod.value != 'bananinha'){
-    texto.textContent = 'A senha do coordenador nao confere';
+  if(cdcod.value != 'michael jackson'){
+    texto.textContent = 'A senha para registrar novo coordenador nao confere';
     erro = true;
   }
 

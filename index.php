@@ -36,6 +36,7 @@ if (isset($_SESSION['idCoordenador'])) {
         <button id="coordenador-btn">Coordenador</button>
         <button id="aluno-btn">Aluno</button>
     </div>
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-6 mt-5">
@@ -48,7 +49,6 @@ if (isset($_SESSION['idCoordenador'])) {
                         <div class="form-group">
                             <label for="ra" class="form-label">RA:</label>
                             <input type="text" name="ra" id="ra" required class="form-control" placeholder="000000" maxlength="7" onkeypress="validarNumeros(event)">
-
                         </div>
 
                         <div class="form-group">
@@ -59,7 +59,6 @@ if (isset($_SESSION['idCoordenador'])) {
                         <input type="hidden" name="LoginouRegister" value="Login">
 
                         <input type="submit" value="Login" class="btn btn-outline-warning">
-
 
                     </fieldset>
                 </form>
@@ -81,10 +80,9 @@ if (isset($_SESSION['idCoordenador'])) {
                             <input type="text" name="nome" id="nome" required class="form-control">
                         </div>
 
-
                         <div class="form-group">
                             <label for="senha" class="form-label">Senha:</label>
-                            <input type="password" name="senha" id="senha" required class="form-control" placeholder="******">
+                            <input type="password" name="senha" id="senhaC" required class="form-control" placeholder="******">
                         </div>
 
                         <input type="hidden" name="LoginouRegister" value="Login">
@@ -97,6 +95,8 @@ if (isset($_SESSION['idCoordenador'])) {
             </div>
         </div>
     </div>
+
+    <?php include_once('./Views/MensagemGET.php') ?>
 
     <div class="row-gap-4 p-4">
         <a class="btn btn-secondary btn-sm" href="CadastroAluno.php">Novo Aluno</a>

@@ -15,15 +15,23 @@ require_once('./Funcoes/Model.php');
 // require_once('../Funcoes/Aluno.php');
 $Presenca = new conexao();
 
-$sql = "SELECT a.nome, c.nomeCurso, a.ra FROM alunos a INNER JOIN cursos c WHERE a.ra = $ra AND c.idCurso = a.idCurso ";
-$resultado = $Presenca->pdo->query($sql);
-$dadosAluno = $resultado->fetch(PDO::FETCH_ASSOC);
+$sql = "SELECT a.nome, c.nomeCurso
+FROM alunos a 
+INNER JOIN cursos c ON c.idCurso = a.idCurso
+WHERE a.ra = :ra
+
+";
+$stmt = $Presenca->getPDO()->prepare($sql);
+$stmt->bindParam(':ra', $ra, PDO::PARAM_STR);
+$stmt->execute();
+$dadosAluno = $stmt->fetch(PDO::FETCH_ASSOC);
+
 
 
 
 $nome = $dadosAluno['nome'];
 $curso = $dadosAluno['nomeCurso'];
-$ra = $dadosAluno['ra'];
+// $ra = $dadosAluno['ra'];
 $nomeEvento = $_POST['nomeEvento'];
 $dataEvento = date('d/m/Y', strtotime($_POST['dataEvento']));
 $local = $_POST['local'];

@@ -16,7 +16,7 @@ FROM eventos
 WHERE idEvento = '$idEvento'
 ";
 
-$resultado = $Presenca->pdo->prepare($sql);
+$resultado = $Presenca->getPDO()->prepare($sql);
 $resultado->execute();
 $evento = $resultado->fetch(PDO::FETCH_ASSOC);
 

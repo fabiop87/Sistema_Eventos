@@ -18,7 +18,7 @@ $idEvento =  $_POST['idEvento'];
 
 
 $sql = "SELECT * FROM eventos WHERE idEvento = $idEvento";
-$resultado = $Coordenador->pdo->prepare($sql);
+$resultado = $Coordenador->getPDO()->prepare($sql);
 $resultado->execute();
 $evento = $resultado->fetch(PDO::FETCH_ASSOC);
 

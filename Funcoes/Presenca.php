@@ -11,7 +11,8 @@ class Presenca extends conexao
 
 
     $sql ="INSERT INTO presenca(idEvento, ra) VALUES (:idEvento, :ra)";
-    $stmt = $this->pdo->prepare($sql);
+            $pdo = $this->getPdo();
+        $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':idEvento', $idEvento, PDO::PARAM_INT);
     $stmt->bindParam(':ra', $ra, PDO::PARAM_STR);
 
@@ -26,7 +27,8 @@ public function verificarInscricao($idEvento, $ra)
 {
 
     $sql = "SELECT * FROM presenca WHERE idEvento = :idEvento AND ra = :ra";
-    $stmt = $this->pdo->prepare($sql);
+            $pdo = $this->getPdo();
+        $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':idEvento', $idEvento, PDO::PARAM_INT);
     $stmt->bindParam(':ra', $ra, PDO::PARAM_STR);
     $stmt->execute();
@@ -44,7 +46,8 @@ public function validarCertificado($idEvento, $ra)
     INNER JOIN presenca p ON p.idEvento = e.idEvento
     WHERE p.idEvento = :idEvento AND p.ra = :ra AND p.codigoAluno = e.codigoCoord;";
 
-    $stmt = $this->pdo->prepare($sql);
+            $pdo = $this->getPdo();
+        $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':idEvento', $idEvento, PDO::PARAM_INT);
     $stmt->bindParam(':ra', $ra, PDO::PARAM_STR);
     $stmt->execute();
@@ -63,7 +66,8 @@ public function confirmarPresenca($idEvento, $ra, $codigoAluno)
     
     $sql = "UPDATE presenca SET codigoAluno = :codigoAluno, qtdTentativas = qtdTentativas + 1 WHERE idEvento = :idEvento AND ra = :ra  AND qtdTentativas <= '$limiteTentativas'";
 
-    $stmt = $this->pdo->prepare($sql);
+            $pdo = $this->getPdo();
+        $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':idEvento', $idEvento, PDO::PARAM_INT);
     $stmt->bindParam(':ra', $ra, PDO::PARAM_STR);
     $stmt->bindParam(':codigoAluno', $codigoAluno, PDO::PARAM_STR);
@@ -81,7 +85,8 @@ function desinscrever($idEvento, $ra)
 
 
     $sql = "DELETE FROM presenca WHERE idEvento = :idEvento AND ra = :ra";
-    $stmt = $this->pdo->prepare($sql);
+            $pdo = $this->getPdo();
+        $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':idEvento', $idEvento, PDO::PARAM_INT);
     $stmt->bindParam(':ra', $ra, PDO::PARAM_STR);
     return $stmt->execute();

@@ -9,7 +9,8 @@ class Evento extends conexao
 
   
     $sql = "INSERT INTO eventos (nomeEvento, descricao, local, dataEvento, horarioInicio, horarioTermino, codigoCoord) VALUES (:nomeEvento, :descricao, :local, :dataEvento, :horarioInicio, :horarioTermino, :codigoCoord)";
-    $stmt = $this->pdo->prepare($sql);
+            $pdo = $this->getPdo();
+        $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':nomeEvento', $nomeEvento, PDO::PARAM_STR);
     $stmt->bindParam(':descricao', $descricao, PDO::PARAM_STR);
     $stmt->bindParam(':local', $local, PDO::PARAM_STR);
@@ -26,7 +27,8 @@ class Evento extends conexao
   
       // Seleciona o evento
       $sql = "SELECT * FROM eventos WHERE nomeEvento = :nomeEvento";
-      $stmt = $this->pdo->prepare($sql);
+              $pdo = $this->getPdo();
+        $stmt = $pdo->prepare($sql);
       $stmt->bindParam(':nomeEvento', $nomeEvento, PDO::PARAM_STR);
       $stmt->execute();
       $nomeEvento = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -41,7 +43,8 @@ class Evento extends conexao
 
   
     $sql = "SELECT * FROM eventos WHERE idEvento = :idEvento";
-    $stmt = $this->pdo->prepare($sql);
+            $pdo = $this->getPdo();
+        $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':idEvento', $idEvento);
     $stmt->execute();
     return $stmt->fetch();
@@ -52,7 +55,8 @@ class Evento extends conexao
 
   
     $sql = "UPDATE eventos SET nomeEvento = :nomeEvento, descricao = :descricao, local = :local, dataEvento = :dataEvento, horarioInicio = :horarioInicio, horarioTermino = :horarioTermino, codigoCoord = :codigoCoord WHERE idEvento = :idEvento";
-    $stmt = $this->pdo->prepare($sql);
+            $pdo = $this->getPdo();
+        $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':idEvento', $idEvento, PDO::PARAM_INT);
     $stmt->bindParam(':nomeEvento', $nomeEvento, PDO::PARAM_STR);
     $stmt->bindParam(':descricao', $descricao, PDO::PARAM_STR);
@@ -69,7 +73,8 @@ class Evento extends conexao
 
   
     $sql = "DELETE FROM eventos WHERE idEvento = :idEvento";
-    $stmt = $this->pdo->prepare($sql);
+            $pdo = $this->getPdo();
+        $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':idEvento', $idEvento);
     return $stmt->execute();
   }

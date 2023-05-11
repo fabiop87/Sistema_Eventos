@@ -10,14 +10,15 @@ WHERE idEvento IN (
   SELECT DISTINCT e.idEvento
   FROM eventos e
   INNER JOIN presenca p ON e.idEvento = p.idEvento 
-  WHERE p.ra = '$ra'
+  WHERE p.ra = :ra
 )
-  ORDER BY dataEvento DESC LIMIT 10
+  ORDER BY dataEvento DESC
 ";
 
-$resultado = $Aluno->pdo->prepare($sql);
-$resultado->execute();
-$eventos = $resultado->fetchAll(PDO::FETCH_ASSOC);
+$stmt = $Aluno->getPDO()->prepare($sql);
+$stmt->bindParam(':ra', $ra, PDO::PARAM_STR);
+$stmt->execute();
+$eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
 $VerificarSeOAlunoJaConfirmouPresenca = new Presenca();
@@ -40,6 +41,13 @@ $VerificarSeOAlunoJaConfirmouPresenca = new Presenca();
                     <h5><?= $evento['nomeEvento'] ?></h5>
                     <p>Data: <?= date('d/m/Y', strtotime($evento['dataEvento'])) ?></p>
                     <p>Local: <?= $evento['local'] ?></p>
+                    <?php if ($corDoCard == 'yellow') { ?>
+                        <small>Presença já confirmada!</small>
+
+                    <?php } else { ?>
+                        <small>|</small>
+                    <?php } ?>
+                    
                     <a href="./Views/Evento.php?id=<?= $evento['idEvento'] ?>" class="btn btn-secondary">Saber mais</a>
                 </div>
             </div>

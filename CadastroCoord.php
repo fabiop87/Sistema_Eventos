@@ -5,7 +5,7 @@ require_once('./Funcoes/Model.php');
 $conn = new conexao();
 
 $sql = "SELECT idCurso, nomeCurso FROM cursos";
-$stmt = $conn->pdo->query($sql);
+$stmt = $conn->getPDO()->query($sql);
 $cursos = $stmt->fetchAll();
 
 ?>

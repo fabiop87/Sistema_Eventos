@@ -17,6 +17,7 @@ $ano = date('Y');
 require_once('./Funcoes/Aluno.php');
 $Aluno = new Aluno();
 
+
 $ra = $_SESSION['ra'];
 $nome = $_SESSION['nome'];
 
@@ -37,6 +38,9 @@ $nome = $_SESSION['nome'];
 </head>
 
 <body>
+
+    <?php include_once('./Views/MensagemGET.php') ?>
+
     <h1 class="text-center">Página Inicial Aluno</h1>
 
     <p> Olá, <?= $nome ?></p>

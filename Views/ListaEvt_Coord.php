@@ -4,11 +4,11 @@
 if (isset($_GET['search']) && $_GET['search'] != '') {
   $pesquisa = ($_GET['search']);
   $sql = "SELECT * FROM eventos WHERE nomeEvento LIKE :pesquisa";
-  $stmt = $Coordenador->pdo->prepare($sql);
+  $stmt = $Coordenador->getPDO()->prepare($sql);
   $stmt->execute([':pesquisa' => "%$pesquisa%"]);
 } else {
   $sql = "SELECT * FROM eventos ORDER BY dataEvento DESC LIMIT 10";
-  $stmt = $Coordenador->pdo->query($sql);
+  $stmt = $Coordenador->getPDO()->query($sql);
 }
 
 $eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);

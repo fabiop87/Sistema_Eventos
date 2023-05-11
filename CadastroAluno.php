@@ -4,10 +4,10 @@ session_start();
 
 
 
-if (!isset($_SESSION) || !isset($_SESSION['idCoordenador'])) {
-    echo "<marquee> Apenas pessoas autorizadas podem criar usuario de aluno </marquee>";
-    die();
-}
+// if (!isset($_SESSION) || !isset($_SESSION['idCoordenador'])) {
+//     echo "<marquee> Apenas pessoas autorizadas podem criar usuario de aluno </marquee>";
+//     die();
+// }
 
 
 require_once('./Funcoes/Model.php');
@@ -15,7 +15,7 @@ require_once('./Funcoes/Model.php');
 $conn = new conexao();
 
 $sql = "SELECT idCurso, nomeCurso FROM cursos";
-$stmt = $conn->pdo->query($sql);
+$stmt = $conn->getPDO()->query($sql);
 $cursos = $stmt->fetchAll();
 
 

@@ -12,7 +12,8 @@ class Coordenador extends conexao
 
         // Prepara o SQL para inserir o novo coordenador
         $sql = "INSERT INTO coordenadores (nome, idCurso, senha) VALUES (:nome, :idCurso, :senha)";
-        $stmt = $this->pdo->prepare($sql);
+        $pdo = $this->getPdo();
+        $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
         $stmt->bindParam(':idCurso', $idCurso, PDO::PARAM_INT);
         $stmt->bindParam(':senha', $senhaCriptografada, PDO::PARAM_STR);
@@ -23,14 +24,14 @@ class Coordenador extends conexao
     // Função para buscar os dados do coordenador
     public function getCoordenador()
     {
-        
+
         $sql = "SELECT * FROM coordenadores WHERE idCoordenador = :idCoordenador";
-        $stmt = $this->pdo->prepare($sql);
+        $stmt = $this->getPdo()->prepare($sql);
         $stmt->bindParam(':idCoordenador', $_SESSION['idCoordenador'], PDO::PARAM_STR);
         // Executa a query
         $stmt->execute();
 
-        
+
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
@@ -38,7 +39,8 @@ class Coordenador extends conexao
     {
         // Seleciona o coordenador pelo nome
         $sql = "SELECT * FROM coordenadores WHERE nome = :nome";
-        $stmt = $this->pdo->prepare($sql);
+        $stmt = $this->getPdo()->prepare($sql);
+
         $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
         $stmt->execute();
         $coordenador = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -56,7 +58,7 @@ class Coordenador extends conexao
     {
         // Busca o coordenador pelo nome
 
-        $stmt = $this->pdo->prepare("SELECT * FROM coordenadores WHERE nome = :nome");
+        $stmt = $this->getPDO()->prepare("SELECT * FROM coordenadores WHERE nome = :nome");
         $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
         $stmt->execute();
         $nome = $stmt->fetch();
@@ -74,7 +76,7 @@ class Coordenador extends conexao
     {
         // Prepara o SQL para excluir o coordenador pelo ID
         $sql = "DELETE FROM coordenadores WHERE idCoordenador = :idCoordenador";
-        $stmt = $this->pdo->prepare($sql);
+        $stmt = $this->getPdo()->prepare($sql);
         $stmt->bindParam(':idCoordenador', $idCoordenador, PDO::PARAM_INT);
         // Executa a query passando os parâmetros
         return $stmt->execute();
@@ -82,10 +84,10 @@ class Coordenador extends conexao
 
     public function atualizarCursoCoordenador($idCoordenador, $idCurso): bool
     {
-        global $pdo;
+
 
         $sql = "UPDATE coordenadores SET idCurso = :idCurso WHERE idCoordenador = :idCoordenador";
-        $stmt = $pdo->prepare($sql);
+        $stmt = $this->getPdo()->prepare($sql);
         $stmt->bindParam(':idCurso', $idCurso);
         $stmt->bindParam(':idCoordenador', $idCoordenador);
         // Executa a query passando os parâmetros

@@ -12,9 +12,11 @@ $Presenca = new Presenca();
 
 $ra = $_SESSION['ra'] ?? '';
 
-$sql = "SELECT p.*, e.* FROM presenca p INNER JOIN eventos e ON p.idEvento = e.idEvento AND p.codigoAluno = e.codigoCoord WHERE ra = '$ra'";
-$resultado = $Presenca->pdo->query($sql);
-$eventos = $resultado->fetchAll(PDO::FETCH_ASSOC);
+$sql = "SELECT p.*, e.* FROM presenca p INNER JOIN eventos e ON p.idEvento = e.idEvento AND p.codigoAluno = e.codigoCoord WHERE ra = :ra";
+$stmt = $Presenca->getPDO()->prepare($sql);
+$stmt->bindParam(':ra', $ra, PDO::PARAM_STR);
+$stmt->execute();
+$eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
 

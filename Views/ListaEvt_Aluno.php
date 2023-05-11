@@ -16,9 +16,9 @@ if (isset($_GET['search']) && $_GET['search'] != '') {
        )
        ORDER BY dataEvento DESC LIMIT 10
        ";
-    $stmt = $Aluno->pdo->prepare($sql);
+    $stmt = $Aluno->getPDO()->prepare($sql);
     $stmt->bindParam(':pesquisa', "%$pesquisa%", PDO::PARAM_STR);
-    $stmt->bindParam(':ra', $ra, PDO::PARAM_INT);
+    $stmt->bindParam(':ra', $ra, PDO::PARAM_STR);
 } else {
     $sql = "SELECT *
        FROM eventos  
@@ -31,8 +31,8 @@ if (isset($_GET['search']) && $_GET['search'] != '') {
        )
        ORDER BY dataEvento DESC
        ";
-    $stmt = $Aluno->pdo->prepare($sql);
-    $stmt->bindParam(':ra', $ra, PDO::PARAM_INT);
+    $stmt = $Aluno->getPDO()->prepare($sql);
+    $stmt->bindParam(':ra', $ra, PDO::PARAM_STR);
 }
 
 $stmt->execute();
