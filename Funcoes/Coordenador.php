@@ -57,8 +57,8 @@ class Coordenador extends conexao
     public function verificarLoginCoordenador($nome, $senha)
     {
         // Busca o coordenador pelo nome
-
-        $stmt = $this->getPDO()->prepare("SELECT * FROM coordenadores WHERE nome = :nome");
+        $sql = "SELECT * FROM coordenadores WHERE nome = :nome";
+        $stmt = $this->getPDO()->prepare($sql);
         $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
         $stmt->execute();
         $nome = $stmt->fetch();

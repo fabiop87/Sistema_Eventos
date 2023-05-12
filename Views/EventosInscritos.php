@@ -31,9 +31,11 @@ $VerificarSeOAlunoJaConfirmouPresenca = new Presenca();
     <div class="row d-flex flex-wrap ">
         <?php foreach ($eventos as $evento) : ?>
             <?php if ($VerificarSeOAlunoJaConfirmouPresenca->validarCertificado($evento['idEvento'], $_SESSION['ra'])) {
-                $corDoCard = 'yellow';
+                $corDoCard = '#FFF68F';
+                $mensagemCard = 'Presença já confirmada!';
             } else {
-                $corDoCard = 'aqua';
+                $corDoCard = '#40E0D0';
+                $mensagemCard = '|';
             } ?>
             <div class="col-12 col-md-3 col-lg-4 col-xl-2 mb-4">
                 <div class="card" style="background-color: <?php echo $corDoCard; ?>;">
@@ -41,13 +43,9 @@ $VerificarSeOAlunoJaConfirmouPresenca = new Presenca();
                     <h5><?= $evento['nomeEvento'] ?></h5>
                     <p>Data: <?= date('d/m/Y', strtotime($evento['dataEvento'])) ?></p>
                     <p>Local: <?= $evento['local'] ?></p>
-                    <?php if ($corDoCard == 'yellow') { ?>
-                        <small>Presença já confirmada!</small>
-
-                    <?php } else { ?>
-                        <small>|</small>
-                    <?php } ?>
                     
+                        <small><?=$mensagemCard?></small>
+
                     <a href="./Views/Evento.php?id=<?= $evento['idEvento'] ?>" class="btn btn-secondary">Saber mais</a>
                 </div>
             </div>

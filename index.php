@@ -32,10 +32,13 @@ if (isset($_SESSION['idCoordenador'])) {
 </head>
 
 <body>
-    <div class="position-absolute top-0 start-0 nav navIndex">
+
+    <div class="position-absolute top-0 start-0 navbar navIndex">
         <button id="coordenador-btn">Coordenador</button>
         <button id="aluno-btn">Aluno</button>
     </div>
+
+
 
     <div class="container">
         <div class="row justify-content-center">
@@ -105,6 +108,8 @@ if (isset($_SESSION['idCoordenador'])) {
     </div>
     <a href="../libs/logout.php"><button class="btn btn-outline-danger">Sair da conta</button></a>
     </div>
+
+
     <script src="./assets/validacoesaluno.js"></script>
     <script src="./assets/bootstrap.bundle.min.js"></script>
     <script src="./assets/funcoes.js"></script>

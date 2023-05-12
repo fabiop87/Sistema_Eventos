@@ -60,7 +60,8 @@ class Aluno extends conexao
     public function verificarLoginAluno($ra, $senha)
     {
         // Busca o aluno pelo RA
-        $stmt = $this->getPDO()->prepare("SELECT * FROM alunos WHERE ra = :ra");
+        $sql = "SELECT * FROM alunos WHERE ra = :ra";
+        $stmt = $this->getPDO()->prepare($sql);
         $stmt->bindParam(':ra', $ra, PDO::PARAM_STR);
         $stmt->execute();
         $aluno = $stmt->fetch();
