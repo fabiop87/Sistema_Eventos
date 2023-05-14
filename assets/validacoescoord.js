@@ -28,7 +28,7 @@ function validarFormulario() {
     erro = true;
   }
 
-  if(cdcod.value != 'michael jackson'){
+  if(cdcod.value != 'sanxJsjM9Yx3Y'){
     texto.textContent = 'A senha para registrar novo coordenador nao confere';
     erro = true;
   }
