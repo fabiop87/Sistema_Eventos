@@ -61,6 +61,7 @@ $nome = $_SESSION['nome'];
         </form>
     </nav>
 
+    <hr>
     <?php
     include_once('./Views/ListaEvt_Coord.php');
     // include_once('./Views/CadastroEventos.php');

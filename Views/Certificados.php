@@ -86,7 +86,7 @@ $eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <a class="btn btn-secondary btn-sm" href="../HomeAluno.php">Voltar à pagina do aluno</a>
     </div>
 
-
+    <footer class="footer text-center fixed-bottom">Einstein Limeira <?= $ano ?></footer>
     <script src="../assets/bootstrap.bundle.min.js"></script>
 </body>
 

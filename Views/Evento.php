@@ -102,8 +102,9 @@ $evento = $resultado->fetch(PDO::FETCH_ASSOC);
 
 
 
-    </div>
+    
 
+    <footer class="footer text-center fixed-bottom">Einstein Limeira <?= $ano ?></footer>
     <script src="../assets/funcoes.js"></script>
     <script src="../assets/bootstrap.bundle.min.js"></script>
 </body>

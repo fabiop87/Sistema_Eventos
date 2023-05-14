@@ -66,7 +66,7 @@ $nome = $_SESSION['nome'];
 
 
     <h2>Eventos Disponíveis</h2>
-
+    <hr>
     <?php include_once('./Views/ListaEvt_Aluno.php'); ?>
     <hr>
     <h2>Eventos Inscritos</h2>
