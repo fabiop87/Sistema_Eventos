@@ -1,5 +1,5 @@
 <?php
-
+$ano = date('Y');
 if (isset($_GET['erro']) && $_GET['erro'] == "url") {
     echo "<marquee> Você é um bobão sai daqui </marquee>";
     die();
@@ -109,7 +109,7 @@ if (isset($_SESSION['idCoordenador'])) {
     <a href="../libs/logout.php"><button class="btn btn-outline-danger">Sair da conta</button></a>
     </div>
 
-
+    <footer class="footer text-center fixed-bottom">Einstein Limeira <?= $ano ?></footer>
     <script src="./assets/validacoesaluno.js"></script>
     <script src="./assets/bootstrap.bundle.min.js"></script>
     <script src="./assets/funcoes.js"></script>

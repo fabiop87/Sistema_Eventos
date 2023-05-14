@@ -1,7 +1,8 @@
 <?php
 
-session_start();
+$ano = date('Y');
 
+session_start();
 //pegando os dados do aluno e do evento
 $idEvento = $_GET['id'];
 $ra = $_SESSION['ra'];

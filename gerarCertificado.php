@@ -64,6 +64,7 @@ $pdf->setPaper('A4', 'landscape');
 $certificado = "
 <title>Certificado {$nomeEvento}</title>
     <style>
+    body{background-color: lightgray}
         p {
             text-align: center;
             line-height: 1.5em;

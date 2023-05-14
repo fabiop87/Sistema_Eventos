@@ -1,4 +1,5 @@
 <?php
+$ano = date('Y');
 session_start();
 
 if (!isset($_SESSION) && !$_SESSION['online']) {
