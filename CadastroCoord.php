@@ -1,11 +1,11 @@
 <?php
 
-require_once('./Funcoes/Model.php');
+require_once('./Funcoes/Coordenador.php');
 
-$conn = new conexao();
+$Coordenador = new Coordenador();
 
 $sql = "SELECT idCurso, nomeCurso FROM cursos";
-$stmt = $conn->getPDO()->query($sql);
+$stmt = $Coordenador->getPDO()->query($sql);
 $cursos = $stmt->fetchAll();
 
 ?>
@@ -41,7 +41,7 @@ $cursos = $stmt->fetchAll();
                         </div>
 
                         <div class="form-group">
-                            <label for="senha" class="form-label">Senha:</label>
+                            <label for="senha" class="form-label">Senha: <small>(min 6 caracteres)</small></label>
                             <input type="password" name="senha" id="senha" required class="form-control" placeholder="******">
                         </div>
 
@@ -78,6 +78,10 @@ $cursos = $stmt->fetchAll();
         </div>
         <a class="btn btn-secondary btn-sm p-2" href="index.php">Voltar ao Login</a>
     </div>
+
+    <?php include_once('Views/ListaCoordenadores.php')?>
+
+
     <script src="./assets/validacoescoord.js"></script>
     <script src="./assets/bootstrap.bundle.min.js"></script>
 </body>

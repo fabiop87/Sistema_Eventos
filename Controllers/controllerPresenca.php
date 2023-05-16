@@ -16,8 +16,9 @@ switch ($_POST['tiporeq_presenca']) {
     case 'Inscrever':
         if(!$Presenca->verificarInscricao($_POST['idEvento'], $_POST['ra'])){
             $Presenca->inscrever($_POST['idEvento'], $_POST['ra']);
+            $mensagem = 'Inscrição-realizada!';  
         } else {
-            $mensagem = 'ja-está-inscrito';  
+            $mensagem = 'Deu-merda';
         }
         break;
         case 'Confirmar':
@@ -26,17 +27,17 @@ switch ($_POST['tiporeq_presenca']) {
         }
         if($Presenca->verificarInscricao($_POST['idEvento'], $_POST['ra'])){
             $Presenca->confirmarPresenca($_POST['idEvento'], $_POST['ra'], $_POST['codigoAluno']);
-            $mensagem = 'código-enviado';
+            $mensagem = 'Código-Enviado';
         }
         break;
     case 'Certificado':
         if($Presenca->validarCertificado($_POST['idEvento'], $_POST['ra'])){
-            echo 'validado';
+            $mensagem = 'Certificado-Validado';
         }
         break;
     case 'Desinscrever':
         $Presenca->desinscrever($_POST['idEvento'], $_POST['ra']);
-        $mensagem = 'desinscrito';
+        $mensagem = "Inscrição-retirada";
         break;
     default:
         die('deu merda');

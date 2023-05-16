@@ -96,4 +96,16 @@ class Coordenador extends conexao
         // Retorna verdadeiro se a atualização foi bem sucedida
         return $stmt->rowCount() > 0;
     }
+
+
+    public function listarCoordenadores()
+    {
+        $sql = "SELECT nome, nomeCurso, co.created_at
+        FROM coordenadores co
+        INNER JOIN cursos cu
+        ON co.idCurso = cu.idCurso";
+        $stmt = $this->getPDO()->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
