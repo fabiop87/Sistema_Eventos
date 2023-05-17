@@ -1,5 +1,5 @@
 <?php
-require('Model.php');
+require_once('Model.php');
 
 class Evento extends conexao
 {
@@ -45,7 +45,7 @@ class Evento extends conexao
     $stmt = $this->getPdo()->prepare($sql);
     $stmt->bindParam(':idEvento', $idEvento);
     $stmt->execute();
-    return $stmt->fetch();
+    return $stmt->fetch(PDO::FETCH_ASSOC);
   }
 
   function atualizarEvento($idEvento, $nomeEvento, $descricao, $local, $dataEvento, $horarioInicio, $horarioTermino, $codigoCoord): bool

@@ -15,11 +15,7 @@ class Presenca extends conexao
         $stmt->bindParam(':idEvento', $idEvento, PDO::PARAM_INT);
         $stmt->bindParam(':ra', $ra, PDO::PARAM_STR);
 
-        if ($stmt->execute()) {
-            header('Location: ../HomeAluno.php');
-        } else {
-            echo 'deu errado pra te inscrever';
-        }
+        return $stmt->execute();
     }
 
     public function verificarInscricao($idEvento, $ra)
@@ -39,7 +35,7 @@ class Presenca extends conexao
     {
 
 
-        $sql = "SELECT e.*, p.*
+    $sql = "SELECT e.*, p.*
     FROM eventos e
     INNER JOIN presenca p ON p.idEvento = e.idEvento
     WHERE p.idEvento = :idEvento AND p.ra = :ra AND p.codigoAluno = e.codigoCoord;";

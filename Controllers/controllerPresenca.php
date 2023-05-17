@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 
 if (!isset($_POST['tiporeq_presenca'])) {
     header('Location:/?erro=url');

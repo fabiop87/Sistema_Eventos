@@ -10,16 +10,19 @@ $ra = $_SESSION['ra'];
 require_once('../Funcoes/Presenca.php');
 $Presenca = new Presenca();
 
+require_once('../Funcoes/Evento.php');
+$Evento = new Evento();
 
+$evento = $Evento->consultarEvento($idEvento);
 
-$sql = "SELECT *
-FROM eventos
-WHERE idEvento = '$idEvento'
-";
+// $sql = "SELECT *
+// FROM eventos
+// WHERE idEvento = '$idEvento'
+// ";
 
-$resultado = $Presenca->getPDO()->prepare($sql);
-$resultado->execute();
-$evento = $resultado->fetch(PDO::FETCH_ASSOC);
+// $resultado = $Presenca->getPDO()->prepare($sql);
+// $resultado->execute();
+// $evento = $resultado->fetch(PDO::FETCH_ASSOC);
 
 
 ?>

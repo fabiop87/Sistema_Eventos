@@ -13,6 +13,8 @@ $Presenca = new Presenca();
 
 $ra = $_SESSION['ra'] ?? '';
 
+// Retorna os eventos em que o aluno tem o certificado liberado
+
 $sql = "SELECT p.*, e.* FROM presenca p INNER JOIN eventos e ON p.idEvento = e.idEvento AND p.codigoAluno = e.codigoCoord WHERE ra = :ra";
 $stmt = $Presenca->getPDO()->prepare($sql);
 $stmt->bindParam(':ra', $ra, PDO::PARAM_STR);

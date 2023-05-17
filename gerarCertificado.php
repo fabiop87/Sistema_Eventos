@@ -64,7 +64,6 @@ $pdf->setPaper('A4', 'landscape');
 $certificado = "
 <title>Certificado {$nomeEvento}</title>
     <style>
-    body{background-color: lightgray}
         p {
             text-align: center;
             line-height: 1.5em;
@@ -83,12 +82,14 @@ $certificado = "
 <body>
     <h1>EINSTEIN LIMEIRA</h1>
     <div class='center'>
-    <img src='./PDF/img/logo.png' alt=''>
+    <img src='./PDF/img/logo.png' alt='Logo Escola'>
     </div>
     
     <p>O aluno <strong>{$nome}</strong> ra: <strong>{$ra}</strong> do curso <strong>{$curso}</strong> tem presença confirmada no evento <strong>{$nomeEvento}</strong> no {$local}</p>
     
     <p>Data: {$dataEvento}   Horário de início: {$horarioInicio}       Horário de término: {$horarioTermino}</p>
+
+    <img src='./PDF/img/assinatura.png' alt='Assinatura'>
 
 ";
 
@@ -110,4 +111,8 @@ $pdf->loadHtml($certificado);
 $pdf->stream("Certificado '{$nomeEvento}' - '{$nome}'", array("Attachment" => 0));
 
 
-
+ /*
+ EXTENSAO QUE PRECISA ATIVAR NO PHP.INI PARA FUNCIONAR IMAGENS
+ 
+ PHP.ini extension = gd 
+ */
