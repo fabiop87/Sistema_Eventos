@@ -1,5 +1,6 @@
 <?php
 
+$offsetEvt = $_GET['offsetEvt'] ?? 0;
 
 if (isset($_GET['search']) && $_GET['search'] != '') {
   $pesquisa = ($_GET['search']);
@@ -7,8 +8,10 @@ if (isset($_GET['search']) && $_GET['search'] != '') {
   $stmt = $Coordenador->getPDO()->prepare($sql);
   $stmt->execute([':pesquisa' => "%$pesquisa%"]);
 } else {
-  $sql = "SELECT * FROM eventos ORDER BY dataEvento DESC LIMIT 10";
-  $stmt = $Coordenador->getPDO()->query($sql);
+  $sql = "SELECT * FROM eventos ORDER BY dataEvento DESC LIMIT 10 OFFSET :offset";
+  $stmt = $Coordenador->getPDO()->prepare($sql);
+  $stmt->bindParam(':offset', $offsetEvt, PDO::PARAM_INT);
+  $stmt->execute();
 }
 
 $eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -50,4 +53,12 @@ $eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <?php endforeach; ?>
   </div>
 
+</div>
+
+<div>
+    <?php if ($offsetEvt > 0) : ?>
+        <a href="?offsetEvt=<?= max($offsetEvt - 10, 0) ?>" class="btn btn-secondary">Anterior</a>
+    <?php endif; ?>
+    <a href="?offsetEvt=<?= $offsetEvt + 10 ?>" class="btn btn-secondary">Próximo</a>
+</div>
 </div>

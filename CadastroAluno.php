@@ -81,7 +81,8 @@ $cursos = $stmt->fetchAll();
                         </div>
                         <input type="hidden" name="LoginouRegister" value="Register">
 
-                        <input type="submit" value="Registrar" class="btn btn-outline-warning">
+                        <!-- desabilitado por conta de falta de vontade assincrona com tempero de água de salsicha -->
+                        <!-- <input type="submit" value="Registrar" class="btn btn-outline-warning" disabled> -->
 
                     </fieldset>
                 </form>

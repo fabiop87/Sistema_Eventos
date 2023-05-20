@@ -1,5 +1,7 @@
 <?php
 
+date_default_timezone_set("America/Sao_Paulo");
+$dataAtual = date('d/m/Y'); 
 
 session_start();
 
@@ -13,7 +15,7 @@ if (isset($_SESSION['idCoordenador'])) {
     die('calma lá que nao era pra acontecer isso, faz o logout ai');
 }
 
-$ano = date('Y');
+
 require_once('./Funcoes/Aluno.php');
 $Aluno = new Aluno();
 
@@ -72,7 +74,7 @@ $nome = $_SESSION['nome'];
     <h2>Eventos Inscritos</h2>
     <?php include_once('./Views/EventosInscritos.php') ?>
 
-    <footer class="footer text-center fixed-bottom">Einstein Limeira <?= $ano ?></footer>
+    <footer class="footer text-center fixed-bottom">Einstein Limeira <?= $dataAtual ?></footer>
 
     <script src="../assets/funcoes.js"></script>
     <script src="./assets/bootstrap.bundle.min.js"></script>

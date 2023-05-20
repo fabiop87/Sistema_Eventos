@@ -3,6 +3,7 @@
 // $dataAtual = date('d/m/Y'); // fazer o negocio de nao puxar evento que ja passou
 require_once('./Funcoes/Presenca.php');
 
+$offsetEvtInscrito = $_GET['offsetEvtInscrito'] ?? 0;
 
 $sql = "SELECT *
 FROM eventos
@@ -12,11 +13,12 @@ WHERE idEvento IN (
   INNER JOIN presenca p ON e.idEvento = p.idEvento 
   WHERE p.ra = :ra
 )
-  ORDER BY dataEvento DESC
+  ORDER BY dataEvento DESC LIMIT 10 OFFSET :offset
 ";
 
 $stmt = $Aluno->getPDO()->prepare($sql);
 $stmt->bindParam(':ra', $ra, PDO::PARAM_STR);
+$stmt->bindParam(':offset', $offsetEvtInscrito, PDO::PARAM_INT);
 $stmt->execute();
 $eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -43,12 +45,20 @@ $VerificarSeOAlunoJaConfirmouPresenca = new Presenca();
                     <h5><?= $evento['nomeEvento'] ?></h5>
                     <p>Data: <?= date('d/m/Y', strtotime($evento['dataEvento'])) ?></p>
                     <p>Local: <?= $evento['local'] ?></p>
-                    
-                        <small><?=$mensagemCard?></small>
+
+                    <small><?= $mensagemCard ?></small>
 
                     <a href="./Views/Evento.php?id=<?= $evento['idEvento'] ?>" class="btn btn-secondary">Saber mais</a>
                 </div>
             </div>
         <?php endforeach; ?>
     </div>
+</div>
+
+<div>
+    <?php if ($offsetEvtInscrito > 0) : ?>
+        <a href="?offsetEvtInscrito=<?= max($offsetEvtInscrito - 10, 0) ?>" class="btn btn-secondary">Anterior</a>
+    <?php endif; ?>
+    <a href="?offsetEvtInscrito=<?= $offsetEvtInscrito + 10 ?>" class="btn btn-secondary">Próximo</a>
+</div>
 </div>

@@ -1,8 +1,8 @@
 <?php
 
-date_default_timezone_set("America/Sao_Paulo");
-$dataAtual = date('d/m/Y'); // fazer o negocio de nao puxar evento que ja passou
 
+
+$offsetEvtDisponivel = $_GET['offsetEvtDisponivel'] ?? 0;
 
 if (isset($_GET['search']) && $_GET['search'] != '') {
     $pesquisa = $_GET['search'];
@@ -29,10 +29,11 @@ if (isset($_GET['search']) && $_GET['search'] != '') {
          INNER JOIN presenca p ON e.idEvento = p.idEvento 
          WHERE p.ra = :ra
        )
-       ORDER BY dataEvento DESC
+       ORDER BY dataEvento DESC LIMIT 10 OFFSET :offset
        ";
     $stmt = $Aluno->getPDO()->prepare($sql);
     $stmt->bindParam(':ra', $ra, PDO::PARAM_STR);
+    $stmt->bindParam(':offset', $offsetEvtDisponivel, PDO::PARAM_INT);
 }
 
 $stmt->execute();
@@ -59,4 +60,12 @@ $eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php endforeach; ?>
     </div>
 
+</div>
+
+<div>
+    <?php if ($offsetEvtDisponivel > 0) : ?>
+        <a href="?offsetEvtDisponivel=<?= max($offsetEvtDisponivel - 10, 0) ?>" class="btn btn-secondary">Anterior</a>
+    <?php endif; ?>
+    <a href="?offsetEvtDisponivel=<?= $offsetEvtDisponivel + 10 ?>" class="btn btn-secondary">Próximo</a>
+</div>
 </div>
