@@ -13,6 +13,7 @@ $Presenca = new Presenca();
 require_once('../Funcoes/Evento.php');
 $Evento = new Evento();
 
+// Acessa a função para pegar o evento selecionado
 $evento = $Evento->consultarEvento($idEvento);
 
 // $sql = "SELECT *

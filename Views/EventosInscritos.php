@@ -5,6 +5,8 @@ require_once('./Funcoes/Presenca.php');
 
 $offsetEvtInscrito = $_GET['offsetEvtInscrito'] ?? 0;
 
+
+// retorna os eventos em que o aluno está inscrito
 $sql = "SELECT *
 FROM eventos
 WHERE idEvento IN (

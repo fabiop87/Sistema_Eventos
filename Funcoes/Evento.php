@@ -40,12 +40,12 @@ class Evento extends conexao
   public function consultarEvento($idEvento)
   {
 
-
     $sql = "SELECT * FROM eventos WHERE idEvento = :idEvento";
     $stmt = $this->getPdo()->prepare($sql);
     $stmt->bindParam(':idEvento', $idEvento);
     $stmt->execute();
     return $stmt->fetch(PDO::FETCH_ASSOC);
+    // retorna o evento selecionado
   }
 
   function atualizarEvento($idEvento, $nomeEvento, $descricao, $local, $dataEvento, $horarioInicio, $horarioTermino, $codigoCoord): bool

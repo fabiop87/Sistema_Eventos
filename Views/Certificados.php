@@ -3,7 +3,11 @@ $ano = date('Y');
 session_start();
 
 if (!isset($_SESSION) && !$_SESSION['online']) {
-    die('nao tem permissao pra entrar aqui');
+    die('Apenas alunos podem acessar essa página');
+}
+
+if(!isset($_SESSION['ra'])){
+    die('Apenas alunos podem acessar essa página');
 }
 
 require_once('../Funcoes/Presenca.php');

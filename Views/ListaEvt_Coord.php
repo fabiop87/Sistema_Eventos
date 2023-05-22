@@ -2,6 +2,8 @@
 
 $offsetEvt = $_GET['offsetEvt'] ?? 0;
 
+// retorna os eventos, se ele usar o campo de pesquisa usa o like, senão retorna todos com um offset de 10
+
 if (isset($_GET['search']) && $_GET['search'] != '') {
   $pesquisa = ($_GET['search']);
   $sql = "SELECT * FROM eventos WHERE nomeEvento LIKE :pesquisa";
