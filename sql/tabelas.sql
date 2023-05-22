@@ -97,22 +97,11 @@ ALTER TABLE `presenca` DROP FOREIGN KEY `fk_aln`; ALTER TABLE `presenca` ADD CON
  crypt('sapato', 'salsicha'); senha para registrar coordenador
  ?>
 */
-INSERT INTO `presenca`(`idEvento`, `ra`) VALUES (1,'0391221');
 
--- Exemplos de Procedure
 
--- DELIMITER //
-
--- CREATE PROCEDURE GetAllProducts()
+-- CREATE PROCEDURE procurarAluno(IN ra int)
 -- BEGIN
--- 	SELECT *  FROM products;
--- END //
-
--- DELIMITER ;
-
-CREATE PROCEDURE procurarAluno(IN ra int)
-BEGIN
-	SELECT *  FROM alunos WHERE ra = ra;
-END;
+-- 	SELECT *  FROM alunos WHERE ra = ra;
+-- END;
 
 
