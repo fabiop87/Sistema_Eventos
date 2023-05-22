@@ -20,6 +20,10 @@ switch ($tiporeq) {
       echo 'As senhas devem coincidir';
     }
 
+    if ($_POST['cdcod'] !== 'sanxJsjM9Yx3Y') {
+      die('<marquee> Tem que colocar o código certinho, veja o tutorial: https://www.youtube.com/watch?v=dQw4w9WgXcQ </marquee>');
+    }
+
     if (!$Coordenador->verificarCoordenadorExistente($_POST['nome'])) {
       $novoCoordenador = $Coordenador->cadastrarCoordenador($_POST['nome'], $_POST['idCurso'], $_POST['senha']);
     } else {
@@ -30,14 +34,13 @@ switch ($tiporeq) {
     // Verifica se o cadastro foi bem sucedido
     if ($Coordenador) {
       // Define uma mensagem de sucesso para ser exibida na página
-      $mensagem = 'Coordenador-cadastrado-com-sucesso!';
-      header('Location:/index.php?message='. $mensagem);
+      $mensagem = 'Coordenador cadastrado com sucesso!';
+      header('Location:/index.php?message='. json_encode($mensagem));
     } else {
       // Define uma mensagem de erro para ser exibida na página
       $mensagem = 'Ocorreu-um-erro-ao-cadastrar-o-coordenador.';
-      header('Location:/CadastroCoord.php?message='. $mensagem);
+      header('Location:/CadastroCoord.php?message='. json_encode($mensagem));
     }
-    echo $mensagem;
 
     break;
   case 'Login':
@@ -51,15 +54,15 @@ switch ($tiporeq) {
       $_SESSION['online'] = true;
       $_SESSION['idCoordenador'] = $coordenador['idCoordenador'];
       $_SESSION['nome'] = $coordenador['nome'];
-      header('Location:/HomeCoordenador.php?message='. $mensagem);
+      header('Location:/HomeCoordenador.php?message='. json_encode($mensagem));
       //var_dump($_SESSION);
  
     } else {
       // Define uma mensagem de erro para ser exibida na página
       $mensagem = 'Ocorreu-um-erro-ao-fazer-login.';
-      header('Location:/index.php?message='. $mensagem);
+      header('Location:/index.php?message='. json_encode($mensagem));
     }
-    echo $mensagem;
+
     break;
   default:
     throw new Exception('deu ruim');

@@ -57,7 +57,7 @@ $evento = $Evento->consultarEvento($idEvento);
                 <div class="col-12 p-2">
 
 
-                    <?php if (!$Presenca->verificarInscricao($evento['idEvento'], $ra)) { ?>
+                    <?php if (!$Presenca->verificarInscricao($evento['idEvento'], $ra)) : ?>
                         <form action="../Controllers/controllerPresenca.php" method="POST">
                             <input type="hidden" name="idEvento" value="<?= $evento['idEvento'] ?>">
                             <input type="hidden" name="ra" value="<?= $_SESSION['ra'] ?>">
@@ -68,7 +68,7 @@ $evento = $Evento->consultarEvento($idEvento);
 
 
 
-                    <?php } elseif ($Presenca->verificarInscricao($evento['idEvento'], $ra) && !$Presenca->validarCertificado($evento['idEvento'], $ra)) { ?>
+                    <?php elseif ($Presenca->verificarInscricao($evento['idEvento'], $ra) && !$Presenca->validarCertificado($evento['idEvento'], $ra)) : ?>
 
 
 
@@ -92,9 +92,9 @@ $evento = $Evento->consultarEvento($idEvento);
 
 
 
-                    <?php } else {
-                        echo 'Você ja tem presença confirmada neste evento, para obter o seu certificado vá para a pagina inicial e acesse a aba Certificados';
-                    } ?>
+                    <?php else : ?>
+                        <p> Você já tem presença confirmada neste evento, para obter o seu certificado vá para a pagina inicial e acesse a aba Certificados </p>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

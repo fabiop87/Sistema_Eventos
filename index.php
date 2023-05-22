@@ -105,9 +105,9 @@ if (isset($_SESSION['idCoordenador'])) {
         <!-- <a class="btn btn-secondary btn-sm" href="CadastroAluno.php">Novo Aluno</a> -->
         <a class="btn btn-secondary btn-sm" href="CadastroCoord.php">Novo Coordenador</a>
 
-    </div>
+    <!-- </div>
     <a href="../libs/logout.php"><button class="btn btn-outline-danger">Sair da conta</button></a>
-    </div>
+    </div> -->
 
     <footer class="footer text-center fixed-bottom">Einstein Limeira <?= $ano ?></footer>
     <script src="./assets/validacoesaluno.js"></script>

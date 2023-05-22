@@ -16,9 +16,9 @@ switch ($_POST['tiporeq_presenca']) {
     case 'Inscrever':
         if(!$Presenca->verificarInscricao($_POST['idEvento'], $_POST['ra'])){
             $Presenca->inscrever($_POST['idEvento'], $_POST['ra']);
-            $mensagem = 'Inscrição-realizada!';  
+            $mensagem = 'Inscricao realizada!';  
         } else {
-            $mensagem = 'Deu-merda';
+            $mensagem = 'Deu algum erro para realizar a inscricao';
         }
         break;
         case 'Confirmar':
@@ -27,21 +27,21 @@ switch ($_POST['tiporeq_presenca']) {
         }
         if($Presenca->verificarInscricao($_POST['idEvento'], $_POST['ra'])){
             $Presenca->confirmarPresenca($_POST['idEvento'], $_POST['ra'], $_POST['codigoAluno']);
-            $mensagem = 'Código-Enviado';
+            $mensagem = 'Código Enviado';
         }
         break;
     case 'Certificado':
         if($Presenca->validarCertificado($_POST['idEvento'], $_POST['ra'])){
-            $mensagem = 'Certificado-Validado';
+            $mensagem = 'Certificado Validado';
         }
         break;
     case 'Desinscrever':
         $Presenca->desinscrever($_POST['idEvento'], $_POST['ra']);
-        $mensagem = "Inscrição-retirada";
+        $mensagem = "Inscricao retirada";
         break;
     default:
         die('deu merda');
         break;
 }
 
-header('Location:/HomeAluno.php?message='. $mensagem);
+header('Location:/HomeAluno.php?message='. json_encode($mensagem));

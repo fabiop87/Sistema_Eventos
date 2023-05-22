@@ -66,7 +66,7 @@ $cursos = $stmt->fetchAll();
 
                         <div class="form-group">
                             <label for="nome" class="form-label">Código Coordenador:</label>
-                            <input type="text" name="cdcod" id="cdcod" required class="form-control" placeholder="Código para criar uma conta de coordenador">
+                            <input type="password" name="cdcod" id="cdcod" required class="form-control" placeholder="Código para criar uma conta de coordenador">
                         </div>
 
                         <input type="submit" value="Registrar" class="btn btn-outline-warning">

@@ -25,17 +25,17 @@ switch ($tiporeq) {
       $novoAluno = $Aluno->cadastrarAluno($_POST['nome'], $_POST['ra'], $_POST['idCurso'], $_POST['senha']);
     } else {
       $mensagem = 'Este aluno já está cadastrado';
-      header('Location:/index.php?message='. $mensagem);
+      header('Location:/index.php?message='. json_encode($mensagem));
     }
     // Verifica se o cadastro foi bem sucedido
     if ($novoAluno) {
       // Define uma mensagem de sucesso para ser exibida na página
-      $mensagem = 'Aluno-cadastrado-com-sucesso!';
-      header('Location:/index.php?message='. $mensagem);
+      $mensagem = 'Aluno cadastrado com sucesso!';
+      header('Location:/index.php?message='. json_encode($mensagem));
     } else {
       // Define uma mensagem de erro para ser exibida na página
-      $mensagem = 'Ocorreu-um-erro-ao-cadastrar-o-aluno.';
-      header('Location:/CadastroAluno.php?message='. $mensagem);
+      $mensagem = 'Ocorreu um erro-ao cadastrar-o-aluno.';
+      header('Location:/CadastroAluno.php?message='. json_encode($mensagem));
     }
     echo $mensagem;
 
@@ -47,20 +47,18 @@ switch ($tiporeq) {
 
     if ($aluno) {
       // Define uma mensagem de sucesso para ser exibida na página
-      $mensagem = 'Aluno-logado-com-sucesso!';
+      $mensagem = 'Aluno logado com sucesso!';
       session_start();
       $_SESSION['online'] = true;
       $_SESSION['ra'] = $aluno['ra'];
       $_SESSION['nome'] = $aluno['nome'];
-      header('Location:/HomeAluno.php?message='. $mensagem);
+      header('Location: ../HomeAluno.php?message='. json_encode($mensagem));
 
     } else {
       // Define uma mensagem de erro para ser exibida na página
       $mensagem = 'Ocorreu-um-erro-ao-fazer-login.';
-      header('Location:/index.php?message='. $mensagem);
+      header('Location: ../index.php?message='. json_encode($mensagem));
     }
-    echo $mensagem;
-    // Redireciona o usuário para a página desejada
     break;
   default:
     throw new Exception('deu ruim');

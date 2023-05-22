@@ -56,9 +56,9 @@ $eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </div>
 
 <div>
-    <?php if ($offsetEvt > 0) : ?>
-        <a href="?offsetEvt=<?= max($offsetEvt - 10, 0) ?>" class="btn btn-secondary">Anterior</a>
-    <?php endif; ?>
-    <a href="?offsetEvt=<?= $offsetEvt + 10 ?>" class="btn btn-secondary">Próximo</a>
+  <?php if ($offsetEvt > 0) : ?>
+    <a href="?offsetEvt=<?= max($offsetEvt - 10, 0) ?>" class="btn btn-secondary">Anterior</a>
+  <?php endif; ?>
+  <a href="?offsetEvt=<?= $offsetEvt + 10 ?>" class="btn btn-secondary">Próximo</a>
 </div>
 </div>

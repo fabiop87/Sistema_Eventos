@@ -13,8 +13,8 @@ function validarFormulario() {
   const regexSenha = /.{6,}/;
 
 
-  if (nome.value.length < 3) {
-    texto.textContent = 'O nome deve ter no mínimo 3 caracteres';
+  if (nome.value.length < 5) {
+    texto.textContent = 'O nome deve ter no mínimo 5 caracteres';
     erro = true;
   }
 
@@ -28,8 +28,8 @@ function validarFormulario() {
     erro = true;
   }
 
-  if(cdcod.value != 'sanxJsjM9Yx3Y'){
-    texto.textContent = 'A senha para registrar novo coordenador nao confere';
+  if(cdcod.value.length < 8 || cdcod.value.length > 17){
+    texto.textContent = 'A senha para registrar novo coordenador não confere, quer dizer, leia o manual, tá explicado lá';
     erro = true;
   }
 
