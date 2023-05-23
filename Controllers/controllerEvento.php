@@ -21,7 +21,7 @@ switch ($_POST['tiporeq_evt']) {
     break;
   case 'Delete':
     $Evento->excluirEvento($_POST['idEvento']);
-    
+    $mensagem = 'Evento deletado';
     break;
   case 'Update':
     $evento = $Evento->atualizarEvento($_POST['idEvento'], $_POST['nomeEvento'], $_POST['descricao'], $_POST['local'], $_POST['dataEvento'], $_POST['horarioInicio'], $_POST['horarioTermino'], $_POST['codigoCoord']);

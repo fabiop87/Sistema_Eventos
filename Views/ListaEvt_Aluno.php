@@ -8,6 +8,7 @@ $offsetEvtDisponivel = $_GET['offsetEvtDisponivel'] ?? 0;
 
 if (isset($_GET['search']) && $_GET['search'] != '') {
     $pesquisa = $_GET['search'];
+    $pesquisa = '%'.$pesquisa.'%';
     $sql = "SELECT * FROM eventos WHERE nomeEvento LIKE :pesquisa      
       AND dataEvento >= NOW()
        AND idEvento NOT IN (
@@ -19,7 +20,7 @@ if (isset($_GET['search']) && $_GET['search'] != '') {
        ORDER BY dataEvento DESC LIMIT 10
        ";
     $stmt = $Aluno->getPDO()->prepare($sql);
-    $stmt->bindParam(':pesquisa', "%$pesquisa%", PDO::PARAM_STR);
+    $stmt->bindParam(':pesquisa', $pesquisa, PDO::PARAM_STR);
     $stmt->bindParam(':ra', $ra, PDO::PARAM_STR);
 } else {
     $sql = "SELECT *
