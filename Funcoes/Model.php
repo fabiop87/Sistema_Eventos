@@ -15,7 +15,7 @@ class conexao
             $this->pdo = new PDO("mysql:host={$this->_host};dbname={$this->_bd}", $this->_user, $this->_pass);
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
-            echo "Calma que deu merda" ;//. $e->getMessage();
+            echo "Erro de conexao" ;//. $e->getMessage();
         }
     }
 
