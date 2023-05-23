@@ -58,7 +58,7 @@ $nome = $_SESSION['nome'];
         <a class="nav-link-active btn" aria-current="page" href="#">Página do Coordenador</a>
         <a class="nav-link" href="./Views/CadastroEventos.php">Cadastrar novo evento</a>
         <form class="d-flex" role="search">
-            <input name="search" value="<?php if (isset($_GET['search'])) echo $_GET['search']; ?>" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <input name="search" value="<?php if (isset($_GET['search'])) echo $_GET['search']; ?>" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" autocomplete="off">
             <button class="btn btn-outline-success" type="submit">Buscar</button>
         </form>
     </nav>

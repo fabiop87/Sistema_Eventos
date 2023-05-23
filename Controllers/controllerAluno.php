@@ -34,8 +34,8 @@ switch ($tiporeq) {
       header('Location:/index.php?message='. json_encode($mensagem));
     } else {
       // Define uma mensagem de erro para ser exibida na página
-      $mensagem = 'Ocorreu um erro-ao cadastrar-o-aluno.';
-      header('Location:/CadastroAluno.php?message='. json_encode($mensagem));
+      $mensagem = 'Ocorreu um erro ao cadastrar o aluno.';
+      header('Location: ../CadastroAluno.php?message='. json_encode($mensagem));
     }
     echo $mensagem;
 
@@ -56,7 +56,7 @@ switch ($tiporeq) {
 
     } else {
       // Define uma mensagem de erro para ser exibida na página
-      $mensagem = 'Ocorreu-um-erro-ao-fazer-login.';
+      $mensagem = 'Ocorreu um erro ao fazer login.';
       header('Location: ../index.php?message='. json_encode($mensagem));
     }
     break;
