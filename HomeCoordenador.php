@@ -1,7 +1,7 @@
 <?php
 
 date_default_timezone_set("America/Sao_Paulo");
-$dataAtual = date('d/m/Y'); 
+$dataAtual = date('d/m/Y');
 
 session_start();
 
@@ -37,7 +37,8 @@ $nome = $_SESSION['nome'];
 </head>
 
 <body>
-    
+    <img class="rounded mx-start d-block" src="/assets/vaiissomesmo.png" alt="logoescola">
+
     <?php include_once('./Views/MensagemGET.php') ?>
 
     <h1 class="text-center">Página Inicial Coordenador</h1>

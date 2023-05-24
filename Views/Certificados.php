@@ -6,7 +6,7 @@ if (!isset($_SESSION) && !$_SESSION['online']) {
     die('Apenas alunos podem acessar essa página');
 }
 
-if(!isset($_SESSION['ra'])){
+if (!isset($_SESSION['ra'])) {
     die('Apenas alunos podem acessar essa página');
 }
 
@@ -19,7 +19,12 @@ $ra = $_SESSION['ra'] ?? '';
 
 // Retorna os eventos em que o aluno tem o certificado liberado
 
-$sql = "SELECT p.*, e.* FROM presenca p INNER JOIN eventos e ON p.idEvento = e.idEvento AND p.codigoAluno = e.codigoCoord WHERE ra = :ra";
+$sql = "SELECT p.*, e.* 
+FROM presenca p INNER JOIN eventos e ON p.idEvento = e.idEvento 
+AND p.codigoAluno = e.codigoCoord WHERE ra = :ra
+ORDER BY dataEvento DESC
+";
+
 $stmt = $Presenca->getPDO()->prepare($sql);
 $stmt->bindParam(':ra', $ra, PDO::PARAM_STR);
 $stmt->execute();
@@ -43,8 +48,9 @@ $eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <body>
     <h1 class="text-center">Certificados do Aluno</h1>
 
+
     <table class="table">
-        <thead>
+        <thead class="table-dark">
             <tr>
                 <!-- <th>ID</th> -->
                 <th>Nome</th>
@@ -55,7 +61,7 @@ $eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <th>Término</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="table-light">
             <?php foreach ($eventos as $evento) : ?>
                 <tr>
                     <!-- <td><?= $evento['idEvento'] ?></td> -->
@@ -88,8 +94,7 @@ $eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <?php endforeach; ?>
         </tbody>
     </table>
-
-    <div class="mt-4">
+    <div class="mt-4 mb-4 fixed-bottom">
         <a class="btn btn-secondary btn-sm" href="../HomeAluno.php">Voltar à pagina do aluno</a>
     </div>
 
