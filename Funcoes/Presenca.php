@@ -35,7 +35,7 @@ class Presenca extends conexao
     {
 
 
-    $sql = "SELECT e.*, p.*
+        $sql = "SELECT e.*, p.*
     FROM eventos e
     INNER JOIN presenca p ON p.idEvento = e.idEvento
     WHERE p.idEvento = :idEvento AND p.ra = :ra AND p.codigoAluno = e.codigoCoord;";
@@ -68,7 +68,19 @@ class Presenca extends conexao
         return $stmt->rowCount() > 0;
     }
 
+    public function EventosComCertificadoLiberado($ra)
+    {
+        $sql = "SELECT p.*, e.* 
+        FROM presenca p INNER JOIN eventos e ON p.idEvento = e.idEvento 
+        AND p.codigoAluno = e.codigoCoord WHERE ra = :ra
+        ORDER BY dataEvento DESC
+        ";
 
+        $stmt = $this->getPDO()->prepare($sql);
+        $stmt->bindParam(':ra', $ra, PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 
     function desinscrever($idEvento, $ra)
     {

@@ -16,14 +16,10 @@ $Evento = new Evento();
 // Acessa a função para pegar o evento selecionado
 $evento = $Evento->consultarEvento($idEvento);
 
-// $sql = "SELECT *
-// FROM eventos
-// WHERE idEvento = '$idEvento'
-// ";
-
-// $resultado = $Presenca->getPDO()->prepare($sql);
-// $resultado->execute();
-// $evento = $resultado->fetch(PDO::FETCH_ASSOC);
+// Jogar o aluno para fora da página se ele tentar mudar para um id que não existe
+if(!$evento){
+    header('Location: ../HomeAluno.php?message=sai fora pilantra');
+}
 
 
 ?>

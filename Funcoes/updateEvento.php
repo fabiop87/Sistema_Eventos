@@ -96,7 +96,8 @@ $evento = $resultado->fetch(PDO::FETCH_ASSOC);
 
                 </form>
 
-
+                <small class="text-info">Como a vizualização para coordenadores gerou um bug meio estranho a página de vizualização de evento cadastrado é a mesma de atualizar, se só quiser ler, apenas não clicar no botão 'Salvar Alterações' e voltar a página normalmente.
+                </small>
             </div>
         </div>
     </div>

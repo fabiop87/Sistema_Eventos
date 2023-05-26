@@ -11,22 +11,11 @@ if (!isset($_SESSION) && !$_SESSION['ra']) {
 $ra = $_SESSION['ra'];
 
 
-require_once('./Funcoes/Model.php');
+require_once('./Funcoes/Aluno.php');
 // require_once('../Funcoes/Aluno.php');
-$Presenca = new conexao();
+$Aluno = new Aluno();
 
-$sql = "SELECT a.nome, c.nomeCurso
-FROM alunos a 
-INNER JOIN cursos c ON c.idCurso = a.idCurso
-WHERE a.ra = :ra
-
-";
-$stmt = $Presenca->getPDO()->prepare($sql);
-$stmt->bindParam(':ra', $ra, PDO::PARAM_STR);
-$stmt->execute();
-$dadosAluno = $stmt->fetch(PDO::FETCH_ASSOC);
-
-
+$dadosAluno = $Aluno->getAluno($ra);
 
 
 $nome = $dadosAluno['nome'];

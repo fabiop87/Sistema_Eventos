@@ -22,12 +22,12 @@ class Coordenador extends conexao
     }
 
     // Função para buscar os dados do coordenador
-    public function getCoordenador()
+    public function getCoordenador($id)
     {
 
         $sql = "SELECT * FROM coordenadores WHERE idCoordenador = :idCoordenador";
         $stmt = $this->getPdo()->prepare($sql);
-        $stmt->bindParam(':idCoordenador', $_SESSION['idCoordenador'], PDO::PARAM_STR);
+        $stmt->bindParam(':idCoordenador', $id, PDO::PARAM_STR);
         // Executa a query
         $stmt->execute();
 

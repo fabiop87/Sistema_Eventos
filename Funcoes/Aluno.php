@@ -23,12 +23,16 @@ class Aluno extends conexao
     }
 
     // Função para buscar os dados do aluno
-    public function getAluno()
+    public function getAluno($ra)
     {
 
-        $sql = "SELECT * FROM alunos WHERE ra = :ra";
+        $sql = "SELECT a.nome, c.nomeCurso
+        FROM alunos a 
+        INNER JOIN cursos c ON c.idCurso = a.idCurso
+        WHERE a.ra = :ra";
+
         $stmt = $this->getPdo()->prepare($sql);
-        $stmt->bindParam(':ra', $_SESSION['ra'], PDO::PARAM_STR);
+        $stmt->bindParam(':ra', $ra, PDO::PARAM_STR);
         // Executa a query
         $stmt->execute();
 

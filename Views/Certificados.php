@@ -1,5 +1,5 @@
 <?php
-$ano = date('Y');
+
 session_start();
 
 if (!isset($_SESSION) && !$_SESSION['online']) {
@@ -19,18 +19,7 @@ $ra = $_SESSION['ra'] ?? '';
 
 // Retorna os eventos em que o aluno tem o certificado liberado
 
-$sql = "SELECT p.*, e.* 
-FROM presenca p INNER JOIN eventos e ON p.idEvento = e.idEvento 
-AND p.codigoAluno = e.codigoCoord WHERE ra = :ra
-ORDER BY dataEvento DESC
-";
-
-$stmt = $Presenca->getPDO()->prepare($sql);
-$stmt->bindParam(':ra', $ra, PDO::PARAM_STR);
-$stmt->execute();
-$eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-
+$eventos = $Presenca->EventosComCertificadoLiberado($ra);
 
 ?>
 
@@ -52,7 +41,7 @@ $eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <table class="table">
         <thead class="table-dark">
             <tr>
-                <!-- <th>ID</th> -->
+                <th>#</th>
                 <th>Nome</th>
                 <!-- <th>Descricao</th> -->
                 <th>Local</th>
@@ -62,11 +51,13 @@ $eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </tr>
         </thead>
         <tbody class="table-light">
-            <?php foreach ($eventos as $evento) : ?>
+            <?php
+            $indice = 1;
+            foreach ($eventos as $evento) : ?>
                 <tr>
-                    <!-- <td><?= $evento['idEvento'] ?></td> -->
+                     <td><?= $indice++ ?></td>
                     <td><?= $evento['nomeEvento'] ?></td>
-                    <!-- <td><?= $evento['descricao'] ?></td> -->
+                    
                     <td><?= $evento['local'] ?></td>
                     <td><?= date('d/m/Y', strtotime($evento['dataEvento'])) ?></td>
                     <td><?= date('H:i', strtotime($evento['horarioInicio'])) ?></td>
@@ -74,7 +65,7 @@ $eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <td></td>
                     <td>
                         <?php
-                        if ($Presenca->verificarInscricao($evento['idEvento'], $ra) && $Presenca->validarCertificado($evento['idEvento'], $ra)) {
+                        if ($Presenca->verificarInscricao($evento['idEvento'], $ra) && $Presenca->validarCertificado($evento['idEvento'], $ra)) :
                         ?>
                             <form action="../gerarCertificado.php" method="POST">
                                 <input type="hidden" name="idEvento" value="<?= $evento['idEvento']; ?>">
@@ -86,7 +77,7 @@ $eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <input type="submit" class="btn btn-primary" value="Gerar Certificado">
                             </form>
                         <?php
-                        }
+                        endif
                         ?>
                     </td>
 
@@ -98,7 +89,7 @@ $eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <a class="btn btn-secondary btn-sm" href="../HomeAluno.php">Voltar à pagina do aluno</a>
     </div>
 
-    <footer class="footer text-center fixed-bottom">Einstein Limeira <?= $ano ?></footer>
+    
     <script src="../assets/bootstrap.bundle.min.js"></script>
 </body>
 
