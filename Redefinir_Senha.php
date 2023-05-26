@@ -19,15 +19,22 @@ require_once('./Funcoes/Model.php');
 
 $conn = new conexao();
 
-$novaSenha = $confirmaSenha = "";
-$novaSenha_err = $confirmaSenha_err = "";
+$novaSenha = $confirmaSenha = $senhaAntiga = "";
+$novaSenha_err = $confirmaSenha_err = $senhaAntiga_err = "";
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+    // Validar senha antiga
+    if (empty(trim($_POST["senhaAntiga"]))) {
+        $senhaAntiga_err = "Por favor, insira a senha antiga.";
+    } else {
+        $senhaAntiga = trim($_POST["senhaAntiga"]);
+    }
+
     // Validar nova senha
     if (empty(trim($_POST["novaSenha"]))) {
-        $novaSenha_err = "Por favor insira a nova senha.";
+        $novaSenha_err = "Por favor, insira a nova senha.";
     } elseif (strlen(trim($_POST["novaSenha"])) < 6) {
         $novaSenha_err = "A senha deve ter pelo menos 6 caracteres.";
     } else {
@@ -43,37 +50,54 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $confirmaSenha_err = "A senha não confere.";
         }
     }
-    // Verifique os erros de entrada antes de atualizar o banco de dados
-    if (empty($novaSenha_err) && empty($confirmaSenha_err)) {
-        // Prepare uma declaração de atualização
+
+    // Verificar os erros de entrada antes de atualizar o banco de dados
+    if (empty($senhaAntiga_err) && empty($novaSenha_err) && empty($confirmaSenha_err)) {
+        // Verificar a senha antiga
 
         if ($tipo_usuario == 'aluno') {
             $id = $_SESSION['ra'];
-            $sql = "UPDATE alunos SET senha = :senha WHERE ra = :id";
+            $sql_verificacao = "SELECT senha FROM alunos WHERE ra = :id";
+            $sql_atualizacao = "UPDATE alunos SET senha = :senha WHERE ra = :id";
         } elseif ($tipo_usuario == 'coordenador') {
             $id = $_SESSION['idCoordenador'];
-            $sql = "UPDATE coordenadores SET senha = :senha WHERE idCoordenador = :id";
+            $sql_verificacao = "SELECT senha FROM coordenadores WHERE idCoordenador = :id";
+            $sql_atualizacao = "UPDATE coordenadores SET senha = :senha WHERE idCoordenador = :id";
         } else {
             die('ué');
         }
 
-        $senhaCriptografada = password_hash($novaSenha, PASSWORD_BCRYPT);
+        $stmt_verificacao = $conn->getPDO()->prepare($sql_verificacao);
+        $stmt_verificacao->bindParam(':id', $id);
+        $stmt_verificacao->execute();
+        $row = $stmt_verificacao->fetch(PDO::FETCH_ASSOC);
 
+        if ($stmt_verificacao->rowCount() == 1) {
+            $senhaArmazenada = $row['senha'];
+            if (password_verify($senhaAntiga, $senhaArmazenada)) {
+                // A senha antiga está correta, continuar com a atualização
 
-        $stmt = $conn->getPDO()->prepare($sql);
+                $senhaCriptografada = password_hash($novaSenha, PASSWORD_BCRYPT);
 
-        $stmt->bindParam(':id', $id);
-        $stmt->bindParam(':senha', $senhaCriptografada);
-        var_dump($stmt);
-        // Executa a query passando os parâmetros
-        if ($stmt->execute()) {
-            // Senha atualizada com sucesso. Destrua a sessão e redirecione para a página de login
-            session_destroy();
-            $mensagem = 'Senha alterada com sucesso, faça login novamente';
-            header('Location: index.php?message='. $mensagem);
-            exit();
+                $stmt_atualizacao = $conn->getPDO()->prepare($sql_atualizacao);
+                $stmt_atualizacao->bindParam(':id', $id);
+                $stmt_atualizacao->bindParam(':senha', $senhaCriptografada);
+
+                // Executar a query passando os parâmetros
+                if ($stmt_atualizacao->execute()) {
+                    // Senha atualizada com sucesso. Destruir a sessão e redirecionar para a página de login
+                    session_destroy();
+                    $mensagem = 'Senha alterada com sucesso, faça login novamente';
+                    header('Location: index.php?message=' . $mensagem);
+                    exit();
+                } else {
+                    echo "Erro ao atualizar a senha.";
+                }
+            } else {
+                $senhaAntiga_err = "A senha antiga está incorreta.";
+            }
         } else {
-            echo "ae deu merda";
+            echo "Erro ao buscar a senha antiga.";
         }
     }
 }
@@ -95,45 +119,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <h2>Redefinir senha</h2>
 
-
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-6 mt-5">
-
-                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" autocomplete="off"> <!--  action  -->
-
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" autocomplete="off">
                     <fieldset>
-
                         <div class="form-group">
-                            <label for="novaSenha" class="form-label">Senha:</label>
+                            <label for="senhaAntiga" class="form-label">Senha antiga:</label>
+                            <input type="password" name="senhaAntiga" id="senhaAntiga" required class="form-control" placeholder="******">
+                            <?php echo (!empty($senhaAntiga_err)) ? '<span class="text-danger">' . $senhaAntiga_err . '</span>' : ''; ?>
+                        </div>
+                        <div class="form-group">
+                            <label for="novaSenha" class="form-label">Nova senha:</label>
                             <input type="password" name="novaSenha" id="novaSenha" required class="form-control" placeholder="******">
+                            <?php echo (!empty($novaSenha_err)) ? '<span class="text-danger">' . $novaSenha_err . '</span>' : ''; ?>
                         </div>
                         <div class="form-group">
                             <label for="confirmaSenha" class="form-label">Confirme a nova senha:</label>
                             <input type="password" name="confirmaSenha" id="confirmaSenha" required class="form-control" placeholder="******">
+                            <?php echo (!empty($confirmaSenha_err)) ? '<span class="text-danger">' . $confirmaSenha_err . '</span>' : ''; ?>
                         </div>
-
-
                         <input type="submit" value="Enviar" class="btn btn-primary">
-
-
                     </fieldset>
                 </form>
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-    <script src="./assets/validacoesaluno.js"></script>
-    <script src="./assets/validacoescoord.js"></script>
-    <script src="../assets/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

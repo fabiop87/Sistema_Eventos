@@ -44,7 +44,7 @@ if (isset($_SESSION['idCoordenador'])) {
         <div class="row justify-content-center">
             <div class="col-6 mt-5">
 
-                <form action="./Controllers/controllerAluno.php" method="POST" autocomplete="off" id="aluno-form"> <!--  action  -->
+                <form action="./Controllers/controllerAluno.php" method="POST" autocomplete="off" id="aluno-form"> 
 
                     <fieldset>
                         <legend class="text-center">Login Aluno</legend>
@@ -73,7 +73,7 @@ if (isset($_SESSION['idCoordenador'])) {
         <div class="row justify-content-center">
             <div class="col-6 mt-5">
 
-                <form action="./Controllers/controllerCoordenador.php" method="POST" autocomplete="off" id="coordenador-form"> <!--  action  -->
+                <form action="./Controllers/controllerCoordenador.php" method="POST" autocomplete="off" id="coordenador-form"> 
 
                     <fieldset>
                         <legend class="text-center">Login Coordenador</legend>

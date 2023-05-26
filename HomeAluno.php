@@ -12,7 +12,7 @@ if (!isset($_SESSION) || !isset($_SESSION['ra'])) {
 }
 
 if (isset($_SESSION['idCoordenador'])) {
-    die('calma lá que nao era pra acontecer isso, faz o logout ai');
+    die('calma lá que nao era pra acontecer isso');
 }
 
 

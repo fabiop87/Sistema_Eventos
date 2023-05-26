@@ -29,7 +29,7 @@ $cursos = $stmt->fetchAll();
         <div class="row justify-content-center">
             <div class="col-6 mt-5">
 
-                <form action="./Controllers/controllerCoordenador.php" method="POST" autocomplete="off"> <!--  action  -->
+                <form action="./Controllers/controllerCoordenador.php" method="POST" autocomplete="off"> 
 
                     <fieldset>
                         <legend class="text-center">Registro Coordenador</legend>
