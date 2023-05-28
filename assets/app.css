@@ -26,3 +26,17 @@
     background-color: #aaa;
     cursor: pointer;
   }
+
+  .centralizar {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .event-container {
+    background-color: lightgray; /* cor de fundo desejada */
+    padding: 10px; /* espaço interno para separar o conteúdo */
+    margin-bottom: 20px; /* espaço externo para separar o conteúdo */
+}
