@@ -12,7 +12,7 @@ CREATE TABLE eventos (
     dataEvento DATE,
     horarioInicio TIME,
     horarioTermino TIME,
-    codigoCoord VARCHAR(25), 
+    codigoCoord VARCHAR(15), 
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP 
                      ON UPDATE CURRENT_TIMESTAMP,
@@ -47,7 +47,7 @@ CREATE TABLE alunos (
 CREATE TABLE presenca (
     idEvento INT NOT NULL,
     ra VARCHAR(7) NOT NULL,
-    codigoAluno VARCHAR(25),
+    codigoAluno VARCHAR(15),
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP 
                      ON UPDATE CURRENT_TIMESTAMP,
