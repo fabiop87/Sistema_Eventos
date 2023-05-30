@@ -2,12 +2,8 @@
 
 session_start();
 
-
-
-// if (!isset($_SESSION) || !isset($_SESSION['idCoordenador'])) {
-//     echo "<marquee> Apenas pessoas autorizadas podem criar usuario de aluno </marquee>";
-//     die();
-// }
+//comentar a linha abaixo para cadastrar alunos pelo sistema
+    die("<marquee> Apenas pessoas autorizadas podem criar usuario de aluno </marquee>");
 
 
 require_once('./Funcoes/Model.php');
@@ -81,14 +77,14 @@ $cursos = $stmt->fetchAll();
                         </div>
                         <input type="hidden" name="LoginouRegister" value="Register">
 
-                        <!-- desabilitado por conta de falta de vontade assincrona com tempero de água de salsicha -->
-                        <!-- <input type="submit" value="Registrar" class="btn btn-outline-warning" disabled> -->
+                        <!-- desabilitado por conta de { } -->
+                        <input type="submit" value="Registrar" class="btn btn-outline-warning">
 
                     </fieldset>
                 </form>
             </div>
         </div>
-        <a class="btn btn-secondary btn-sm p-2" href="index.php">Voltar ao Login</a>
+        <a class="btn btn-secondary btn-sm p-2" href="./index.php">Voltar ao Login</a>
     </div>
 
 

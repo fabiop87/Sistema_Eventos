@@ -4,7 +4,7 @@ session_start();
 
 
 
-require_once('../Funcoes/Coordenador.php');
+require_once('../../Funcoes/Coordenador.php');
 $Coordenador = new Coordenador();
 
 
@@ -35,7 +35,7 @@ $evento = $resultado->fetch(PDO::FETCH_ASSOC);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../assets/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/bootstrap.min.css">
 </head>
 
 <body>
@@ -44,7 +44,7 @@ $evento = $resultado->fetch(PDO::FETCH_ASSOC);
         <div class="row justify-content-center">
             <div class="col-6 mt-5">
 
-                <form action="../Controllers/controllerEvento.php" method="POST" autocomplete="off">
+                <form action="../../Controllers/controllerEvento.php" method="POST" autocomplete="off">
 
                     <fieldset>
                         <legend class="text-center">Atualizar Evento</legend>
@@ -97,12 +97,12 @@ $evento = $resultado->fetch(PDO::FETCH_ASSOC);
         </div>
     </div>
     <div>
-        <a class="btn btn-secondary btn-sm" href="../HomeCoordenador.php">Voltar</a>
+        <a class="btn btn-secondary btn-sm" href="../../HomeCoordenador.php">Voltar</a>
     </div>
 
 
-    <script src="../assets/funcoes.js"></script>
-    <script src="../assets/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/funcoes.js"></script>
+    <script src="../../assets/bootstrap.bundle.min.js"></script>
 
     <script>
   // Obtém a data atual

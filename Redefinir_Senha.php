@@ -3,7 +3,7 @@
 session_start();
 
 if (!isset($_SESSION["online"]) || $_SESSION["online"] !== true) {
-    header("location: /login.php");
+    header("location: ./login.php");
     die('ué');
 }
 
@@ -88,7 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     // Senha atualizada com sucesso. Destruir a sessão e redirecionar para a página de login
                     session_destroy();
                     $mensagem = 'Senha alterada com sucesso, faça login novamente';
-                    header('Location: index.php?message=' . $mensagem);
+                    header('Location: ./index.php?message=' . $mensagem);
                     exit();
                 } else {
                     echo "Erro ao atualizar a senha.";

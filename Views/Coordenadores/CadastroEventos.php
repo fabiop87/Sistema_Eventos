@@ -77,7 +77,7 @@ if (!isset($_SESSION) && !$_SESSION['idCoordenador']) {
     </div>
   </div>
   <div class="mt-4">
-    <a class="btn btn-secondary" href="/HomeCoordenador.php">Voltar</a>
+    <a class="btn btn-secondary" href="../../HomeCoordenador.php">Voltar</a>
   </div>
 
   <script src="../../assets/funcoes.js"></script>

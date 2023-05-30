@@ -2,7 +2,7 @@
 
 
 if (!isset($_POST['tiporeq_presenca'])) {
-    header('Location:/?erro=url');
+    header('Location: ../?erro=url');
     return false;
 }
 
@@ -44,4 +44,4 @@ switch ($_POST['tiporeq_presenca']) {
         break;
 }
 
-header('Location:/HomeAluno.php?message='. json_encode($mensagem));
+header('Location: ../HomeAluno.php?message='. json_encode($mensagem));

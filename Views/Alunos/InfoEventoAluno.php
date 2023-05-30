@@ -46,7 +46,7 @@ if (!$evento) {
 
                 <p> <?= $evento['descricao'] ?> </p>
 
-                <h2>Local: <?= $evento['local'] ?> </h2>
+                <h4>Local: <?= $evento['local'] ?> </h4>
 
                 <p>Data: <?= date('d/m/Y', strtotime($evento['dataEvento'])) ?></p>
                 <p>Horário de Início: <?= date('H:i', strtotime($evento['horarioInicio'])) ?></p>
@@ -98,7 +98,7 @@ if (!$evento) {
 
 
     <div class="container mt-4">
-        <a class="btn btn-secondary btn-sm" href="/HomeAluno.php">Voltar à página do aluno</a>
+        <a class="btn btn-secondary btn-sm" href="../../HomeAluno.php">Voltar à página do aluno</a>
     </div>
 
 

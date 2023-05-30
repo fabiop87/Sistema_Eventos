@@ -32,7 +32,7 @@ $eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
           <div class="d-flex m-2">
             <form action="./Views/Coordenadores/InfoEventoCoord.php?id=<?= $evento['idEvento'] ?>" method="POST">
               <input type="hidden" name="idEvento" value="<?= $evento['idEvento'] ?>">
-              <button class="btn btn-warning" type="submit">Ver</button>
+              <button class="btn btn-info" type="submit">Ver</button>
               <input type="hidden" name="tiporeq_evt" value="Update">
             </form>
           </div>

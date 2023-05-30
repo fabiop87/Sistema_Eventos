@@ -86,7 +86,7 @@ $eventos = $Presenca->EventosComCertificadoLiberado($ra);
         </tbody>
     </table>
     <div class="mt-4 mb-4 fixed-bottom">
-        <a class="btn btn-secondary btn-sm" href="/HomeAluno.php">Voltar à pagina do aluno</a>
+        <a class="btn btn-secondary btn-sm" href="../../HomeAluno.php">Voltar à pagina do aluno</a>
     </div>
 
     

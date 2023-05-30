@@ -76,7 +76,7 @@ $cursos = $stmt->fetchAll();
                 </form>
             </div>
         </div>
-        <a class="btn btn-secondary btn-sm p-2" href="index.php">Voltar ao Login</a>
+        <a class="btn btn-secondary btn-sm p-2" href="./index.php">Voltar ao Login</a>
     </div>
 
     <?php include_once('Views/ListaCoordenadores.php')?>

@@ -1,7 +1,7 @@
 <?php
 
 if (isset($_POST['tiporeq'])) {
-  header('Location:/?erro=url');
+  header('Location: ../?erro=url');
   return false;
 }
 
@@ -35,7 +35,7 @@ switch ($tiporeq) {
     if ($Coordenador) {
       // Define uma mensagem de sucesso para ser exibida na página
       $mensagem = 'Coordenador cadastrado com sucesso!';
-      header('Location:/index.php?message='. json_encode($mensagem));
+      header('Location: ../index.php?message='. json_encode($mensagem));
     } else {
       // Define uma mensagem de erro para ser exibida na página
       $mensagem = 'Ocorreu um erro ao cadastrar o coordenador.';
@@ -54,7 +54,7 @@ switch ($tiporeq) {
       $_SESSION['online'] = true;
       $_SESSION['idCoordenador'] = $coordenador['idCoordenador'];
       $_SESSION['nome'] = $coordenador['nome'];
-      header('Location:/HomeCoordenador.php?message='. json_encode($mensagem));
+      header('Location: ../HomeCoordenador.php?message='. json_encode($mensagem));
   
  
     } else {

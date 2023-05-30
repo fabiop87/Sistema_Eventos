@@ -1,7 +1,7 @@
 <?php
 
 if (!isset($_POST['tiporeq_evt'])) {
-  header('Location:/?erro=url');
+  header('Location: ../?erro=url');
   return false;
 }
 
