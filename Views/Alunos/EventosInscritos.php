@@ -50,7 +50,7 @@ $VerificarSeOAlunoJaConfirmouPresenca = new Presenca();
 
                     <small><?= $mensagemCard ?></small>
 
-                    <a href="./Views/Evento.php?id=<?= $evento['idEvento'] ?>" class="btn btn-secondary">Saber mais</a>
+                    <a href="./Views/Alunos/InfoEventoAluno.php?id=<?= $evento['idEvento'] ?>" class="btn btn-secondary">Saber mais</a>
                 </div>
             </div>
         <?php endforeach; ?>

@@ -66,7 +66,7 @@ $evento = $resultado->fetch(PDO::FETCH_ASSOC);
 
                         <div class="form-group">
                             <label for="dataEvento" class="form-label">Data do evento:</label>
-                            <input type="date" name="dataEvento" id="dataEvento" class="form-control" value="<?= $evento['dataEvento'] ?>">
+                            <input type="date" name="dataEvento" id="dataEvento" class="form-control" min="" value="<?= $evento['dataEvento'] ?>">
                         </div>
 
                         <div class="form-group">
@@ -89,15 +89,10 @@ $evento = $resultado->fetch(PDO::FETCH_ASSOC);
 
                         <input type="submit" value="Salvar Alterações" class="btn btn-primary mt-3">
 
-
-
                     </fieldset>
-
 
                 </form>
 
-                <small class="text-info">Como a vizualização para coordenadores gerou um bug meio estranho a página de vizualização de evento cadastrado é a mesma de atualizar, se só quiser ler, apenas não clicar no botão 'Salvar Alterações' e voltar a página normalmente.
-                </small>
             </div>
         </div>
     </div>
@@ -108,6 +103,14 @@ $evento = $resultado->fetch(PDO::FETCH_ASSOC);
 
     <script src="../assets/funcoes.js"></script>
     <script src="../assets/bootstrap.bundle.min.js"></script>
+
+    <script>
+  // Obtém a data atual
+  var dataAtual = new Date().toISOString().split("T")[0];
+  
+  // Define o valor mínimo do campo de data como a data atual
+  document.getElementById("dataEvento").min = dataAtual;
+</script>
 </body>
 
 </html>

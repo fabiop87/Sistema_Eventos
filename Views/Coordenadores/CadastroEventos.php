@@ -14,7 +14,7 @@ if (!isset($_SESSION) && !$_SESSION['idCoordenador']) {
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../assets/bootstrap.min.css">
+  <link rel="stylesheet" href="../../assets/bootstrap.min.css">
   <title>Cadastro de Eventos</title>
 </head>
 
@@ -24,7 +24,7 @@ if (!isset($_SESSION) && !$_SESSION['idCoordenador']) {
     <div class="row justify-content-center">
       <div class="col-6 mt-5">
 
-        <form action="../Controllers/controllerEvento.php" method="POST" autocomplete="off">
+        <form action="../../Controllers/controllerEvento.php" method="POST" autocomplete="off">
 
           <fieldset>
             <legend class="text-center">Cadastrar Novo Evento</legend>
@@ -46,7 +46,7 @@ if (!isset($_SESSION) && !$_SESSION['idCoordenador']) {
 
             <div class="form-group">
               <label for="dataEvento" class="form-label">Data do evento:</label>
-              <input type="date" name="dataEvento" id="dataEvento" class="form-control" required>
+              <input type="date" name="dataEvento" id="dataEvento" class="form-control" min="" required>
             </div>
 
             <div class="form-group">
@@ -77,10 +77,18 @@ if (!isset($_SESSION) && !$_SESSION['idCoordenador']) {
     </div>
   </div>
   <div class="mt-4">
-    <a class="btn btn-secondary" href="../HomeCoordenador.php">Voltar</a>
+    <a class="btn btn-secondary" href="/HomeCoordenador.php">Voltar</a>
   </div>
 
-  <script src="../assets/funcoes.js"></script>
+  <script src="../../assets/funcoes.js"></script>
+
+  <script>
+  // Obtém a data atual
+  var dataAtual = new Date().toISOString().split("T")[0];
+  
+  // Define o valor mínimo do campo de data como a data atual
+  document.getElementById("dataEvento").min = dataAtual;
+</script>
 </body>
 
 </html>

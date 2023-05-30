@@ -10,7 +10,7 @@ if (!isset($_SESSION['ra'])) {
     die('Apenas alunos podem acessar essa página');
 }
 
-require_once('../Funcoes/Presenca.php');
+require_once('../../Funcoes/Presenca.php');
 
 $Presenca = new Presenca();
 
@@ -30,7 +30,7 @@ $eventos = $Presenca->EventosComCertificadoLiberado($ra);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/bootstrap.min.css">
     <title>Certificados</title>
 </head>
 
@@ -67,7 +67,7 @@ $eventos = $Presenca->EventosComCertificadoLiberado($ra);
                         <?php
                         if ($Presenca->verificarInscricao($evento['idEvento'], $ra) && $Presenca->validarCertificado($evento['idEvento'], $ra)) :
                         ?>
-                            <form action="../gerarCertificado.php" method="POST">
+                            <form action="/gerarCertificado.php" method="POST">
                                 <input type="hidden" name="idEvento" value="<?= $evento['idEvento']; ?>">
                                 <input type="hidden" name="nomeEvento" value="<?= $evento['nomeEvento']; ?>">
                                 <input type="hidden" name="local" value="<?= $evento['local']; ?>">
@@ -86,7 +86,7 @@ $eventos = $Presenca->EventosComCertificadoLiberado($ra);
         </tbody>
     </table>
     <div class="mt-4 mb-4 fixed-bottom">
-        <a class="btn btn-secondary btn-sm" href="../HomeAluno.php">Voltar à pagina do aluno</a>
+        <a class="btn btn-secondary btn-sm" href="/HomeAluno.php">Voltar à pagina do aluno</a>
     </div>
 
     

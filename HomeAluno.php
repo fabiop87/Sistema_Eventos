@@ -60,9 +60,9 @@ $nome = $_SESSION['nome'];
 
     <nav class="nav justify-content-end">
         <a class="nav-link-active btn" aria-current="page" href="#">Página do Aluno</a>
-        <a class="nav-link" href="./Views/Certificados.php">Certificados</a>
+        <a class="nav-link" href="./Views/Alunos/Certificados.php">Certificados</a>
         <form class="d-flex" role="search">
-            <input name="search" value="<?php if (isset($_GET['search'])) echo $_GET['search']; ?>" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" autocomplete="off">
+            <input name="search" value="<?php if (isset($_GET['search'])) echo $_GET['search']; ?>" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" autocomplete="on">
             <button class="btn btn-outline-success" type="submit">Buscar</button>
         </form>
     </nav>
@@ -70,10 +70,10 @@ $nome = $_SESSION['nome'];
 
     <h2>Eventos Disponíveis</h2>
     <hr>
-    <?php include_once('./Views/ListaEvt_Aluno.php'); ?>
+    <?php include_once('./Views/Alunos/ListaEvt_Aluno.php'); ?>
     <hr>
     <h2>Eventos Inscritos</h2>
-    <?php include_once('./Views/EventosInscritos.php') ?>
+    <?php include_once('./Views/Alunos/EventosInscritos.php') ?>
 
     <footer class="footer text-center fixed-bottom">Einstein Limeira <?= $dataAtual ?></footer>
 

@@ -51,35 +51,42 @@ $pdf->setPaper('A4', 'landscape');
 // $pdf->loadHtmlFile(__DIR__.'/arquivo.php');
 
 $certificado = "
-<title>Certificado {$nomeEvento}</title>
+<html>
+    <head>
+        <title>Certificado {$nomeEvento}</title>
     <style>
         p {
             text-align: center;
             line-height: 1.5em;
-            font-size: 16pt;
+            font-size: 14pt;
         }
         .center {  text-align:center  }
           
         h1, h2, h3, h4 {
-            color: #372991;
+            color: #000000;
             margin: 0 0 10px 0;
             text-align:center;
         }
         
         </style>
-</head>
-<body>
-    <h1>EINSTEIN LIMEIRA</h1>
-    <div class='center'>
-    <img src='./PDF/img/logo.png' alt='Logo Escola'>
-    </div>
-    
-    <p>O aluno <strong>{$nome}</strong> ra: <strong>{$ra}</strong> do curso <strong>{$curso}</strong> tem presença confirmada no evento <strong>{$nomeEvento}</strong> no {$local}</p>
-    
-    <p>Data: {$dataEvento}   Horário de início: {$horarioInicio}       Horário de término: {$horarioTermino}</p>
+    </head>
 
-    <img src='./PDF/img/assinatura.png' alt='Assinatura' width='200' height='100'>
-</body>
+    <body>
+        <h1>EINSTEIN LIMEIRA</h1>
+        <main>
+            <div class='center'>
+                <img src='./PDF/img/logo.png' alt='Logo Escola' height='300' width='300'/>
+            </div>
+    
+            <p>O aluno <strong>{$nome}</strong> ra: <strong>{$ra}</strong> do curso <strong>{$curso}</strong> tem presença confirmada no evento <strong>{$nomeEvento}</strong> no {$local}</p>
+    
+            <p>Data: {$dataEvento}   Horário de início: {$horarioInicio}       Horário de término: {$horarioTermino}</p>
+
+            <img src='./PDF/img/assinatura.png' alt='Assinatura' width='200' height='100'>
+
+        </main>
+    </body>
+</html>
 
 
 ";
@@ -90,11 +97,11 @@ $pdf->loadHtml($certificado);
 //Renderizar o pdf
 
 
- $pdf->render();
+$pdf->render();
 
 // Configura o cabeçalho Content-Type para indicar que é um PDF
- header('Content-Type: application/pdf');
- header('Content-Disposition: inline; filename="certificado.pdf"');
+header('Content-Type: application/pdf');
+header('Content-Disposition: inline; filename="certificado.pdf"');
 // Imprime o pdf na tela
 //echo $pdf->output();
 
@@ -106,4 +113,6 @@ $pdf->stream("Certificado '{$nomeEvento}' - '{$nome}'", array("Attachment" => 0)
  EXTENSAO QUE PRECISA ATIVAR NO PHP.INI PARA FUNCIONAR IMAGENS
  
  PHP.ini extension = gd 
+
+ //ourcodeworld.com/articles/read/688/how-to-configure-a-watermark-in-dompdf
  */

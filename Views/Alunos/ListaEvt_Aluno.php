@@ -57,7 +57,7 @@ $eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <h5> <?= $evento['nomeEvento'] ?> </h5>
                     <p> Data: <?= date('d/m/Y', strtotime($evento['dataEvento'])) ?> </p>
                     <p>Local: <?= $evento['local'] ?> </p>
-                    <a href="./Views/Evento.php?id=<?= $evento['idEvento'] ?>" class="btn btn-secondary">Saber mais</a>
+                    <a href="./Views/Alunos/InfoEventoAluno.php?id=<?= $evento['idEvento'] ?>" class="btn btn-secondary">Saber mais</a>
                 </div>
             </div>
         <?php endforeach; ?>

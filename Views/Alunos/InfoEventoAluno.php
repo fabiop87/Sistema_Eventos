@@ -7,10 +7,10 @@ session_start();
 $idEvento = $_GET['id'];
 $ra = $_SESSION['ra'];
 
-require_once('../Funcoes/Presenca.php');
+require_once('../../Funcoes/Presenca.php');
 $Presenca = new Presenca();
 
-require_once('../Funcoes/Evento.php');
+require_once('../../Funcoes/Evento.php');
 $Evento = new Evento();
 
 // Acessa a função para pegar o evento selecionado
@@ -31,8 +31,8 @@ if (!$evento) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/app.css">
+    <link rel="stylesheet" href="../../assets/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/app.css">
     <title>Eventos</title>
 
 </head>
@@ -54,7 +54,7 @@ if (!$evento) {
 
 
                 <?php if (!$Presenca->verificarInscricao($evento['idEvento'], $ra)) : ?>
-                    <form action="../Controllers/controllerPresenca.php" method="POST">
+                    <form action="../../Controllers/controllerPresenca.php" method="POST">
                         <input type="hidden" name="idEvento" value="<?= $evento['idEvento'] ?>">
                         <input type="hidden" name="ra" value="<?= $_SESSION['ra'] ?>">
 
@@ -68,7 +68,7 @@ if (!$evento) {
 
 
 
-                    <form action="../Controllers/controllerPresenca.php" method="POST" autocomplete="off">
+                    <form action="../../Controllers/controllerPresenca.php" method="POST" autocomplete="off">
                         <input type="hidden" name="idEvento" value="<?= $evento['idEvento'] ?>">
                         <input type="hidden" name="ra" value="<?= $_SESSION['ra'] ?>">
                         <label for="codigoAluno">Código para registrar presença:</label>
@@ -79,7 +79,7 @@ if (!$evento) {
 
 
 
-                    <form action="../Controllers/controllerPresenca.php" method="POST" onsubmit="return pedirConfirmacao();">
+                    <form action="../../Controllers/controllerPresenca.php" method="POST" onsubmit="return pedirConfirmacao();">
                         <input type="hidden" name="idEvento" value="<?= $evento['idEvento'] ?>">
                         <input type="hidden" name="ra" value="<?= $_SESSION['ra'] ?>">
                         <input type="submit" class="codigo_submit btn btn-dark" value="Desinscrever">
@@ -98,13 +98,11 @@ if (!$evento) {
 
 
     <div class="container mt-4">
-        <a class="btn btn-secondary btn-sm" href="../HomeAluno.php">Voltar à pagina do aluno</a>
+        <a class="btn btn-secondary btn-sm" href="/HomeAluno.php">Voltar à página do aluno</a>
     </div>
 
 
     <footer class="footer text-center fixed-bottom">Einstein Limeira <?= $ano ?></footer>
-    <script src="../assets/funcoes.js"></script>
-    <script src="../assets/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
