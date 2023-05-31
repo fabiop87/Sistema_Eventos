@@ -33,6 +33,7 @@ $nome = $_SESSION['nome'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/app.css">
+    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
     <title>Eventos Einstein Limeira</title>
 </head>
 

@@ -23,7 +23,7 @@ $eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
   <div class="row d-flex flex-wrap">
     <?php foreach ($eventos as $evento) : ?>
       <div class="col-12 col-md-3 col-lg-4 col-xl-2 mb-4">
-        <div class="card corzinha-evento">
+        <div class="card corzinha-evento-passado">
           <p><?= $evento['idEvento'] ?></p>
           <h5> <?= $evento['nomeEvento'] ?> </h5>
           <p> Data: <?= date('d/m/Y', strtotime($evento['dataEvento'])) ?> </p>

@@ -70,7 +70,7 @@ class Presenca extends conexao
 
     public function EventosComCertificadoLiberado($ra)
     {
-        $sql = "SELECT p.*, e.* 
+        $sql = "SELECT e.idEvento, e.nomeEvento, e.local, e.dataEvento, e.horarioInicio, e.horarioTermino
         FROM presenca p INNER JOIN eventos e ON p.idEvento = e.idEvento 
         AND p.codigoAluno = e.codigoCoord WHERE ra = :ra
         ORDER BY dataEvento DESC

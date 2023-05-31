@@ -31,6 +31,7 @@ $eventos = $Presenca->EventosComCertificadoLiberado($ra);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../assets/bootstrap.min.css">
+    <link rel="shortcut icon" href="../../assets/favicon.ico" type="image/x-icon">
     <title>Certificados</title>
 </head>
 
@@ -46,8 +47,8 @@ $eventos = $Presenca->EventosComCertificadoLiberado($ra);
                 <!-- <th>Descricao</th> -->
                 <th>Local</th>
                 <th>Data</th>
-                <th>Início</th>
-                <th>Término</th>
+                <!-- <th>Início</th>
+                <th>Término</th> -->
             </tr>
         </thead>
         <tbody class="table-light">
@@ -60,8 +61,8 @@ $eventos = $Presenca->EventosComCertificadoLiberado($ra);
                     
                     <td><?= $evento['local'] ?></td>
                     <td><?= date('d/m/Y', strtotime($evento['dataEvento'])) ?></td>
-                    <td><?= date('H:i', strtotime($evento['horarioInicio'])) ?></td>
-                    <td><?= date('H:i', strtotime($evento['horarioTermino'])) ?></td>
+                    <!-- <td><?= date('H:i', strtotime($evento['horarioInicio'])) ?></td>
+                    <td><?= date('H:i', strtotime($evento['horarioTermino'])) ?></td> -->
                     <td></td>
                     <td>
                         <?php
@@ -90,7 +91,7 @@ $eventos = $Presenca->EventosComCertificadoLiberado($ra);
     </div>
 
     
-    <script src="../assets/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>

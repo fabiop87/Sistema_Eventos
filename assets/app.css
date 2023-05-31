@@ -3,7 +3,10 @@
 }
 
 .corzinha-evento {
-    background-color: rgb(255, 151, 99);
+    background-color: rgb(172, 52, 228);
+}
+.corzinha-evento-passado {
+    background-color: rgb(255, 59, 25);
 }
 
 #coordenador-form {
