@@ -31,7 +31,7 @@ switch ($_POST['tiporeq_evt']) {
       // Verificar se a exceção é devido a uma violação de chave estrangeira
       if ($e->getCode() === '23000') {
         // Exibir uma mensagem de erro personalizada para o usuário
-        $mensagem = "Nao e possivel excluir o evento devido a restricoes de integridade referencial. (Tem alunos inscritos nesse evento)";
+        $mensagem = "Nao foi possivel excluir o evento, existem alunos inscritos nesse evento";
       } else {
         // Lidar com outras exceções caso necessário
         $mensagem = "Ocorreu um erro ao excluir o evento.";

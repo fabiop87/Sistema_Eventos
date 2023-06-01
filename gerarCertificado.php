@@ -67,7 +67,11 @@ $certificado = "
             margin: 0 0 10px 0;
             text-align:center;
         }
-        
+    #assinatura{
+        position: absolute;
+        bottom: 0;
+        left: 40%;
+    }
         </style>
     </head>
 
@@ -82,7 +86,7 @@ $certificado = "
     
             <p>Data: {$dataEvento}   Horário de início: {$horarioInicio}       Horário de término: {$horarioTermino}</p>
 
-            <img src='./PDF/img/assinatura.png' alt='Assinatura' width='200' height='100'>
+            <img id= 'assinatura' src='./PDF/img/assinatura.png' alt='Assinatura' width='200' height='100'>
 
         </main>
     </body>
