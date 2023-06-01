@@ -113,11 +113,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./assets/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/app.css">
 </head>
 
 <body>
 
-    <h2>Redefinir senha</h2>
+    <h2 class="text-center">Redefinir senha</h2>
 
     <div class="container">
         <div class="row justify-content-center">
@@ -145,6 +146,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </div>
     </div>
+
+    <a class="btn btn-secondary" href="javascript:history.back()">Voltar</a>
 </body>
 
 </html>

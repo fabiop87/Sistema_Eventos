@@ -1,45 +1,56 @@
+body {
+  font-feature-settings: normal;
+  font-family: 'DM Sans', system-ui, -apple-system, sans-serif ;
+  font-variation-settings: normal;
+  line-height: 1.5;
+}
+
 .corzinha-evento-inscrito {
-    background-color: blue;
+  background-color: blue;
 }
 
 .corzinha-evento {
-    background-color: rgb(172, 52, 228);
+  background-color: rgb(172, 52, 228);
 }
+
 .corzinha-evento-passado {
-    background-color: rgb(255, 59, 25);
+  background-color: rgb(255, 59, 25);
 }
 
 #coordenador-form {
-    display: none;
+  display: none;
 }
 
 
 .navIndex button {
-    background-color: yellow;
-    border: none;
-    border-radius: 5px;
-    color: black;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 10px 20px;
-    margin-right: 10px;
-  }
-  
-  .navIndex button:hover {
-    background-color: #aaa;
-    cursor: pointer;
-  }
+  background-color: yellow;
+  border: none;
+  border-radius: 5px;
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  margin-right: 10px;
+}
 
-  .centralizar {
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+.navIndex button:hover {
+  background-color: #aaa;
+  cursor: pointer;
+}
 
-  .event-container {
-    background-color: lightgray; /* cor de fundo desejada */
-    padding: 10px; /* espaço interno para separar o conteúdo */
-    margin-bottom: 20px; /* espaço externo para separar o conteúdo */
+.centralizar {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.event-container {
+  background-color: lightgray;
+  /* cor de fundo desejada */
+  padding: 10px;
+  /* espaço interno para separar o conteúdo */
+  margin-bottom: 20px;
+  /* espaço externo para separar o conteúdo */
 }
