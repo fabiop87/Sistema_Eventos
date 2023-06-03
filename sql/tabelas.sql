@@ -63,6 +63,7 @@ INSERT INTO `cursos` (`idCurso`, `nomeCurso`, `created_at`) VALUES (1, 'TADS', c
 INSERT INTO `cursos` (`idCurso`, `nomeCurso`, `created_at`) VALUES (2, 'Psicologia', current_timestamp());
 INSERT INTO `cursos` (`idCurso`, `nomeCurso`, `created_at`) VALUES (3, 'Eng Civil', current_timestamp());
 INSERT INTO `cursos` (`idCurso`, `nomeCurso`, `created_at`) VALUES (4, 'Eng Mecanica', current_timestamp());
+INSERT INTO `cursos` (`idCurso`, `nomeCurso`, `created_at`) VALUES (5, 'Administracao', current_timestamp());
 INSERT INTO `cursos` (`idCurso`, `nomeCurso`, `created_at`) VALUES (6, 'Eng Eletrica', current_timestamp());
 INSERT INTO `cursos` (`idCurso`, `nomeCurso`, `created_at`) VALUES (7, 'Eng Producao', current_timestamp());
 INSERT INTO `cursos` (`idCurso`, `nomeCurso`, `created_at`) VALUES (8, 'Nutricao', current_timestamp());

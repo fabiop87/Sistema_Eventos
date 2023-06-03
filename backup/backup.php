@@ -1,10 +1,10 @@
 <?php
 
 /*
-* Created by @Fabio Pilon  ( foi um inferno de fazer )
+* Created by @Fabio Pilon 
 * ó, isso aqui escreve o script para criar as tabelas denovo, já que o mysql_dump estava dando problema
-* Pra fazer o backup é só rodar esse código com o comando no terminal ->  { php backup.php } <- este arquivo (dã)
-* Pra ter certeza dá cd \backup e chega na pasta que tem o arquivo e usa o comando
+* Pra fazer o backup é só rodar esse código com o comando no terminal =>  cd backup -> php backup.php 
+
 * Se ainda não conseguir ainda só faz manualmente no mysql lá (opções né)
 */
 
