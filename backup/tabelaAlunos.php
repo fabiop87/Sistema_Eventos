@@ -19,7 +19,7 @@ function criptografarSenha($senha)
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "projintteste";
+$dbname = "eventosfaculdade";
 
 try {
     // Criar conexão com o banco de dados usando o PDO
@@ -28,7 +28,7 @@ try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Consulta SQL para buscar os alunos
-    $sql = "SELECT ra, nome, idCurso FROM alunos";
+    $sql = "SELECT ra, nome, idCurso FROM teste";
     $stmt = $conn->query($sql);
 
     // Nome do arquivo .sql que será gerado
