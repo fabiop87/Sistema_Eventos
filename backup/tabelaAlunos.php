@@ -17,8 +17,8 @@ function criptografarSenha($senha)
 
 // Configurações de conexão com o banco de dados
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = "Josney";
+$password = "sapatosalsicha";
 $dbname = "eventosfaculdade";
 
 try {

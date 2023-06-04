@@ -10,11 +10,11 @@ if (!isset($_SESSION)) {
 }
 
 if (isset($_SESSION['ra'])) {
-    header('Location: /HomeAluno.php');
+    header('Location:  ./HomeAluno.php');
 }
 
 if (isset($_SESSION['idCoordenador'])) {
-    header('Location: /HomeCoordenador.php');
+    header('Location:  ./HomeCoordenador.php');
 }
 
 ?>

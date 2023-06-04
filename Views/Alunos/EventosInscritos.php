@@ -36,7 +36,7 @@ $VerificarSeOAlunoJaConfirmouPresenca = new Presenca();
         <?php foreach ($eventos as $evento) : ?>
             <?php if ($VerificarSeOAlunoJaConfirmouPresenca->validarCertificado($evento['idEvento'], $_SESSION['ra'])) {
                 $corDoCard = '#FFF68F';
-                $mensagemCard = 'Presença já confirmada!';
+                $mensagemCard = 'Presença confirmada!';
             } else {
                 $corDoCard = '#40E0D0';
                 $mensagemCard = '|';

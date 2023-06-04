@@ -7,11 +7,11 @@ session_start();
 
 if (!isset($_SESSION) || !isset($_SESSION['idCoordenador'])) {
     session_destroy();
-    header('Location: index.php');
+    header('Location: ./index.php');
 }
 
 if (isset($_SESSION['idAluno'])) {
-    die('calma lá que nao era pra acontecer isso, faz o logout ai');
+    die('calma lá que nao era pra acontecer isso');
 }
 
 

@@ -8,7 +8,7 @@ session_start();
 
 if (!isset($_SESSION) || !isset($_SESSION['ra'])) {
     session_destroy();
-    header('Location: index.php');
+    header('Location: ./index.php');
 }
 
 if (isset($_SESSION['idCoordenador'])) {
