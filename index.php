@@ -33,6 +33,8 @@ if (isset($_SESSION['idCoordenador'])) {
 </head>
 
 <body>
+    <img class="rounded mx-auto d-block" src="/assets/vaiissomesmo2.png" alt="logoescola">
+
 
     <div class="position-absolute top-0 start-0 navbar navIndex">
         <button id="coordenador-btn">Coordenador</button>
@@ -106,6 +108,9 @@ if (isset($_SESSION['idCoordenador'])) {
         <!-- <a class="btn btn-secondary btn-sm" href="CadastroAluno.php">Novo Aluno</a> -->
         <a class="btn btn-secondary btn-sm" href="CadastroCoord.php">Novo Coordenador</a>
 
+
+    
+    
     <!-- </div>
     <a href="../libs/logout.php"><button class="btn btn-outline-danger">Sair da conta</button></a>
     </div> -->

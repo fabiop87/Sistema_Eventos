@@ -41,7 +41,7 @@ if (!$evento) {
             <div class="col-12 p-2 event-container">
                 <h1><?= $evento['nomeEvento']  ?></h1>
 
-                <p> <?= $evento['descricao'] ?> </p>
+                <p class="descricao"> <?= $evento['descricao'] ?> </p>
 
                 <h4>Local: <?= $evento['local'] ?> </h4>
 

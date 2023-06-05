@@ -40,7 +40,7 @@ switch ($_POST['tiporeq_presenca']) {
         $mensagem = "Inscricao retirada";
         break;
     default:
-        die('deu merda');
+    $mensagem = 'Deu algum erro na hora de salvar';
         break;
 }
 

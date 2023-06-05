@@ -54,3 +54,7 @@ body {
   margin-bottom: 20px;
   /* espaço externo para separar o conteúdo */
 }
+
+.descricao{
+  word-wrap: break-word;
+}

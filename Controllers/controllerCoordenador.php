@@ -28,18 +28,18 @@ switch ($tiporeq) {
       $novoCoordenador = $Coordenador->cadastrarCoordenador($_POST['nome'], $_POST['idCurso'], $_POST['senha']);
     } else {
       $mensagem = 'Este coordenador já está cadastrado';
-      header('Location: ../CadastroCoord.php?message='. $mensagem);
+      header('Location: ../CadastroCoord.php?message=' . $mensagem);
     }
 
     // Verifica se o cadastro foi bem sucedido
     if ($Coordenador) {
       // Define uma mensagem de sucesso para ser exibida na página
       $mensagem = 'Coordenador cadastrado com sucesso!';
-      header('Location: ../index.php?message='. json_encode($mensagem));
+      header('Location: ../index.php?message=' . json_encode($mensagem));
     } else {
       // Define uma mensagem de erro para ser exibida na página
       $mensagem = 'Ocorreu um erro ao cadastrar o coordenador.';
-      header('Location: ../CadastroCoord.php?message='. json_encode($mensagem));
+      header('Location: ../CadastroCoord.php?message=' . json_encode($mensagem));
     }
 
     break;
@@ -54,22 +54,15 @@ switch ($tiporeq) {
       $_SESSION['online'] = true;
       $_SESSION['idCoordenador'] = $coordenador['idCoordenador'];
       $_SESSION['nome'] = $coordenador['nome'];
-      header('Location: ../HomeCoordenador.php?message='. json_encode($mensagem));
-  
- 
+      header('Location: ../HomeCoordenador.php?message=' . json_encode($mensagem));
     } else {
       // Define uma mensagem de erro para ser exibida na página
       $mensagem = 'Ocorreu um erro ao fazer login.';
-      header('Location: ../index.php?message='. json_encode($mensagem));
+      header('Location: ../index.php?message=' . json_encode($mensagem));
     }
 
     break;
   default:
-    throw new Exception('deu ruim');
+    die('VISH..........................');
     break;
 }
-
-
-
-
-

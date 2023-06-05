@@ -94,11 +94,6 @@ ALTER TABLE `presenca` DROP FOREIGN KEY `fk_aln`; ALTER TABLE `presenca` ADD CON
 -- Voltar ao normal
 ALTER TABLE `presenca` DROP FOREIGN KEY `fk_aln`; ALTER TABLE `presenca` ADD CONSTRAINT `fk_aln` FOREIGN KEY (`ra`) REFERENCES `alunos`(`ra`) ON DELETE RESTRICT ON UPDATE RESTRICT; ALTER TABLE `presenca` DROP FOREIGN KEY `fk_evt`; ALTER TABLE `presenca` ADD CONSTRAINT `fk_evt` FOREIGN KEY (`idEvento`) REFERENCES `eventos`(`idEvento`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
-/*<?php
- crypt('sapato', 'salsicha'); senha para registrar coordenador
- ?>
-*/
-
 
 -- CREATE PROCEDURE procurarAluno(IN ra int)
 -- BEGIN

@@ -50,7 +50,7 @@ switch ($_POST['tiporeq_evt']) {
     break;
 
   default:
-    $mensagem = 'Deu algum erro na hora de salvar no banco, calma lá';
+    $mensagem = 'Deu algum erro na hora de salvar no banco';
     break;
 }
 
