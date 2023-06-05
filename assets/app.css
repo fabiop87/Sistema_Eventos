@@ -10,11 +10,11 @@ body {
 }
 
 .corzinha-evento {
-  background-color: rgb(172, 52, 228);
+  background-color: lightgray;
 }
 
 .corzinha-evento-passado {
-  background-color: rgb(255, 59, 25);
+  background-color: gray;
 }
 
 #coordenador-form {
